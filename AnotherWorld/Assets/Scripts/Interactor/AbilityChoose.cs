@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AbilityChoose : Interactor
+{
+    [SerializeField] private GameObject canvas;
+    private void OnEnable()
+    {
+        interactionKey = KeyCode.X;
+        isActivated = false;
+    }
+
+    protected override void interactionEvent()
+    {
+        // ´É·Â °ñ¶óÁÖ´Â ÄµÆÛ½º ¶ç¿ì±â
+        // ------ //
+        canvas.SetActive(true);
+        base.interactionEvent();
+    }
+}

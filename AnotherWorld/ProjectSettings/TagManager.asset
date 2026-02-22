@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - EnemyCol
+  - NPC
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - AnotherWorld
+  - Mirror
+  - WorldGround
+  - AnotherGround
+  - Background
+  - Enemy
+  - EnemyCheck
+  - NPC
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: MirrorEffect
+    uniqueID: 2943729155
+    locked: 0
+  - name: MirrorWorld
+    uniqueID: 1947821449
+    locked: 0
+  - name: WorldEffect
+    uniqueID: 3858201663
+    locked: 0
+  - name: World
+    uniqueID: 3807876951
+    locked: 0
+  - name: Enemy
+    uniqueID: 303738053
+    locked: 0
+  - name: PlayerEffect
+    uniqueID: 2052509851
+    locked: 0
+  - name: Player
+    uniqueID: 1072871013
+    locked: 0
+  - name: Mirror
+    uniqueID: 1664431003
+    locked: 0
+  - name: Mirror_Invertor
+    uniqueID: 428208419
+    locked: 0
+  - name: UI
+    uniqueID: 291512641
+    locked: 0
