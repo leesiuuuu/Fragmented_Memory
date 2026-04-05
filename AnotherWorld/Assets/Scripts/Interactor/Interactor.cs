@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
@@ -56,7 +56,7 @@ public class Interactor : MonoBehaviour
 
     protected virtual void interactionEvent()
     {
-        Debug.Log("Å°¸¦ ´­·¯¼­ ÀÌº¥Æ® ¹ß»ıÇÔ");
+        Debug.Log("í‚¤ë¥¼ ëˆŒëŸ¬ì„œ ì´ë²¤íŠ¸ ë°œìƒí•¨");
         isActivated = true;
         inputKeyObject.SetActive(playerEntered);
     }

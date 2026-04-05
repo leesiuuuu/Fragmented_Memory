@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -83,7 +83,7 @@ public class PlayerStatManager : MonoBehaviour
         CriticalPercentage = Mathf.Clamp(CriticalPercentage + cardInstance.CriticalPercentage, 0, 100); // 0~100%
         LifeSteal = Mathf.Max(0, LifeSteal + cardInstance.LifeSteal);
 
-        // Æ¯¼ö ´É·Â Àû¿ë
+        // íŠ¹ìˆ˜ ëŠ¥ë ¥ ì ìš©
         if (cardInstance.SpecialAbility != SpecialAbilityType.None)
         {
             switch (cardInstance.SpecialAbility)

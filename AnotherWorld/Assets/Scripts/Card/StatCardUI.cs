@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +7,13 @@ public class StatCardUI : MonoBehaviour
     [SerializeField] private GameObject Canvas;
     [Header("UI Text Components")]
     public Text TitleText;
-    public Text statsText; // º¯µ¿ ½ºÅÈÀ» ¸ğµÎ ÇÏ³ªÀÇ Text¿¡ Ç¥½Ã
+    public Text statsText; // ë³€ë™ ìŠ¤íƒ¯ì„ ëª¨ë‘ í•˜ë‚˜ì˜ Textì— í‘œì‹œ
     public Image Icon;
 
     private StatData baseSO;
     private CardInstance cardInstance;
 
-    // Ä«µå Ç¥½Ã
+    // ì¹´ë“œ í‘œì‹œ
     public void SetCard(CardInstance instance, StatData so)
     {
         cardInstance = instance;
@@ -22,7 +22,7 @@ public class StatCardUI : MonoBehaviour
         TitleText.text = instance.Name;
         Icon.sprite = so.Icon;
 
-        // º¯µ¿ ½ºÅÈ¸¸ Ç¥½Ã
+        // ë³€ë™ ìŠ¤íƒ¯ë§Œ í‘œì‹œ
         statsText.text = GetChangedStatsText();
     }
 
@@ -33,7 +33,7 @@ public class StatCardUI : MonoBehaviour
 
     private IEnumerator selectStat()
     {
-        Debug.Log("Ãß°¡µÊ");
+        Debug.Log("ì¶”ê°€ë¨");
         PlayerStatManager.instance.AddStat(cardInstance);
 
         yield return new WaitForSeconds(0.4f);
@@ -64,12 +64,12 @@ public class StatCardUI : MonoBehaviour
     {
         switch (value)
         {
-            case "HP": return "Ã¼·Â";
-            case "AD": return "°ø°İ·Â";
-            case "Defence": return "¹æ¾î·Â";
-            case "Critical": return "Ä¡¸íÅ¸ È®·ü";
-            case "Crit %": return "Ä¡¸íÅ¸ µ¥¹ÌÁö";
-            case "LifeSteal": return "±âº» °ø°İ ÇÇÇØ ÈíÇ÷";
+            case "HP": return "ì²´ë ¥";
+            case "AD": return "ê³µê²©ë ¥";
+            case "Defence": return "ë°©ì–´ë ¥";
+            case "Critical": return "ì¹˜ëª…íƒ€ í™•ë¥ ";
+            case "Crit %": return "ì¹˜ëª…íƒ€ ë°ë¯¸ì§€";
+            case "LifeSteal": return "ê¸°ë³¸ ê³µê²© í”¼í•´ í¡í˜ˆ";
         }
 
         return null;

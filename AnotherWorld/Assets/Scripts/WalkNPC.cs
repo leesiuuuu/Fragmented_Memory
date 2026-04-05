@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,11 +6,11 @@ using UnityEngine.UIElements;
 public class WalkNPC : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 2f;      // ÀÌµ¿ ¼Óµµ
-    [SerializeField] private float minWalkTime = 1f;    // ÃÖ¼Ò ÀÌµ¿ ½Ã°£
-    [SerializeField] private float maxWalkTime = 3f;    // ÃÖ´ë ÀÌµ¿ ½Ã°£
-    [SerializeField] private float minWaitTime = 1f;    // ÃÖ¼Ò ´ë±â ½Ã°£
-    [SerializeField] private float maxWaitTime = 2f;    // ÃÖ´ë ´ë±â ½Ã°£
+    [SerializeField] private float moveSpeed = 2f;      // ì´ë™ ì†ë„
+    [SerializeField] private float minWalkTime = 1f;    // ìµœì†Œ ì´ë™ ì‹œê°„
+    [SerializeField] private float maxWalkTime = 3f;    // ìµœëŒ€ ì´ë™ ì‹œê°„
+    [SerializeField] private float minWaitTime = 1f;    // ìµœì†Œ ëŒ€ê¸° ì‹œê°„
+    [SerializeField] private float maxWaitTime = 2f;    // ìµœëŒ€ ëŒ€ê¸° ì‹œê°„
 
     [SerializeField] private float wallCheckDistance = 0.2f;
     [SerializeField] private LayerMask wallLayer;
@@ -21,10 +21,10 @@ public class WalkNPC : MonoBehaviour
 
     void Awake()
     {
-        // Rigidbody2D ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
+        // Rigidbody2D ì»´í¬ë„ŒíŠ¸ ê°€ì ¸ì˜¤ê¸°
         rb = GetComponent<Rigidbody2D>();
 
-        // 2D °ÔÀÓ¿¡¼­ È¸Àü ¹æÁö (ÇÊ¿ä ½Ã)
+        // 2D ê²Œì„ì—ì„œ íšŒì „ ë°©ì§€ (í•„ìš” ì‹œ)
         rb.freezeRotation = true;
         animator = GetComponent<Animator>();
     }
@@ -82,7 +82,7 @@ public class WalkNPC : MonoBehaviour
                 yield return null;
             }
 
-            // °¨¼Ó
+            // ê°ì†
             while (rb.velocity.magnitude > 0.1f)
             {
                 rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 0.1f);

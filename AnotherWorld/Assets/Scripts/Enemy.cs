@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -39,7 +39,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Death()
     {
-        Debug.Log("¡Í±›");
+        Debug.Log("Ï•¨Í∏à");
         IsDeath = true;
         GameManager.Instance.KilledEnemy++;
         GameManager.Instance.killedEnemy_InGame++;

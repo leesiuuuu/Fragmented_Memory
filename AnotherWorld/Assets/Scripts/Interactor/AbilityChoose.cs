@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class AbilityChoose : Interactor
 
     protected override void interactionEvent()
     {
-        // ´É·Â °ñ¶óÁÖ´Â ÄµÆÛ½º ¶ç¿ì±â
+        // ëŠ¥ë ¥ ê³¨ë¼ì£¼ëŠ” ìº”í¼ìŠ¤ ë„ìš°ê¸°
         // ------ //
         canvas.SetActive(true);
         base.interactionEvent();

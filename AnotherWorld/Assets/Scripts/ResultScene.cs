@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,11 +21,11 @@ public class ResultScene : MonoBehaviour
 
     public void Start()
     {
-        SubTitle.text = "´ç½ÅÀÇ ½ºÄÚ¾î : " + GameManager.Instance.GetFinalScore().ToString();
-        MemoryScore.text = "±â¾ï Á¡¼ö | " + GameManager.Instance.GetMemoryScore().ToString();
-        MirrorScore.text = "°Å¿ï ¼¼°è Á¡¼ö | " + GameManager.Instance.GetMirrorScore().ToString();
-        KilledEnemyScore.text = "Àû Á¡¼ö | " + GameManager.Instance.GetKillScore().ToString();
-        DamageScore.text = "µ¥¹ÌÁö Á¡¼ö | " +GameManager.Instance.GetDamageScore().ToString();
+        SubTitle.text = "ë‹¹ì‹ ì˜ ìŠ¤ì½”ì–´ : " + GameManager.Instance.GetFinalScore().ToString();
+        MemoryScore.text = "ê¸°ì–µ ì ìˆ˜ | " + GameManager.Instance.GetMemoryScore().ToString();
+        MirrorScore.text = "ê±°ìš¸ ì„¸ê³„ ì ìˆ˜ | " + GameManager.Instance.GetMirrorScore().ToString();
+        KilledEnemyScore.text = "ì  ì ìˆ˜ | " + GameManager.Instance.GetKillScore().ToString();
+        DamageScore.text = "ë°ë¯¸ì§€ ì ìˆ˜ | " +GameManager.Instance.GetDamageScore().ToString();
         StartCoroutine(result());
     }
 

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,13 +7,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("ÃÖÁ¾ °ª")]
+    [Header("ìµœì¢… ê°’")]
     public int MirrorValue = 0;
     public int KilledEnemy = 0;
     public int DamageResult = 0;
     public List<CardInstance> CardInstances = new List<CardInstance>();
 
-    [Header("ÀÎ°ÔÀÓ ¹Ì¼Ç °ª")]
+    [Header("ì¸ê²Œì„ ë¯¸ì…˜ ê°’")]
     public int SpawnEnemy = 10;
     public int killedEnemy_InGame = 0;
 

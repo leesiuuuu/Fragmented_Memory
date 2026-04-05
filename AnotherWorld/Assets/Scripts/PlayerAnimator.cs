@@ -1,4 +1,4 @@
-using UnityEditor.Rendering;
+ï»¿using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -95,7 +95,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void checkAttackTime()
     {
-        // ÇöÀç °ø°ÝÁßÀÎ »óÅÂ¸¦ È®ÀÎ
+        // í˜„ìž¬ ê³µê²©ì¤‘ì¸ ìƒíƒœë¥¼ í™•ì¸
         if (!controller.Attacking) return;
 
         if(attackTime >= 0.5f)

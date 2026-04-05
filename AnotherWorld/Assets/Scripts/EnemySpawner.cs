@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     private List<GameObject> spawnedEnemys = new List<GameObject>();
     [SerializeField] private GameObject enemy;
-    [SerializeField] private Vector2 box; // »ı¼º ¹üÀ§ (°¡·Î, ¼¼·Î Å©±â)
+    [SerializeField] private Vector2 box; // ìƒì„± ë²”ìœ„ (ê°€ë¡œ, ì„¸ë¡œ í¬ê¸°)
     public void StartSpawn(int cnt)
     {
         StartCoroutine(spawnEnemy(cnt));
@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    // ¿¡µğÅÍ ºä¿¡¼­ »ı¼º ¹üÀ§¸¦ ½Ã°¢ÀûÀ¸·Î È®ÀÎÇÏ±â À§ÇÑ ÄÚµå
+    // ì—ë””í„° ë·°ì—ì„œ ìƒì„± ë²”ìœ„ë¥¼ ì‹œê°ì ìœ¼ë¡œ í™•ì¸í•˜ê¸° ìœ„í•œ ì½”ë“œ
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
