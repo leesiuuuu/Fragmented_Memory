@@ -1,37 +1,100 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
-    float maxSpeed = 5f;
+
+    public float moveSpeed = 9f;
+    public float jumpPower = 4f;
+    public float dashPower = 15f;
+
+    bool isGround = false;
+    bool canDash = true;
+    bool isDash = false;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
     void Update()
     {
-        if (Input.GetButtonUp("Horizontal"))
+        float h = Input.GetAxisRaw("Horizontal");
+
+        if (h < 0)
         {
-            rigid.linearVelocity = new Vector2(rigid.linearVelocity.normalized.x * 0.5f, rigid.linearVelocity.y);
+            spriteRenderer.flipX = true;
+        }
+        else if (h > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGround)
+        {
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            canDash = false;
+            isDash = true;
+
+            if (spriteRenderer.flipX)
+            {
+                rigid.linearVelocity =
+                    new Vector2(-dashPower, 0);
+            }
+            else
+            {
+                rigid.linearVelocity =
+                    new Vector2(dashPower, 0);
+            }
+
+            Invoke("EndDash", 0.2f);
+            Invoke("ResetDash", 1f);
         }
     }
 
     void FixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");
-        rigid.AddForce(Vector2.right * h * 1f, ForceMode2D.Impulse);
 
-        if (rigid.linearVelocity.x > maxSpeed)
+        if (!isDash)
         {
-            rigid.linearVelocity = new Vector2(maxSpeed, rigid.linearVelocity.y);
+            rigid.linearVelocity =
+                new Vector2(h * moveSpeed,
+                            rigid.linearVelocity.y);
         }
-        else if (rigid.linearVelocity.x < -maxSpeed)
+    }
+
+    void EndDash()
+    {
+        isDash = false;
+    }
+
+    void ResetDash()
+    {
+        canDash = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            rigid.linearVelocity = new Vector2(-maxSpeed, rigid.linearVelocity.y);
+            isGround = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGround = false;
         }
     }
 }
