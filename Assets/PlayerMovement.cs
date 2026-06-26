@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
 
+    int jumpCount = 0;
+
+
     public float moveSpeed = 9f;
     public float jumpPower = 4f;
     public float dashPower = 15f;
@@ -33,10 +36,13 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-
-        if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.W)||Input.GetKeyDown(KeyCode.UpArrow)) && isGround)
+        if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.W)||Input.GetKeyDown(KeyCode.UpArrow)) && jumpCount < 2)
         {
+            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0);
+            
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+
+            jumpCount++;
         }
 
 
@@ -48,16 +54,16 @@ public class PlayerMovement : MonoBehaviour
             if (spriteRenderer.flipX)
             {
                 rigid.linearVelocity =
-                    new Vector2(-dashPower, 0);
+                    new Vector2(-dashPower, rigid.linearVelocity.y);
             }
             else
             {
                 rigid.linearVelocity =
-                    new Vector2(dashPower, 0);
+                    new Vector2(dashPower, rigid.linearVelocity.y);
             }
 
             Invoke("EndDash", 0.2f);
-            Invoke("ResetDash", 1f);
+            Invoke("ResetDash", 0.3f);
         }
     }
 
@@ -72,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
                             rigid.linearVelocity.y);
         }
     }
+
 
     void EndDash()
     {
@@ -88,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGround = true;
+            jumpCount = 0;
         }
     }
 
