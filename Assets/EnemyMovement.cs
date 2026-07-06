@@ -65,21 +65,27 @@ public class Enemy : MonoBehaviour
                 new Vector2(1 * moveSpeed,
                             rigid.linearVelocity.y);
         }
-        if (player.position.y > transform.position.y + 1f && isGround == true && GetDistanceToPlayer() <3)
-        {
-            rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0);
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-        }
+        //if (player.position.y > transform.position.y + 1f && isGround == true && GetDistanceToPlayer() <3)
+        //{
+            //rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0);
+            //rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        //}
+    
     }
 
 
     void State()
     {
-        if (GetDistanceToPlayer() < 6)
+        if (GetDistanceToPlayer() < 1.5)
         {
-        Move();
-        }   
+            rigid.linearVelocity = new Vector2(0, 0);
+        }
+        else if (GetDistanceToPlayer() < 6)
+        {
+            Move();
+        }
     }
+
     void Flip()
     {
         
