@@ -8,12 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     int jumpCount = 0;
 
-
     public float moveSpeed = 9f;
-    public float jumpPower = 4f;
-    public float dashPower = 15f;
+    public float jumpPower = 10f;
+    public float dashPower = 18f;
+    public float dashCoolTime = 0.2f;
+    public float dashTime = 0.3f;
 
-    bool isGround = false;
     bool canDash = true;
     bool isDash = false;
 
@@ -36,17 +36,21 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.W)||Input.GetKeyDown(KeyCode.UpArrow)) && jumpCount < 2)
+        if ((Input.GetKeyDown(KeyCode.Space)
+            || Input.GetKeyDown(KeyCode.W)
+            || Input.GetKeyDown(KeyCode.UpArrow))
+            && jumpCount < 2)
         {
             rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0);
-            
+
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
 
             jumpCount++;
         }
 
-
-        if ((Input.GetKeyDown(KeyCode.LeftShift)||Input.GetKeyDown(KeyCode.RightShift)) && canDash)
+        if ((Input.GetKeyDown(KeyCode.LeftShift)
+            || Input.GetKeyDown(KeyCode.RightShift))
+            && canDash)
         {
             canDash = false;
             isDash = true;
@@ -62,8 +66,8 @@ public class PlayerMovement : MonoBehaviour
                     new Vector2(dashPower, rigid.linearVelocity.y);
             }
 
-            Invoke("EndDash", 0.2f);
-            Invoke("ResetDash", 0.3f);
+            Invoke("EndDash", dashCoolTime);
+            Invoke("ResetDash", dashTime);
         }
     }
 
@@ -79,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     void EndDash()
     {
         isDash = false;
@@ -94,16 +97,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGround = true;
             jumpCount = 0;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGround = false;
         }
     }
 }

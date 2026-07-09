@@ -132,8 +132,6 @@ GameObject:
   - component: {fileID: 328208347}
   - component: {fileID: 328208346}
   - component: {fileID: 328208345}
-  - component: {fileID: 328208351}
-  - component: {fileID: 328208350}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -154,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   moveSpeed: 4
-  jumpPower: 8
+  jumpPower: 9
 --- !u!61 &328208346
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -302,30 +300,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &328208350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328208344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b945255f5e854e341932e5d3d817aabc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
---- !u!114 &328208351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328208344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8713bf57f9d3b2b4498d07168379d22f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,8 +534,6 @@ GameObject:
   - component: {fileID: 1197494129}
   - component: {fileID: 1197494128}
   - component: {fileID: 1197494130}
-  - component: {fileID: 1197494132}
-  - component: {fileID: 1197494131}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -731,30 +703,6 @@ MonoBehaviour:
   moveSpeed: 9
   jumpPower: 10
   dashPower: 15
---- !u!114 &1197494131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197494125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: becec142780ed7c4ebb65e5a4c7befec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
---- !u!114 &1197494132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197494125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6719e441b2c062447b203576bd0c4657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
 --- !u!1 &1911801200
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,5 +848,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1197494127}
-  - {fileID: 328208349}
   - {fileID: 1911801202}
+  - {fileID: 328208349}

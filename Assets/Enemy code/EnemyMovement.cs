@@ -6,18 +6,20 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Transform player;
+    EnemyAttack enemyAttack;
 
     // Movement
 
     public float moveSpeed = 5f;
-    public float jumpPower = 8f;
+    //public float jumpPower = 8f;
 
-    bool isGround = false;
+    //bool isGround = false;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyAttack = GetComponent<EnemyAttack>();
     }
 
     void Start()
@@ -43,9 +45,14 @@ public class Enemy : MonoBehaviour
     void FindPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (player != null)
+        {
+            player = player.transform;
+        }
     }
 
-    float GetDistanceToPlayer()
+    public float GetDistanceToPlayer()
     {
         return Vector2.Distance(transform.position, player.position);
     }
@@ -76,15 +83,17 @@ public class Enemy : MonoBehaviour
 
     void State()
     {
-        if (GetDistanceToPlayer() < 1.5)
+        if (GetDistanceToPlayer() < 0.9)
         {
             rigid.linearVelocity = new Vector2(0, 0);
+
         }
         else if (GetDistanceToPlayer() < 6)
         {
             Move();
         }
     }
+
 
     void Flip()
     {
@@ -99,7 +108,7 @@ public class Enemy : MonoBehaviour
         }
         
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    /*void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -112,5 +121,5 @@ public class Enemy : MonoBehaviour
         {
             isGround = false;
         }
-    }
+    }*/
 }
