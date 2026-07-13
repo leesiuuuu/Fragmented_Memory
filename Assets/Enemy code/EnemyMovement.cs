@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     // Movement
 
     public float moveSpeed = 5f;
+    public float distance = 1.3f;
+    public float area = 6f;
     //public float jumpPower = 8f;
 
     //bool isGround = false;
@@ -83,12 +85,12 @@ public class Enemy : MonoBehaviour
 
     void State()
     {
-        if (GetDistanceToPlayer() < 0.9)
+        if (GetDistanceToPlayer() < distance)
         {
             rigid.linearVelocity = new Vector2(0, 0);
 
         }
-        else if (GetDistanceToPlayer() < 6)
+        else if (GetDistanceToPlayer() < area)
         {
             Move();
         }
