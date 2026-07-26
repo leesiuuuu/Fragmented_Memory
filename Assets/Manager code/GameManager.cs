@@ -2,50 +2,34 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject reality;
-    [SerializeField] private GameObject mirror;
-
     [SerializeField] private GameObject roomPrefab;
+
+    [SerializeField] private Transform mirror;
+
+    [SerializeField] private GameObject player;
 
     private GameObject currentRoom;
 
-    private void Start()
-    {
-        reality.SetActive(true);
-        mirror.SetActive(false);
-    }
-
     public void EnterMirror()
     {
-        reality.SetActive(false);
-        mirror.SetActive(true);
+        if (currentRoom != null)
+            Destroy(currentRoom);
 
-        CreateRoom();
+        currentRoom = Instantiate(roomPrefab, mirror);
+
+        RoomManager roomManager = currentRoom.GetComponent<RoomManager>();
+
+        roomManager.StartRoom(player);
     }
 
     public void MoveNextRoom()
     {
-        CreateRoom();
-    }
+        Destroy(currentRoom);
 
-    private void CreateRoom()
-    {
-        if (currentRoom != null)
-        {
-            Destroy(currentRoom);
-        }
+        currentRoom = Instantiate(roomPrefab, mirror);
 
-        currentRoom = Instantiate(roomPrefab, mirror.transform);
-    }
+        RoomManager roomManager = currentRoom.GetComponent<RoomManager>();
 
-    public void ReturnReality()
-    {
-        if (currentRoom != null)
-        {
-            Destroy(currentRoom);
-        }
-
-        mirror.SetActive(false);
-        reality.SetActive(true);
+        roomManager.StartRoom(player);
     }
 }

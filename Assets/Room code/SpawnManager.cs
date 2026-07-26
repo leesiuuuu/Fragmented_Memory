@@ -5,16 +5,44 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private Transform[] enemySpawnPoints;
 
-    private void Start()
+    private RoomManager roomManager;
+
+    private int enemyCount;
+
+
+    public void SpawnEnemies(RoomManager room)
     {
-        SpawnEnemies();
+        roomManager = room;
+
+        enemyCount = enemySpawnPoints.Length;
+
+
+        for (int i = 0; i < enemySpawnPoints.Length; i++)
+{
+    GameObject enemy = Instantiate(
+        enemyPrefab,
+        enemySpawnPoints[i].position,
+        Quaternion.identity
+    );
+
+
+    EnemyHP enemyHP = enemy.GetComponent<EnemyHP>();
+
+    if(enemyHP != null)
+    {
+        enemyHP.SetSpawnManager(this);
+    }
+}
     }
 
-    public void SpawnEnemies()
+
+    public void EnemyDead()
     {
-        foreach (Transform point in enemySpawnPoints)
+        enemyCount--;
+
+        if(enemyCount <= 0)
         {
-            Instantiate(enemyPrefab, point.position, Quaternion.identity);
+            roomManager.RoomClear();
         }
     }
 }

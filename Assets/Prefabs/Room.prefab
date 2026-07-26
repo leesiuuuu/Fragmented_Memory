@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 472743121864942841}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -275,8 +275,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5454499755316053666}
-  - component: {fileID: 7591083798521555986}
   - component: {fileID: 1064950781150024955}
+  - component: {fileID: 861845738469580384}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -304,18 +304,6 @@ Transform:
   - {fileID: 3340685071582971522}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7591083798521555986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5728052231096034427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fddc008b00c23af40baee05eac31ee73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomManager
 --- !u!114 &1064950781150024955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,8 +316,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058e464d193e9b545bf39a0c00f8af28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  enemyPrefab: {fileID: 0}
-  enemySpawnPoints: []
+  enemyPrefab: {fileID: 5482695373007947413, guid: ba9deecbfed3388479596d44758b7ce6, type: 3}
+  enemySpawnPoints:
+  - {fileID: 4776154531767521482}
+--- !u!114 &861845738469580384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5728052231096034427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddc008b00c23af40baee05eac31ee73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomManager
+  spawnManager: {fileID: 1064950781150024955}
+  playerSpawn: {fileID: 8479882111524751257}
+  leftDoor: {fileID: 8889269146018012533}
+  rightDoor: {fileID: 6635247047416005241}
 --- !u!1 &6033675849172311859
 GameObject:
   m_ObjectHideFlags: 0
