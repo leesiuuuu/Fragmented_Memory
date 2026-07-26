@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerHP : MonoBehaviour
+public class EnemyHP : MonoBehaviour
 {
     [SerializeField] private int maxHP = 100;
     private int currentHP;
@@ -26,9 +26,8 @@ public class PlayerHP : MonoBehaviour
         }
     }
 
-    void Die()
+    private void Die()
     {
-        Debug.Log("dead");
-        GetComponent<PlayerMovement>().enabled = false;
+        Destroy(gameObject);
     }
 }

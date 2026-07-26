@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public int damage = 20;
+    public int damage = 300;
     public float attackRange = 2f;
     public float attackCoolTime = 0.5f;
 
@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
 
     void AttackInput()
     {
-        if (Input.GetKeyDown(KeyCode.J) && canAttack)
+        if (Input.GetKeyDown(KeyCode.Q) && canAttack)
         {
             Attack();
 
