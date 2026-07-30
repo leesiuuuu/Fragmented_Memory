@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4506280ca4450934cbb3664ac4ae0686, type: 3}
+  m_Name: Flower_Memory
+  m_EditorClassIdentifier: Assembly-CSharp::MemoryData
+  memoryName: "\uAF43\uC78E\uC758 \uC870\uAC01"
+  description: "\uB5A8\uC5B4\uC9C4 \uAF43\uC78E\uC758 \uD55C \uC870\uAC01\uC774\uB2E4.
+    \uB2E4\uC2DC \uAF43\uC774 \uB418\uC5B4\uC904 \uC21C \uC5C6\uACA0\uC9C0"
+  icon: {fileID: 0}
+  type: 0
+  rarity: 0
+  health: 50
+  attack: 0
+  defense: 40
+  criticalChance: 25
+  criticalDamage: 50
+  lifeSteal: 0
+  charm: 70

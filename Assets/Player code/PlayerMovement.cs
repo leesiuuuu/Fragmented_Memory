@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
+    Animator animator;
 
     int jumpCount = 0;
 
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -69,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
             Invoke("EndDash", dashCoolTime);
             Invoke("ResetDash", dashTime);
         }
+
+
     }
 
     void FixedUpdate()
@@ -81,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
                 new Vector2(h * moveSpeed,
                             rigid.linearVelocity.y);
         }
+
+        animator.SetFloat("move speed", Mathf.Abs(rigid.linearVelocity.x));
+        animator.SetFloat("jump power", rigid.linearVelocity.y);
     }
 
     void EndDash()
