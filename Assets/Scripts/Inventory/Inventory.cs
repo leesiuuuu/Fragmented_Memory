@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MemoryInventory : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
     [SerializeField] private int maxMemoryCount = 8;
 

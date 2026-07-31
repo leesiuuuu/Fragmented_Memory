@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerStat : MonoBehaviour
+public class ParryManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
