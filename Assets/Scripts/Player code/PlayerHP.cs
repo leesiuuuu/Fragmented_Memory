@@ -2,70 +2,67 @@ using UnityEngine;
 
 public class PlayerHP : MonoBehaviour
 {
-    [SerializeField] private int maxHP = 1500;
-
-    private int currentHP;
-    private bool isDead;
+    private PlayerStats stats;
 
     [SerializeField] private HPBar hpBar;
 
+    private bool isDead;
+
+    private void Awake()
+    {
+        stats = GetComponent<PlayerStats>();
+    }
 
     private void Start()
     {
-        currentHP = maxHP;
-
-        hpBar.SetHP(currentHP, maxHP);
+        hpBar.SetHP(stats.currentHealth, stats.maxHealth);
     }
-
 
     public void TakeDamage(int damage)
     {
         if (isDead)
             return;
 
+        damage -= stats.defense;
 
-        currentHP -= damage;
+        if (damage < 1)
+            damage = 1;
 
-        currentHP = Mathf.Max(currentHP, 0);
+        stats.currentHealth -= damage;
 
+        if (stats.currentHealth < 0)
+            stats.currentHealth = 0;
 
-        hpBar.SetHP(currentHP, maxHP);
+        hpBar.SetHP(stats.currentHealth, stats.maxHealth);
 
-
-        if (currentHP <= 0)
+        if (stats.currentHealth <= 0)
         {
             Die();
         }
     }
 
+    public void Heal(int amount)
+    {
+        stats.currentHealth += amount;
+
+        if (stats.currentHealth > stats.maxHealth)
+            stats.currentHealth = stats.maxHealth;
+
+        hpBar.SetHP(stats.currentHealth, stats.maxHealth);
+    }
 
     private void Die()
     {
         if (isDead)
             return;
 
-
         isDead = true;
 
-        Debug.Log("dead");
+        Debug.Log("Player Dead");
 
-
-        // 나중에 추가할 부분
-        // 플레이어 이동 정지
+        // TODO
+        // 이동 정지
         // 사망 애니메이션
-        // 게임오버 처리
-        // 재시작
-    }
-
-
-    public int GetCurrentHP()
-    {
-        return currentHP;
-    }
-
-
-    public int GetMaxHP()
-    {
-        return maxHP;
+        // 게임 오버
     }
 }
