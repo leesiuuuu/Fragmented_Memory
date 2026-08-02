@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RewardManager : MonoBehaviour
 {
-    [Header("Memory Reward Pool")]
+    [Header("보상 후보 목록")]
     [SerializeField] private List<MemoryData> memoryPool;
 
     private List<MemoryData> currentRewards = new List<MemoryData>();
