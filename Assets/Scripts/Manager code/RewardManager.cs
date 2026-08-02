@@ -5,7 +5,7 @@ public class RewardManager : MonoBehaviour
 {
     [Header("보상 후보 목록")]
     [SerializeField] private List<MemoryData> memoryPool;
-
+    [SerializeField] private Inventory inventory;
     private List<MemoryData> currentRewards = new List<MemoryData>();
 
 
@@ -36,8 +36,7 @@ public class RewardManager : MonoBehaviour
         return currentRewards;
     }
 
-
-    public bool SelectReward(int index, Inventory inventory)
+    public bool SelectReward(int index)
     {
         if (inventory == null)
             return false;
