@@ -4,9 +4,11 @@ public class PlayerAttack : MonoBehaviour
 {
     private Animator animator;
     private PlayerStats playerStats;
+    private PlayerCombat combat;
     private SpriteRenderer spriteRenderer;
 
-    private bool isAttack = false;
+    [SerializeField] private float attackCoolTime = 0.5f;
+
     private bool canAttack = true;
 
 
@@ -14,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
+        combat = GetComponent<PlayerCombat>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -26,7 +29,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !isAttack && canAttack)
+        if (Input.GetKeyDown(KeyCode.Q)
+            && !combat.IsBusy
+            && canAttack)
         {
             NormalAttack();
         }
@@ -35,35 +40,34 @@ public class PlayerAttack : MonoBehaviour
 
     private void NormalAttack()
     {
-        isAttack = true;
+        combat.StartAction();
+
         canAttack = false;
 
         animator.SetTrigger("Stroke");
     }
 
 
+    // 애니메이션
+
     public void Damage()
     {
         Vector2 attackPosition;
 
-
-        // 바라보는 방향 판정
         if (spriteRenderer.flipX)
         {
-            attackPosition = transform.position + Vector3.left * 1f;
+            attackPosition = (Vector2)transform.position + Vector2.left;
         }
         else
         {
-            attackPosition = transform.position + Vector3.right * 1f;
+            attackPosition = (Vector2)transform.position + Vector2.right;
         }
-
 
         Collider2D[] enemies = Physics2D.OverlapBoxAll(
             attackPosition,
             new Vector2(1.5f, 1f),
             0f
         );
-
 
         foreach (Collider2D enemy in enemies)
         {
@@ -81,9 +85,18 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+    // 애니메이션
+
     public void EndAttack()
     {
-        isAttack = false;
+        combat.EndAction();
+
+        Invoke(nameof(ResetAttackCoolTime), attackCoolTime);
+    }
+
+
+    private void ResetAttackCoolTime()
+    {
         canAttack = true;
     }
 
@@ -93,23 +106,20 @@ public class PlayerAttack : MonoBehaviour
         if (spriteRenderer == null)
             return;
 
-
         Vector2 attackPosition;
-
 
         if (spriteRenderer.flipX)
         {
-            attackPosition = transform.position + Vector3.left * 1f;
+            attackPosition = (Vector2)transform.position + Vector2.left;
         }
         else
         {
-            attackPosition = transform.position + Vector3.right * 1f;
+            attackPosition = (Vector2)transform.position + Vector2.right;
         }
-
 
         Gizmos.DrawWireCube(
             attackPosition,
-            new Vector3(1.5f, 1f, 0)
+            new Vector3(1.5f, 1f, 0f)
         );
     }
 }
