@@ -5,7 +5,13 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private int maxMemoryCount = 8;
 
+    private PlayerStats playerStats;
     private List<MemoryData> memories = new List<MemoryData>();
+
+    private void Awake()
+    {
+        playerStats = GetComponent<PlayerStats>();
+    }
 
     public bool AddMemory(MemoryData memory)
     {
@@ -13,6 +19,12 @@ public class Inventory : MonoBehaviour
             return false;
 
         memories.Add(memory);
+
+        if(playerStats != null)
+        {
+            playerStats.ApplyStat(memory);
+        }
+
         return true;
     }
 
