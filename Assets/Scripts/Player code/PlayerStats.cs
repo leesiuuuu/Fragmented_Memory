@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour
         criticalDamage += stat.criticalDamage;
         lifeSteal += stat.lifeSteal;
         charm += stat.charm;
-
+ 
         currentHealth = maxHealth;
     }
 
