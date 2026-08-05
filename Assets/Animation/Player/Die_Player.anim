@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Poking_Player
+  m_Name: Die_Player
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1453913907, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
+      value: {fileID: 8757098914875501893, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
     - time: 0.083333336
-      value: {fileID: -474352736, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
+      value: {fileID: -6103215479232170835, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
     - time: 0.16666667
-      value: {fileID: 1348602137, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
+      value: {fileID: -5062548802251577173, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
     - time: 0.25
-      value: {fileID: -1178116870, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
+      value: {fileID: 2613213492379772746, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
+    - time: 0.33333334
+      value: {fileID: -3911252712821790162, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
+    - time: 0.41666666
+      value: {fileID: 2167553827956773973, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +54,18 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1453913907, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
-    - {fileID: -474352736, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
-    - {fileID: 1348602137, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
-    - {fileID: -1178116870, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
+    - {fileID: 8757098914875501893, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
+    - {fileID: -6103215479232170835, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
+    - {fileID: -5062548802251577173, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
+    - {fileID: 2613213492379772746, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
+    - {fileID: -3911252712821790162, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
+    - {fileID: 2167553827956773973, guid: 737443e1ba99b7e4cae153b278d82bb5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,18 +84,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.16666667
-    functionName: PokeDamage
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.25
-    functionName: EndSkill
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

@@ -548,7 +548,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 17
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -573,7 +573,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -693,8 +693,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardManager
   memoryPool:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8bade53e39a5b8f4d9cb0cd64d899efe, type: 2}
+  - {fileID: 11400000, guid: 88f87832514fb6548a905b7ce6b04d5a, type: 2}
   - {fileID: 0}
 --- !u!4 &667470231
 Transform:
@@ -873,7 +873,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -901,6 +901,7 @@ GameObject:
   - component: {fileID: 1197494131}
   - component: {fileID: 1197494137}
   - component: {fileID: 1197494136}
+  - component: {fileID: 1197494140}
   - component: {fileID: 1197494135}
   m_Layer: 0
   m_Name: Player
@@ -999,7 +1000,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1025,7 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 9
   jumpPower: 8
-  dashPower: 13
+  dashPower: 12
   dashCoolTime: 0.2
   dashTime: 0.3
 --- !u!114 &1197494131
@@ -1040,6 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becec142780ed7c4ebb65e5a4c7befec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  attackCoolTime: 0.5
 --- !u!114 &1197494132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,6 +1139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cebb11d4cf47742b0c190d31797e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillManager
+  hpBar: {fileID: 788016887}
+  pokeCoolTime: 2
+  strikeCoolTime: 3
 --- !u!114 &1197494137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,6 +1175,18 @@ MonoBehaviour:
   charm: 15
   maxMemoryCount: 8
   currentHealth: 0
+--- !u!114 &1197494140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197494125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8a187b4a3081e40bebf595e0f6abb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
 --- !u!1 &1498046871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,10 +1299,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

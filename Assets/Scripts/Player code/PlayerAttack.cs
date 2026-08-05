@@ -4,76 +4,113 @@ public class PlayerAttack : MonoBehaviour
 {
     private Animator animator;
     private PlayerStats playerStats;
+    private PlayerCombat combat;
     private SpriteRenderer spriteRenderer;
+    private PlayerHP playerHP;
 
-    private bool isAttack = false;
+
+    [SerializeField] private float attackCoolTime = 0.5f;
+
+
     private bool canAttack = true;
+
 
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
+        combat = GetComponent<PlayerCombat>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerHP = GetComponent<PlayerHP>();
     }
+
 
 
     private void Update()
     {
+        if(playerHP.IsDead)
+            return;
+
+
         AttackInput();
     }
 
 
+
+
     private void AttackInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !isAttack && canAttack)
+        if(Input.GetKeyDown(KeyCode.Q)
+            && !combat.IsBusy
+            && canAttack)
         {
             NormalAttack();
         }
     }
 
 
+
+
     private void NormalAttack()
     {
-        isAttack = true;
+        combat.StartAction();
+
         canAttack = false;
 
         animator.SetTrigger("Stroke");
     }
 
 
+
+
+
     public void Damage()
     {
+        if(playerHP.IsDead)
+            return;
+
+
+
         Vector2 attackPosition;
 
 
-        // 바라보는 방향 판정
-        if (spriteRenderer.flipX)
+        if(spriteRenderer.flipX)
         {
-            attackPosition = transform.position + Vector3.left * 1f;
+            attackPosition =
+                (Vector2)transform.position + Vector2.left;
         }
         else
         {
-            attackPosition = transform.position + Vector3.right * 1f;
+            attackPosition =
+                (Vector2)transform.position + Vector2.right;
         }
 
 
-        Collider2D[] enemies = Physics2D.OverlapBoxAll(
-            attackPosition,
-            new Vector2(1.5f, 1f),
-            0f
-        );
+
+        Collider2D[] enemies =
+            Physics2D.OverlapBoxAll(
+                attackPosition,
+                new Vector2(1.5f,1f),
+                0f
+            );
 
 
-        foreach (Collider2D enemy in enemies)
+
+        foreach(Collider2D enemy in enemies)
         {
-            EnemyHP enemyHP = enemy.GetComponent<EnemyHP>();
+            EnemyHP enemyHP =
+                enemy.GetComponent<EnemyHP>();
 
-            if (enemyHP != null)
+
+            if(enemyHP != null)
             {
-                int damage = playerStats.GetAttackDamage();
+                int damage =
+                    playerStats.GetAttackDamage();
+
 
                 enemyHP.TakeDamage(damage);
+
 
                 Debug.Log($"Enemy Damage : {damage}");
             }
@@ -81,35 +118,54 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+
+
+
     public void EndAttack()
     {
-        isAttack = false;
+        combat.EndAction();
+
+        Invoke(
+            nameof(ResetAttackCoolTime),
+            attackCoolTime
+        );
+    }
+
+
+
+
+    private void ResetAttackCoolTime()
+    {
         canAttack = true;
     }
 
 
+
+
     private void OnDrawGizmosSelected()
     {
-        if (spriteRenderer == null)
+        if(spriteRenderer == null)
             return;
 
 
         Vector2 attackPosition;
 
 
-        if (spriteRenderer.flipX)
+        if(spriteRenderer.flipX)
         {
-            attackPosition = transform.position + Vector3.left * 1f;
+            attackPosition =
+                (Vector2)transform.position + Vector2.left;
         }
         else
         {
-            attackPosition = transform.position + Vector3.right * 1f;
+            attackPosition =
+                (Vector2)transform.position + Vector2.right;
         }
 
 
         Gizmos.DrawWireCube(
             attackPosition,
-            new Vector3(1.5f, 1f, 0)
+            new Vector3(1.5f,1f,0f)
         );
     }
 }
