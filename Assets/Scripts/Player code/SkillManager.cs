@@ -6,6 +6,7 @@ public class SkillManager : MonoBehaviour
     private PlayerStats playerStats;
     private PlayerCombat combat;
     private SpriteRenderer spriteRenderer;
+    private PlayerHP playerHP;
 
     [SerializeField] private Transform hpBar;
 
@@ -24,6 +25,7 @@ public class SkillManager : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         combat = GetComponent<PlayerCombat>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerHP = GetComponent<PlayerHP>();
 
         if (hpBar != null)
         {
@@ -34,6 +36,9 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
+        if (playerHP.IsDead)
+            return;
+
         SkillInput();
     }
 
@@ -48,6 +53,7 @@ public class SkillManager : MonoBehaviour
             Poke();
         }
 
+
         // 내려찍기
         if (Input.GetKeyDown(KeyCode.F)
             && !combat.IsBusy
@@ -60,6 +66,10 @@ public class SkillManager : MonoBehaviour
 
     private void Poke()
     {
+        if (playerHP.IsDead)
+            return;
+
+
         combat.StartAction();
 
         canPoke = false;
@@ -72,6 +82,10 @@ public class SkillManager : MonoBehaviour
 
     private void Strike()
     {
+        if (playerHP.IsDead)
+            return;
+
+
         combat.StartAction();
 
         canStrike = false;
@@ -82,7 +96,8 @@ public class SkillManager : MonoBehaviour
     }
 
 
-    // 애니메이션
+
+    // 애니메이션 이벤트
 
     public void PokeDamage()
     {
@@ -90,7 +105,8 @@ public class SkillManager : MonoBehaviour
     }
 
 
-    // 애니메이션
+
+    // 애니메이션 이벤트
 
     public void StrikeDamage()
     {
@@ -98,36 +114,55 @@ public class SkillManager : MonoBehaviour
     }
 
 
+
     private void AttackDamage(float damageMultiplier)
     {
+        if (playerHP.IsDead)
+            return;
+
+
         Vector2 attackPosition;
+
 
         if (spriteRenderer.flipX)
         {
-            attackPosition = (Vector2)transform.position + Vector2.left;
+            attackPosition =
+                (Vector2)transform.position + Vector2.left;
         }
         else
         {
-            attackPosition = (Vector2)transform.position + Vector2.right;
+            attackPosition =
+                (Vector2)transform.position + Vector2.right;
         }
 
-        Collider2D[] enemies = Physics2D.OverlapBoxAll(
-            attackPosition,
-            new Vector2(1.5f, 1f),
-            0f
-        );
+
+
+        Collider2D[] enemies =
+            Physics2D.OverlapBoxAll(
+                attackPosition,
+                new Vector2(1.5f, 1f),
+                0f
+            );
+
+
 
         foreach (Collider2D enemy in enemies)
         {
-            EnemyHP enemyHP = enemy.GetComponent<EnemyHP>();
+            EnemyHP enemyHP =
+                enemy.GetComponent<EnemyHP>();
+
 
             if (enemyHP != null)
             {
-                int damage = Mathf.RoundToInt(
-                    playerStats.GetAttackDamage() * damageMultiplier
-                );
+                int damage =
+                    Mathf.RoundToInt(
+                        playerStats.GetAttackDamage()
+                        * damageMultiplier
+                    );
+
 
                 enemyHP.TakeDamage(damage);
+
 
                 Debug.Log($"Skill Damage : {damage}");
             }
@@ -135,30 +170,40 @@ public class SkillManager : MonoBehaviour
     }
 
 
+
+
     public void HPBarUp()
     {
         if (hpBar != null)
         {
-            hpBar.localPosition = hpBarOriginPos + new Vector3(0f, 2f, 0f);
+            hpBar.localPosition =
+                hpBarOriginPos
+                + new Vector3(0f, 2f, 0f);
         }
     }
+
 
 
     public void HPBarReset()
     {
         if (hpBar != null)
         {
-            hpBar.localPosition = hpBarOriginPos;
+            hpBar.localPosition =
+                hpBarOriginPos;
         }
     }
 
 
-    // 애니메이션
+
+
+    // 애니메이션 이벤트
 
     public void EndSkill()
     {
         combat.EndAction();
     }
+
+
 
 
     private void ResetPokeCoolTime()
@@ -167,10 +212,13 @@ public class SkillManager : MonoBehaviour
     }
 
 
+
     private void ResetStrikeCoolTime()
     {
         canStrike = true;
     }
+
+
 
 
     private void OnDrawGizmosSelected()
@@ -178,16 +226,22 @@ public class SkillManager : MonoBehaviour
         if (spriteRenderer == null)
             return;
 
+
         Vector2 attackPosition;
+
 
         if (spriteRenderer.flipX)
         {
-            attackPosition = (Vector2)transform.position + Vector2.left;
+            attackPosition =
+                (Vector2)transform.position + Vector2.left;
         }
         else
         {
-            attackPosition = (Vector2)transform.position + Vector2.right;
+            attackPosition =
+                (Vector2)transform.position + Vector2.right;
         }
+
+
 
         Gizmos.DrawWireCube(
             attackPosition,

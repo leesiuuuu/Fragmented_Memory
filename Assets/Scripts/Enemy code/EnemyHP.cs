@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
-    [SerializeField] private int maxHP = 1300;
-
-    private int currentHP;
+    private EnemyStats stats;
 
     private SpawnManager spawnManager;
 
     [SerializeField] private HPBar hpBar;
 
 
+    private void Awake()
+    {
+        stats = GetComponent<EnemyStats>();
+    }
+
+
     private void Start()
     {
-        currentHP = maxHP;
-
-        hpBar.SetHP(currentHP, maxHP);
+        hpBar.SetHP(stats.currentHP, stats.maxHP);
     }
 
 
@@ -27,15 +29,21 @@ public class EnemyHP : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHP -= damage;
+        damage -= stats.defense;
 
-        currentHP = Mathf.Max(currentHP, 0);
-
-
-        hpBar.SetHP(currentHP, maxHP);
+        if (damage < 1)
+            damage = 1;
 
 
-        if(currentHP <= 0)
+        stats.currentHP -= damage;
+
+        stats.currentHP = Mathf.Max(stats.currentHP, 0);
+
+
+        hpBar.SetHP(stats.currentHP, stats.maxHP);
+
+
+        if (stats.currentHP <= 0)
         {
             Die();
         }

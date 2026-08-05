@@ -3,14 +3,17 @@ using UnityEngine;
 public class PlayerHP : MonoBehaviour
 {
     private PlayerStats stats;
+    private Animator animator;
 
     [SerializeField] private HPBar hpBar;
 
     private bool isDead;
+    public bool IsDead => isDead;
 
     private void Awake()
     {
         stats = GetComponent<PlayerStats>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -58,7 +61,8 @@ public class PlayerHP : MonoBehaviour
 
         isDead = true;
 
-        Debug.Log("Player Dead");
+        Debug.Log("플레이어 사망");
+        animator.SetTrigger("Death");
 
         // TODO
         // 이동 정지
