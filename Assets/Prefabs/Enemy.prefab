@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8713bf57f9d3b2b4498d07168379d22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 10
+  damage: 200
   attackRange: 1.5
   attackCoolTime: 2
 --- !u!114 &3820308879397721962
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b945255f5e854e341932e5d3d817aabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
-  maxHP: 100
+  maxHP: 900
   hpBar: {fileID: 6762040416143710936}
 --- !u!1 &8567879259017051910
 GameObject:
