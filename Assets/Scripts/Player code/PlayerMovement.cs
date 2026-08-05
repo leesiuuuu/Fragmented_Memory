@@ -85,17 +85,12 @@ public class PlayerMovement : MonoBehaviour
 
         // 대쉬
 
-        if ((Input.GetKeyDown(KeyCode.LeftShift)
-            || Input.GetKeyDown(KeyCode.RightShift))
-            && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-
             canDash = false;
             isDash = true;
 
-
             float direction = spriteRenderer.flipX ? -1 : 1;
-
 
             rigid.linearVelocity =
                 new Vector2(
@@ -103,9 +98,7 @@ public class PlayerMovement : MonoBehaviour
                     rigid.linearVelocity.y
                 );
 
-
             Invoke(nameof(EndDash), dashCoolTime);
-
             Invoke(nameof(ResetDash), dashTime);
         }
     }

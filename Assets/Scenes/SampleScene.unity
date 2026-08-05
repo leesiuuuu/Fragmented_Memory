@@ -696,6 +696,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!4 &667470231
 Transform:
   m_ObjectHideFlags: 0
@@ -901,6 +902,7 @@ GameObject:
   - component: {fileID: 1197494131}
   - component: {fileID: 1197494137}
   - component: {fileID: 1197494136}
+  - component: {fileID: 1197494140}
   - component: {fileID: 1197494135}
   m_Layer: 0
   m_Name: Player
@@ -1174,6 +1176,18 @@ MonoBehaviour:
   charm: 15
   maxMemoryCount: 8
   currentHealth: 0
+--- !u!114 &1197494140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197494125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8a187b4a3081e40bebf595e0f6abb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
 --- !u!1 &1498046871
 GameObject:
   m_ObjectHideFlags: 0

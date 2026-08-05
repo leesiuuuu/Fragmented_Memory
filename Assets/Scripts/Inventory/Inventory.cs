@@ -22,7 +22,20 @@ public class Inventory : MonoBehaviour
 
         if(playerStats != null)
         {
-            playerStats.ApplyStat(memory);
+            StatData stat = new StatData
+            {
+                health = (int)memory.health,
+                attack = (int)memory.attack,
+                defense = (int)memory.defense,
+
+                criticalChance = memory.criticalChance,
+                criticalDamage = memory.criticalDamage,
+                lifeSteal = memory.lifeSteal,
+
+                charm = (int)memory.charm
+            };
+
+            playerStats.ApplyStat(stat);
         }
 
         return true;
