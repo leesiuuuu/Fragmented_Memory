@@ -37,6 +37,7 @@ public class PlayerStats : MonoBehaviour
         lifeSteal += stat.lifeSteal;
         charm += stat.charm;
  
+
         currentHealth = maxHealth;
     }
 
