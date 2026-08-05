@@ -31,19 +31,16 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    public void ApplyStat(StatData stat)
+    public void ApplyStat(MemoryData memory)
     {
-        maxHealth += stat.health;
-        attack += stat.attack;
-        defense += stat.defense;
+        maxHealth += (int)memory.health;
+        attack += (int)memory.attack;
+        defense += (int)memory.defense;
 
-        criticalChance += stat.criticalChance;
-        criticalDamage += stat.criticalDamage;
-
-        lifeSteal += stat.lifeSteal;
-
-        charm += stat.charm;
-
+        criticalChance += memory.criticalChance;
+        criticalDamage += memory.criticalDamage;
+        lifeSteal += memory.lifeSteal;
+        charm += (int)memory.charm;
 
         currentHealth = maxHealth;
     }
