@@ -200,12 +200,7 @@ public class PlayerAttack : MonoBehaviour
             );
         }
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-
-Debug.Log(info.shortNameHash);
-Debug.Log(info.IsName("FirstStroke"));
-Debug.Log(info.IsName("SecondStroke"));
-Debug.Log(info.IsName("ThirdStroke"));
-    }
+}
 
 
 
