@@ -8,15 +8,14 @@ public class SkillManager : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerHP playerHP;
 
-    [SerializeField] private Transform hpBar;
 
     [SerializeField] private float pokeCoolTime = 2f;
     [SerializeField] private float strikeCoolTime = 3f;
 
+
     private bool canPoke = true;
     private bool canStrike = true;
 
-    private Vector3 hpBarOriginPos;
 
 
     private void Awake()
@@ -26,27 +25,23 @@ public class SkillManager : MonoBehaviour
         combat = GetComponent<PlayerCombat>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerHP = GetComponent<PlayerHP>();
-
-        if (hpBar != null)
-        {
-            hpBarOriginPos = hpBar.localPosition;
-        }
     }
+
 
 
     private void Update()
     {
-        if (playerHP.IsDead)
+        if(playerHP.IsDead)
             return;
 
         SkillInput();
     }
 
 
+
     private void SkillInput()
     {
-        // 찌르기
-        if (Input.GetKeyDown(KeyCode.R)
+        if(Input.GetKeyDown(KeyCode.R)
             && !combat.IsBusy
             && canPoke)
         {
@@ -54,8 +49,7 @@ public class SkillManager : MonoBehaviour
         }
 
 
-        // 내려찍기
-        if (Input.GetKeyDown(KeyCode.F)
+        if(Input.GetKeyDown(KeyCode.F)
             && !combat.IsBusy
             && canStrike)
         {
@@ -64,40 +58,40 @@ public class SkillManager : MonoBehaviour
     }
 
 
+
     private void Poke()
     {
-        if (playerHP.IsDead)
-            return;
-
-
         combat.StartAction();
 
         canPoke = false;
 
         animator.SetTrigger("Poke");
 
-        Invoke(nameof(ResetPokeCoolTime), pokeCoolTime);
+        Invoke(
+            nameof(ResetPokeCoolTime),
+            pokeCoolTime
+        );
     }
+
 
 
     private void Strike()
     {
-        if (playerHP.IsDead)
-            return;
-
-
         combat.StartAction();
 
         canStrike = false;
 
         animator.SetTrigger("Strike");
 
-        Invoke(nameof(ResetStrikeCoolTime), strikeCoolTime);
+        Invoke(
+            nameof(ResetStrikeCoolTime),
+            strikeCoolTime
+        );
     }
 
 
 
-    // 애니메이션 이벤트
+    // Animation Event
 
     public void PokeDamage()
     {
@@ -106,7 +100,7 @@ public class SkillManager : MonoBehaviour
 
 
 
-    // 애니메이션 이벤트
+    // Animation Event
 
     public void StrikeDamage()
     {
@@ -117,14 +111,14 @@ public class SkillManager : MonoBehaviour
 
     private void AttackDamage(float damageMultiplier)
     {
-        if (playerHP.IsDead)
+        if(playerHP.IsDead)
             return;
 
 
         Vector2 attackPosition;
 
 
-        if (spriteRenderer.flipX)
+        if(spriteRenderer.flipX)
         {
             attackPosition =
                 (Vector2)transform.position + Vector2.left;
@@ -140,19 +134,19 @@ public class SkillManager : MonoBehaviour
         Collider2D[] enemies =
             Physics2D.OverlapBoxAll(
                 attackPosition,
-                new Vector2(1.5f, 1f),
+                new Vector2(1.5f,1f),
                 0f
             );
 
 
 
-        foreach (Collider2D enemy in enemies)
+        foreach(Collider2D enemy in enemies)
         {
             EnemyHP enemyHP =
                 enemy.GetComponent<EnemyHP>();
 
 
-            if (enemyHP != null)
+            if(enemyHP != null)
             {
                 int damage =
                     Mathf.RoundToInt(
@@ -162,47 +156,18 @@ public class SkillManager : MonoBehaviour
 
 
                 enemyHP.TakeDamage(damage);
-
-
-                Debug.Log($"Skill Damage : {damage}");
             }
         }
     }
 
 
 
-
-    public void HPBarUp()
-    {
-        if (hpBar != null)
-        {
-            hpBar.localPosition =
-                hpBarOriginPos
-                + new Vector3(0f, 2f, 0f);
-        }
-    }
-
-
-
-    public void HPBarReset()
-    {
-        if (hpBar != null)
-        {
-            hpBar.localPosition =
-                hpBarOriginPos;
-        }
-    }
-
-
-
-
-    // 애니메이션 이벤트
+    // Animation Event
 
     public void EndSkill()
     {
         combat.EndAction();
     }
-
 
 
 
@@ -216,36 +181,5 @@ public class SkillManager : MonoBehaviour
     private void ResetStrikeCoolTime()
     {
         canStrike = true;
-    }
-
-
-
-
-    private void OnDrawGizmosSelected()
-    {
-        if (spriteRenderer == null)
-            return;
-
-
-        Vector2 attackPosition;
-
-
-        if (spriteRenderer.flipX)
-        {
-            attackPosition =
-                (Vector2)transform.position + Vector2.left;
-        }
-        else
-        {
-            attackPosition =
-                (Vector2)transform.position + Vector2.right;
-        }
-
-
-
-        Gizmos.DrawWireCube(
-            attackPosition,
-            new Vector3(1.5f, 1f, 0f)
-        );
     }
 }
