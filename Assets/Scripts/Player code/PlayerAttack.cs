@@ -8,7 +8,6 @@ public class PlayerAttack : MonoBehaviour
     private PlayerHP playerHP;
     private SpriteRenderer spriteRenderer;
 
-
     [Header("Attack Box")]
     [SerializeField] private Transform attackBox;
     private BoxCollider2D attackCollider;
@@ -78,14 +77,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log(
-                "Q 입력 / Busy : "
-                + combat.IsBusy
-                + " Cool : "
-                + canAttack
-            );
-
-
             if(!combat.IsBusy && canAttack)
             {
                 StartAttack();
@@ -93,8 +84,6 @@ public class PlayerAttack : MonoBehaviour
             else if(combat.IsBusy)
             {
                 comboQueued = true;
-
-                Debug.Log("콤보 저장");
             }
         }
     }
@@ -103,17 +92,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void StartAttack()
     {
-        Debug.Log("공격 시작");
-
-
         combat.StartAction();
-
 
         canAttack = false;
 
-
         comboQueued = false;
-
 
         attackCombo = 1;
 
@@ -123,7 +106,6 @@ public class PlayerAttack : MonoBehaviour
             attackCombo
         );
 
-
         animator.SetTrigger("Attack");
     }
 
@@ -132,9 +114,6 @@ public class PlayerAttack : MonoBehaviour
     // Animation Event
     public void Damage()
     {
-        Debug.Log("Damage Event 실행");
-
-
         if(playerHP.IsDead)
             return;
 
@@ -171,45 +150,25 @@ public class PlayerAttack : MonoBehaviour
     // Animation Event
     public void CheckCombo()
     {
-        Debug.Log(
-            "CheckCombo / Queue : "
-            + comboQueued
-            + " Combo : "
-            + attackCombo
-        );
-
         if(comboQueued)
         {
             comboQueued = false;
 
             attackCombo++;
 
-            Debug.Log(
-                "AttackCombo 변경 : "
-                + attackCombo
-            );
 
             animator.SetInteger(
                 "AttackCombo",
                 attackCombo
             );
-
-            Debug.Log(
-                "Animator 값 : "
-                + animator.GetInteger("AttackCombo")
-            );
         }
-        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-}
+    }
 
 
 
     // Animation Event
     public void EndAttack()
     {
-        Debug.Log("EndAttack 실행");
-
-
         combat.EndAction();
 
 
