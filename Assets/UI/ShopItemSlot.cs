@@ -1,12 +1,13 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopItemSlot : MonoBehaviour
 {
     [SerializeField] private Image icon;
-    [SerializeField] private Text itemNameText;
-    [SerializeField] private Text descriptionText;
-    [SerializeField] private Text priceText;
+    [SerializeField] private TMP_Text itemNameText;
+    [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text priceText;
     [SerializeField] private Button buyButton;
     [SerializeField] private GameObject soldOutObject;
 
