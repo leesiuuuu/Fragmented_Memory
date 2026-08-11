@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class RoomDoorTrigger : MonoBehaviour
+public class RoomDoorTrigger : MonoBehaviour, InteractRule
 {
     public event Action<RoomDoorTrigger> Entered;
 
@@ -22,15 +22,12 @@ public class RoomDoorTrigger : MonoBehaviour
         gameObject.SetActive(value);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void Interact()
     {
         if (!canUse)
             return;
 
         if (used)
-            return;
-
-        if (!other.CompareTag("Player"))
             return;
 
         used = true;

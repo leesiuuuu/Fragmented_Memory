@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7778101423303627660}
   - component: {fileID: 119887188962809657}
   - component: {fileID: 4494455849166082812}
+  - component: {fileID: 9002000000000000001}
   m_Layer: 5
   m_Name: RewardPanel
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9002000000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8049223280841147372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b9a42c06d54204850ab1495664e732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RewardUI
+  slotSpacing: 310
 --- !u!1 &8230801436797856109
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,8 +125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 350}
-  m_SizeDelta: {x: 800, y: 100}
+  m_AnchoredPosition: {x: 0, y: 220}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6105938005365226168
 CanvasRenderer:
@@ -144,8 +158,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uAE30\uC5B5\uC758 \uC870\uAC01\uC744 \uC120\uD0DD\uD558\uC138\uC694"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
+  m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -248,11 +262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 517271415639880761, guid: b9e5f314c80664b46a833833570a2fb8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 350
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 517271415639880761, guid: b9e5f314c80664b46a833833570a2fb8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 517271415639880761, guid: b9e5f314c80664b46a833833570a2fb8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -288,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 517271415639880761, guid: b9e5f314c80664b46a833833570a2fb8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 517271415639880761, guid: b9e5f314c80664b46a833833570a2fb8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

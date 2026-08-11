@@ -6,6 +6,7 @@ public class RewardManager : MonoBehaviour
 {
     [Header("보상 후보 목록")]
     [SerializeField] private List<MemoryData> memoryPool;
+    [SerializeField] private RewardUI rewardUI;
     private List<MemoryData> currentRewards = new List<MemoryData>();
     private Inventory inventory;
 
@@ -20,6 +21,9 @@ public class RewardManager : MonoBehaviour
     public bool GenerateRewards()
     {
         currentRewards.Clear();
+
+        if (rewardUI == null)
+            rewardUI = FindFirstObjectByType<RewardUI>(FindObjectsInactive.Include);
 
         List<MemoryData> tempPool = memoryPool.FindAll(memory => memory != null);
 
@@ -43,6 +47,15 @@ public class RewardManager : MonoBehaviour
 
             tempPool.RemoveAt(index);
         }
+
+        if (rewardUI == null)
+        {
+            Debug.LogError("RewardUI를 찾을 수 없습니다.");
+            currentRewards.Clear();
+            return false;
+        }
+
+        rewardUI.Open(this, currentRewards);
 
         return true;
     }
