@@ -733,7 +733,7 @@ MonoBehaviour:
   memoryPool:
   - {fileID: 11400000, guid: 8bade53e39a5b8f4d9cb0cd64d899efe, type: 2}
   - {fileID: 11400000, guid: 88f87832514fb6548a905b7ce6b04d5a, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c66c8c204c4091f4680646b65517972c, type: 2}
 --- !u!4 &667470231
 Transform:
   m_ObjectHideFlags: 0
@@ -1369,7 +1369,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1393,11 +1393,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f071b0ebde02032418d8a7fb5e3ffeb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 9
-  jumpPower: 8
-  dashPower: 12
-  dashCoolTime: 0.2
-  dashTime: 0.3
+  moveSpeed: 8
+  jumpPower: 11
+  dashPower: 18
+  dashDuration: 0.16
+  dashCooldown: 0.7
+  dashFallSpeed: 3
 --- !u!114 &1197494131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1859,6 +1860,7 @@ MonoBehaviour:
   player: {fileID: 1197494125}
   rewardManager: {fileID: 667470230}
   shopManager: {fileID: 416442011}
+  realityShop: {fileID: 416442014}
 --- !u!4 &1779261042
 Transform:
   m_ObjectHideFlags: 0
@@ -2092,6 +2094,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bb59fca8aa59b24a91887e88cdd6366, type: 3}
+--- !u!1001 &2100000
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 70c3a66ea3124c76b272afaa69cd243e, type: 3}
+      propertyPath: m_Name
+      value: InteractUI
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 70c3a66ea3124c76b272afaa69cd243e, type: 3}
+--- !u!224 &2100001 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 100001, guid: 70c3a66ea3124c76b272afaa69cd243e, type: 3}
+  m_PrefabInstance: {fileID: 2100000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2102,3 +2126,4 @@ SceneRoots:
   - {fileID: 416442012}
   - {fileID: 1549503835}
   - {fileID: 1953855379}
+  - {fileID: 2100001}
