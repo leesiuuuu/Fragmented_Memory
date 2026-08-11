@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
+    private const string InputLockId = "shop";
     [SerializeField] private ShopManager shopManager;
     [SerializeField] private TMP_Text starDustText;
     [SerializeField] private Button closeButton;
@@ -32,6 +33,8 @@ public class ShopUI : MonoBehaviour
 
     private void OnDisable()
     {
+        GameplayInputLock.SetLocked(InputLockId, false);
+
         if (shopManager != null)
             shopManager.ShopChanged -= Refresh;
         if (wallet != null)
@@ -47,10 +50,12 @@ public class ShopUI : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
+        GameplayInputLock.SetLocked(InputLockId, true);
     }
 
     public void Close()
     {
+        GameplayInputLock.SetLocked(InputLockId, false);
         gameObject.SetActive(false);
     }
 

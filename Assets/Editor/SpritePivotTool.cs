@@ -10,54 +10,33 @@ public class SpritePivotTool
         foreach (Object obj in Selection.objects)
         {
             string path = AssetDatabase.GetAssetPath(obj);
-
             TextureImporter importer = AssetImporter.GetAtPath(path) as TextureImporter;
-
-            if (importer == null)
-                continue;
-
+            if (importer == null) continue;
 
             SpriteDataProviderFactories factory = new SpriteDataProviderFactories();
             factory.Init();
-
-            ISpriteEditorDataProvider dataProvider =
-                factory.GetSpriteEditorDataProviderFromObject(importer);
-
+            ISpriteEditorDataProvider dataProvider = factory.GetSpriteEditorDataProviderFromObject(importer);
             dataProvider.InitSpriteEditorDataProvider();
-
-
             SpriteRect[] spriteRects = dataProvider.GetSpriteRects();
-
 
             for (int i = 0; i < spriteRects.Length; i++)
             {
                 SpriteRect rect = spriteRects[i];
-
                 if (obj.name.ToLower().Contains("attack"))
                 {
-                    // 공격 모션
                     rect.alignment = SpriteAlignment.Custom;
                     rect.pivot = new Vector2(0.3f, 0f);
                 }
                 else if (obj.name.ToLower().Contains("move"))
                 {
-                    // 이동 모션
                     rect.alignment = SpriteAlignment.BottomCenter;
                 }
-
-
                 spriteRects[i] = rect;
             }
 
-
             dataProvider.SetSpriteRects(spriteRects);
-
             dataProvider.Apply();
-
-            AssetDatabase.ImportAsset(
-                path,
-                ImportAssetOptions.ForceUpdate
-            );
+            AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
         }
     }
 }
