@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -31,7 +32,7 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
-        if(playerHP.IsDead)
+        if(playerHP.IsDead || GameplayInputLock.IsLocked)
             return;
 
         SkillInput();
@@ -140,13 +141,15 @@ public class SkillManager : MonoBehaviour
 
 
 
+        HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
+
         foreach(Collider2D enemy in enemies)
         {
             EnemyHP enemyHP =
-                enemy.GetComponent<EnemyHP>();
+                enemy.GetComponentInParent<EnemyHP>();
 
 
-            if(enemyHP != null)
+            if(enemyHP != null && hitEnemies.Add(enemyHP))
             {
                 int damage =
                     Mathf.RoundToInt(

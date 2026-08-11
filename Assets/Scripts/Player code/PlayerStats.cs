@@ -20,6 +20,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("현재 스탯")]
     public int currentHealth;
+    public event System.Action StatsChanged;
 
     private void Awake()
     {
@@ -28,7 +29,9 @@ public class PlayerStats : MonoBehaviour
 
     public void ApplyStat(StatData stat)
     {
-        maxHealth += stat.health;
+        int previousMaxHealth = maxHealth;
+
+        maxHealth = Mathf.Max(1, maxHealth + stat.health);
         attack += stat.attack;
         defense += stat.defense;
 
@@ -38,12 +41,18 @@ public class PlayerStats : MonoBehaviour
         charm += stat.charm;
  
 
-        currentHealth = maxHealth;
+        int increasedHealth = Mathf.Max(0, maxHealth - previousMaxHealth);
+        currentHealth = Mathf.Clamp(
+            currentHealth + increasedHealth,
+            0,
+            maxHealth);
+
+        StatsChanged?.Invoke();
     }
 
     public void RemoveStat(StatData stat)
     {
-        maxHealth -= stat.health;
+        maxHealth = Mathf.Max(1, maxHealth - stat.health);
         attack -= stat.attack;
         defense -= stat.defense;
 
@@ -54,6 +63,8 @@ public class PlayerStats : MonoBehaviour
 
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+
+        StatsChanged?.Invoke();
     }
 
     public int GetAttackDamage()

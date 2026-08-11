@@ -15,35 +15,28 @@ public class Inventory : MonoBehaviour
 
     public bool AddMemory(MemoryData memory)
     {
-        if (memories.Count >= maxMemoryCount)
+        if (memory == null || memories.Count >= maxMemoryCount)
             return false;
 
         memories.Add(memory);
 
         if(playerStats != null)
         {
-            StatData stat = new StatData
-            {
-                health = (int)memory.health,
-                attack = (int)memory.attack,
-                defense = (int)memory.defense,
-
-                criticalChance = memory.criticalChance,
-                criticalDamage = memory.criticalDamage,
-                lifeSteal = memory.lifeSteal,
-
-                charm = (int)memory.charm
-            };
-
-            playerStats.ApplyStat(stat);
+            playerStats.ApplyStat(ConvertToStat(memory));
         }
 
         return true;
     }
 
-    public void RemoveMemory(MemoryData memory)
+    public bool RemoveMemory(MemoryData memory)
     {
-        memories.Remove(memory);
+        if (memory == null || !memories.Remove(memory))
+            return false;
+
+        if (playerStats != null)
+            playerStats.RemoveStat(ConvertToStat(memory));
+
+        return true;
     }
 
     public List<MemoryData> GetMemories()
@@ -59,5 +52,19 @@ public class Inventory : MonoBehaviour
     public bool IsFull()
     {
         return memories.Count >= maxMemoryCount;
+    }
+
+    private StatData ConvertToStat(MemoryData memory)
+    {
+        return new StatData
+        {
+            health = Mathf.RoundToInt(memory.health),
+            attack = Mathf.RoundToInt(memory.attack),
+            defense = Mathf.RoundToInt(memory.defense),
+            criticalChance = memory.criticalChance,
+            criticalDamage = memory.criticalDamage,
+            lifeSteal = memory.lifeSteal,
+            charm = Mathf.RoundToInt(memory.charm)
+        };
     }
 }

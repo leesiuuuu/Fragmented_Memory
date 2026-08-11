@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -22,6 +23,8 @@ public class PlayerAttack : MonoBehaviour
     private int attackCombo = 0;
     private bool comboQueued = false;
     private bool canAttack = true;
+    private bool isAttacking = false;
+    private bool isComboWindowOpen = false;
 
 
 
@@ -40,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if(playerHP.IsDead)
+        if(playerHP.IsDead || GameplayInputLock.IsLocked)
             return;
 
 
@@ -81,7 +84,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 StartAttack();
             }
-            else if(combat.IsBusy)
+            else if(isAttacking && isComboWindowOpen)
             {
                 comboQueued = true;
             }
@@ -97,6 +100,8 @@ public class PlayerAttack : MonoBehaviour
         canAttack = false;
 
         comboQueued = false;
+        isAttacking = true;
+        isComboWindowOpen = false;
 
         attackCombo = 1;
 
@@ -120,19 +125,20 @@ public class PlayerAttack : MonoBehaviour
 
         Collider2D[] enemies =
             Physics2D.OverlapBoxAll(
-                attackBox.position,
-                attackCollider.size,
+                attackCollider.bounds.center,
+                attackCollider.bounds.size,
                 0f
             );
 
+        HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
 
         foreach(Collider2D enemy in enemies)
         {
             EnemyHP enemyHP =
-                enemy.GetComponent<EnemyHP>();
+                enemy.GetComponentInParent<EnemyHP>();
 
 
-            if(enemyHP != null)
+            if(enemyHP != null && hitEnemies.Add(enemyHP))
             {
                 int damage =
                     Mathf.RoundToInt(
@@ -148,13 +154,24 @@ public class PlayerAttack : MonoBehaviour
 
 
     // Animation Event
+    public void OpenComboWindow()
+    {
+        if (isAttacking)
+            isComboWindowOpen = true;
+    }
+
+
+
+    // Animation Event
     public void CheckCombo()
     {
+        isComboWindowOpen = false;
+
         if(comboQueued)
         {
             comboQueued = false;
 
-            attackCombo++;
+            attackCombo = Mathf.Min(attackCombo + 1, 3);
 
 
             animator.SetInteger(
@@ -173,6 +190,8 @@ public class PlayerAttack : MonoBehaviour
 
 
         comboQueued = false;
+        isAttacking = false;
+        isComboWindowOpen = false;
 
 
         attackCombo = 0;
@@ -194,6 +213,22 @@ public class PlayerAttack : MonoBehaviour
 
     private void ResetAttackCoolTime()
     {
+        canAttack = true;
+    }
+
+
+
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(ResetAttackCoolTime));
+
+        if (isAttacking)
+            combat?.EndAction();
+
+        comboQueued = false;
+        isAttacking = false;
+        isComboWindowOpen = false;
+        attackCombo = 0;
         canAttack = true;
     }
 
