@@ -9,6 +9,10 @@ UserSettings/
 .vscode/
 
 *.csproj
+# 유니티 생성물이 아니라 손으로 관리하는 툴 — 위 무시 규칙에서 제외한다
+!Tools/**/*.csproj
+Tools/**/bin/
+
 *.sln
 *.slnx
 *.suo
