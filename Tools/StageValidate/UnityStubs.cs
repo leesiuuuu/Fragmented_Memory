@@ -22,11 +22,19 @@ namespace UnityEngine
         public static void LogWarning(object m) => Console.WriteLine("[Unity.LogWarning] " + m);
     }
 
+    // EnemyStats를 Setup() 단위로 검사하기 위한 최소 표면.
+    // 생명주기(Awake/Start)는 유니티가 부르는 것이므로 여기서는 흉내내지 않는다.
+    public class MonoBehaviour
+    {
+        public string name = "";
+    }
+
     public static class Mathf
     {
         public static int Max(int a, int b) => Math.Max(a, b);
         public static int Min(int a, int b) => Math.Min(a, b);
         public static float Pow(float a, float b) => (float)Math.Pow(a, b);
+        public static int RoundToInt(float f) => (int)Math.Round(f, MidpointRounding.ToEven);
     }
 
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]

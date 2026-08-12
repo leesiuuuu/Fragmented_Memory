@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Enemy_Slime1
   prefab: {fileID: 5482695373007947413, guid: ba9deecbfed3388479596d44758b7ce6, type: 3}
-  maxHP: 100
-  attack: 20
-  defense: 0
+  maxHP: 800
+  attack: 50
+  defense: 100
   isElite: 0
-  eliteMultiplier: 2.2
+  eliteMultiplier: 1

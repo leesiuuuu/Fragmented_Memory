@@ -318,10 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9909b27d85dc4c4f82f54d894ea1ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  maxHP: 1000
-  attack: 200
-  defense: 100
-  currentHP: 0
+  fallbackData: {fileID: 11400000, guid: baf00df955e644d691c5a47dc2e238c9, type: 2}
 --- !u!95 &-3911313690113566097
 Animator:
   serializedVersion: 7

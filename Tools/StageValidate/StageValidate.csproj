@@ -23,6 +23,7 @@
     <Compile Include="..\..\Assets\Scripts\Data code\RoomData.cs"      Link="src\RoomData.cs" />
     <Compile Include="..\..\Assets\Scripts\Data code\StageData.cs"     Link="src\StageData.cs" />
     <Compile Include="..\..\Assets\Scripts\Data code\EnemyData.cs"     Link="src\EnemyData.cs" />
+    <Compile Include="..\..\Assets\Scripts\Enemy code\EnemyStats.cs"   Link="src\EnemyStats.cs" />
   </ItemGroup>
 
 </Project>

@@ -130,6 +130,9 @@ public static class Program
                           $"({merchantRuns * 100.0 / SampleCount:F1}%)");
 
         Console.WriteLine();
+        CheckEnemyScaling(data, violations);
+
+        Console.WriteLine();
 
         if (violations.Count == 0)
         {
@@ -276,6 +279,52 @@ public static class Program
 
         if (node.next[1] != null)
             Print(node.next[1], indent + "    ", "R ", sb);
+    }
+
+
+    // 설계서 2단계 완료 판정 — "배율 2.0을 넣으면 HP·공격력이 2배로 스폰"
+    private static void CheckEnemyScaling(StageData data, List<string> violations)
+    {
+        Console.WriteLine("난이도 배율 (EnemyStats.Setup):");
+        Console.WriteLine($"  {"적",-14} {"기준(HP/공/방)",-20} {"x1.0",-18} {"x2.0",-18}");
+
+        foreach (EnemyData enemy in data.enemyPool)
+        {
+            EnemyStats one = new EnemyStats();
+            one.Setup(enemy, 1f);
+
+            EnemyStats two = new EnemyStats();
+            two.Setup(enemy, 2f);
+
+            string label = enemy.isElite ? enemy.name + " *" : enemy.name;
+
+            Console.WriteLine($"  {label,-14} " +
+                              $"{enemy.maxHP + "/" + enemy.attack + "/" + enemy.defense,-20} " +
+                              $"{one.maxHP + "/" + one.attack + "/" + one.defense,-18} " +
+                              $"{two.maxHP + "/" + two.attack + "/" + two.defense,-18}");
+
+            // eliteMultiplier가 정수가 아니면 반올림으로 ±1이 생길 수 있다
+            Expect2x(enemy.name, "maxHP", one.maxHP, two.maxHP, violations);
+            Expect2x(enemy.name, "attack", one.attack, two.attack, violations);
+            Expect2x(enemy.name, "defense", one.defense, two.defense, violations);
+
+            if (one.currentHP != one.maxHP)
+                violations.Add($"{enemy.name}: Setup 직후 currentHP({one.currentHP}) != maxHP({one.maxHP})");
+
+            float expected = enemy.isElite ? enemy.eliteMultiplier : 1f;
+            int baseline = Mathf.Max(1, Mathf.RoundToInt(enemy.maxHP * expected));
+
+            if (one.maxHP != baseline)
+                violations.Add($"{enemy.name}: 배율 1.0의 maxHP {one.maxHP}, 기대 {baseline} " +
+                               $"(isElite={enemy.isElite}, eliteMultiplier={enemy.eliteMultiplier})");
+        }
+    }
+
+
+    private static void Expect2x(string who, string field, int one, int two, List<string> violations)
+    {
+        if (Math.Abs(two - one * 2) > 1)
+            violations.Add($"{who}: {field}가 배율 2.0에서 2배가 아님 ({one} → {two})");
     }
 
 
