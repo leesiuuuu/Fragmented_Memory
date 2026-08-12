@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955b1812c66920c4c9ec0d65d6070e0b, type: 3}
+  m_Name: Enemy_Slime2
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Enemy_Slime2
+  prefab: {fileID: 5482695373007947413, guid: ba86ee36ed0b2ef4a9e1535e6869ce56, type: 3}
+  maxHP: 130
+  attack: 25
+  defense: 5
+  isElite: 0
+  eliteMultiplier: 2.2
