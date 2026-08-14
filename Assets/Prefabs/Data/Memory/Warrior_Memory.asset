@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4506280ca4450934cbb3664ac4ae0686, type: 3}
   m_Name: Warrior_Memory
   m_EditorClassIdentifier: Assembly-CSharp::MemoryData
-  memoryName: "\uC804\uC0AC\uC758 \uC870\uAC01"
-  description: "\uAC15\uD55C \uD798\uB9CC\uC73C\uB85C\uB294 \uC0AC\uB791\uC744 \uC5BB\uC744
-    \uC218 \uC5C6\uB2E4."
+  memoryName: "전사의 조각"
+  description: "강한 힘만으로는 사랑을 얻을
+    수 없다."
   icon: {fileID: 0}
   type: 0
   rarity: 1

@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class RewardSlotUI : MonoBehaviour
 {
-    private TMP_Text nameText;
-    private TMP_Text descriptionText;
-    private TMP_Text buttonText;
-    private Image icon;
-    private Button selectButton;
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text buttonText;
+    [SerializeField] private Image icon;
+    [SerializeField] private Button selectButton;
+
     private Sprite placeholderIcon;
 
     private RewardUI rewardUI;
     private int rewardIndex;
-    private bool isBound;
 
     private void Awake()
     {
-        BindComponents();
+        if (icon != null)
+            placeholderIcon = icon.sprite;
+
+        if (selectButton != null)
+            selectButton.onClick.AddListener(Select);
     }
 
     private void OnDestroy()
@@ -29,8 +33,6 @@ public class RewardSlotUI : MonoBehaviour
 
     public void Setup(RewardUI owner, int index, MemoryData memory)
     {
-        BindComponents();
-
         rewardUI = owner;
         rewardIndex = index;
 
@@ -55,39 +57,6 @@ public class RewardSlotUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-    }
-
-    private void BindComponents()
-    {
-        if (isBound)
-            return;
-
-        nameText = FindChild("NameText")?.GetComponent<TMP_Text>();
-        descriptionText = FindChild("DescriptionText")?.GetComponent<TMP_Text>();
-        buttonText = FindChild("Text (TMP)")?.GetComponent<TMP_Text>();
-        icon = FindChild("Icon")?.GetComponent<Image>();
-        selectButton = FindChild("SelectButton")?.GetComponent<Button>();
-
-        if (icon != null)
-            placeholderIcon = icon.sprite;
-
-        if (selectButton != null)
-            selectButton.onClick.AddListener(Select);
-
-        isBound = true;
-    }
-
-    private Transform FindChild(string childName)
-    {
-        Transform[] children = GetComponentsInChildren<Transform>(true);
-
-        foreach (Transform child in children)
-        {
-            if (child.name == childName)
-                return child;
-        }
-
-        return null;
     }
 
     private void Select()

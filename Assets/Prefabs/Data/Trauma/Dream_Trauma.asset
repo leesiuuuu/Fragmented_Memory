@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4506280ca4450934cbb3664ac4ae0686, type: 3}
   m_Name: Dream_Trauma
   m_EditorClassIdentifier: Assembly-CSharp::MemoryData
-  memoryName: "\uBABD\uD658\uC758 \uC870\uAC01"
-  description: "\uB9E4\uB825\uC801\uC778 \uD658\uC0C1\uC5D0 6, 5, 4, 3\u2026\u2026\u2026\u2026\u2026\u2026\u2026.."
+  memoryName: "몽환의 조각"
+  description: "매력적인 환상에 6, 5, 4, 3………………….."
   icon: {fileID: 0}
   type: 1
   rarity: 2

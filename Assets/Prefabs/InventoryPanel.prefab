@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
-  m_text: "\uAE30\uC5B5 \uC870\uAC01  0 / 8"
+  m_text: "기억 조각  0 / 8"
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_fontSize: 22
