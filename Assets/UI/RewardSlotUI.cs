@@ -10,6 +10,7 @@ public class RewardSlotUI : MonoBehaviour
     private TMP_Text buttonText;
     private Image icon;
     private Button selectButton;
+    private Sprite placeholderIcon;
 
     private RewardUI rewardUI;
     private int rewardIndex;
@@ -40,12 +41,12 @@ public class RewardSlotUI : MonoBehaviour
             descriptionText.text = BuildDescription(memory);
 
         if (buttonText != null)
-            buttonText.text = "선택";
+            buttonText.text = "선택하기";
 
         if (icon != null)
         {
-            icon.sprite = memory.icon;
-            icon.enabled = memory.icon != null;
+            icon.sprite = memory.icon != null ? memory.icon : placeholderIcon;
+            icon.enabled = true;
         }
 
         gameObject.SetActive(true);
@@ -66,6 +67,9 @@ public class RewardSlotUI : MonoBehaviour
         buttonText = FindChild("Text (TMP)")?.GetComponent<TMP_Text>();
         icon = FindChild("Icon")?.GetComponent<Image>();
         selectButton = FindChild("SelectButton")?.GetComponent<Button>();
+
+        if (icon != null)
+            placeholderIcon = icon.sprite;
 
         if (selectButton != null)
             selectButton.onClick.AddListener(Select);
