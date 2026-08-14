@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class Inventory : MonoBehaviour
 
     private PlayerStats playerStats;
     private List<MemoryData> memories = new List<MemoryData>();
+
+    public int MaxMemoryCount => maxMemoryCount;
+    public event Action Changed;
 
     private void Awake()
     {
@@ -25,6 +29,8 @@ public class Inventory : MonoBehaviour
             playerStats.ApplyStat(ConvertToStat(memory));
         }
 
+        Changed?.Invoke();
+
         return true;
     }
 
@@ -35,6 +41,8 @@ public class Inventory : MonoBehaviour
 
         if (playerStats != null)
             playerStats.RemoveStat(ConvertToStat(memory));
+
+        Changed?.Invoke();
 
         return true;
     }
