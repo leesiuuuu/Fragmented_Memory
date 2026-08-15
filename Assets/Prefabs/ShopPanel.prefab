@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\uC810"
+  m_text: "상점"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}

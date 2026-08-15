@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
     [Header("Rewards")]
     [SerializeField, Min(0)] private int clearStarDustReward = 50;
+    [SerializeField, Min(0f)] private float rewardDisplayDelay = 1.2f;
 
     [Header("Managers")]
     [SerializeField] private SpawnManager spawnManager;
@@ -80,23 +82,36 @@ public class RoomManager : MonoBehaviour
 
     public void RoomClear()
     {
-        // 이미 클리어된 방이면 중복 처리하지 않는다.
+        // 중복 처리 x
         if (isCleared)
             return;
 
         isCleared = true;
 
-        // 방 클리어 기본 보상
+        // 기본 보상
         rewardWallet?.Add(clearStarDustReward);
 
-        // 기억 조각 보상 선택이 있으면
-        // 선택을 완료한 뒤 문을 연다.
-        if (rewardManager != null && rewardManager.GenerateRewards())
+        // 보상 선택을 완료한 뒤 문을 연다.
+        if (rewardManager != null)
         {
             rewardManager.RewardSelected -= HandleRewardSelected;
             rewardManager.RewardSelected += HandleRewardSelected;
+            StartCoroutine(ShowRewardAfterDelay());
             return;
         }
+
+        OpenDoors();
+    }
+
+    private IEnumerator ShowRewardAfterDelay()
+    {
+        yield return new WaitForSeconds(rewardDisplayDelay);
+
+        if (rewardManager != null && rewardManager.GenerateRewards())
+            yield break;
+
+        if (rewardManager != null)
+            rewardManager.RewardSelected -= HandleRewardSelected;
 
         OpenDoors();
     }
@@ -112,7 +127,6 @@ public class RoomManager : MonoBehaviour
 
     private void OpenDoors()
     {
-        // 클리어하지 않은 방에서는 절대로 문을 열지 않는다.
         if (!isCleared)
             return;
 
@@ -133,7 +147,6 @@ public class RoomManager : MonoBehaviour
 
     private void HandleDoorEntered(RoomDoorTrigger door)
     {
-        // 방을 클리어하지 않았다면 다음 방으로 갈 수 없다.
         if (!isCleared)
             return;
 

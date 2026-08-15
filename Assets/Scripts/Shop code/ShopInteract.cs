@@ -13,4 +13,12 @@ public class ShopInteract : MonoBehaviour, InteractRule
     {
         shopUI?.Open();
     }
+
+    public void SetAvailable(bool available)
+    {
+        if (!available)
+            shopUI?.Close();
+
+        gameObject.SetActive(available);
+    }
 }

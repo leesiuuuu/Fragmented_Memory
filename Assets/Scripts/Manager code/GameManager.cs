@@ -7,11 +7,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private RewardManager rewardManager;
     [SerializeField] private ShopManager shopManager;
+    [SerializeField] private ShopInteract realityShop;
 
     private GameObject currentRoom;
 
     private void Awake()
     {
+        if (realityShop == null)
+            realityShop = FindFirstObjectByType<ShopInteract>(FindObjectsInactive.Include);
+
         if (rewardManager != null && player != null)
             rewardManager.Initialize(player.GetComponent<Inventory>());
 
@@ -24,7 +28,22 @@ public class GameManager : MonoBehaviour
 
     public void EnterMirror()
     {
+        EnsureRealityShopReference();
+        realityShop?.SetAvailable(false);
         CreateRoom();
+    }
+
+    public void EnterReality()
+    {
+        EnsureRealityShopReference();
+        realityShop?.SetAvailable(true);
+        RefreshRealityShop();
+    }
+
+    private void EnsureRealityShopReference()
+    {
+        if (realityShop == null)
+            realityShop = FindFirstObjectByType<ShopInteract>(FindObjectsInactive.Include);
     }
 
     public void MoveNextRoom()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,14 +15,18 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 9f;
     public float jumpPower = 8f;
     public float dashPower = 13f;
-    public float dashCoolTime = 0.2f;
-    public float dashTime = 0.3f;
+    [FormerlySerializedAs("dashCoolTime")]
+    public float dashDuration = 0.16f;
+    [FormerlySerializedAs("dashTime")]
+    public float dashCooldown = 0.7f;
+    public float dashFallSpeed = 3f;
 
 
     bool canDash = true;
     bool isDash = false;
 
     bool isGround = false;
+    float normalGravityScale;
 
 
 
@@ -31,13 +36,14 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerHP = GetComponent<PlayerHP>();
+        normalGravityScale = rigid.gravityScale;
     }
 
 
 
     void Update()
     {
-        if (playerHP.IsDead)
+        if (playerHP.IsDead || GameplayInputLock.IsLocked)
             return;
 
 
@@ -60,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Space)
             || Input.GetKeyDown(KeyCode.W)
             || Input.GetKeyDown(KeyCode.UpArrow))
+            && !isDash
             && jumpCount < 2)
         {
 
@@ -95,11 +102,13 @@ public class PlayerMovement : MonoBehaviour
             rigid.linearVelocity =
                 new Vector2(
                     direction * dashPower,
-                    rigid.linearVelocity.y
+                    0f
                 );
 
-            Invoke(nameof(EndDash), dashCoolTime);
-            Invoke(nameof(ResetDash), dashTime);
+            rigid.gravityScale = 0f;
+
+            Invoke(nameof(EndDash), dashDuration);
+            Invoke(nameof(ResetDash), dashCooldown);
         }
     }
 
@@ -108,6 +117,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameplayInputLock.IsLocked)
+        {
+            rigid.linearVelocity = new Vector2(0f, rigid.linearVelocity.y);
+            animator.SetFloat("move speed", 0f);
+            return;
+        }
+
         if(playerHP.IsDead)
         {
             rigid.linearVelocity = Vector2.zero;
@@ -158,6 +174,11 @@ public class PlayerMovement : MonoBehaviour
     void EndDash()
     {
         isDash = false;
+        rigid.gravityScale = normalGravityScale;
+        rigid.linearVelocity = new Vector2(
+            rigid.linearVelocity.x,
+            -Mathf.Abs(dashFallSpeed)
+        );
     }
 
 
@@ -165,6 +186,18 @@ public class PlayerMovement : MonoBehaviour
     void ResetDash()
     {
         canDash = true;
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(EndDash));
+        CancelInvoke(nameof(ResetDash));
+
+        isDash = false;
+        canDash = true;
+
+        if (rigid != null)
+            rigid.gravityScale = normalGravityScale;
     }
 
 

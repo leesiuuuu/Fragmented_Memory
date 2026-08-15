@@ -1,0 +1,110 @@
+using System.Text;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class RewardSlotUI : MonoBehaviour
+{
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text buttonText;
+    [SerializeField] private Image icon;
+    [SerializeField] private Button selectButton;
+
+    private Sprite placeholderIcon;
+
+    private RewardUI rewardUI;
+    private int rewardIndex;
+
+    private void Awake()
+    {
+        if (icon != null)
+            placeholderIcon = icon.sprite;
+
+        if (selectButton != null)
+            selectButton.onClick.AddListener(Select);
+    }
+
+    private void OnDestroy()
+    {
+        if (selectButton != null)
+            selectButton.onClick.RemoveListener(Select);
+    }
+
+    public void Setup(RewardUI owner, int index, MemoryData memory)
+    {
+        rewardUI = owner;
+        rewardIndex = index;
+
+        if (nameText != null)
+            nameText.text = $"[{GetRarityName(memory.rarity)}] {memory.memoryName}";
+
+        if (descriptionText != null)
+            descriptionText.text = BuildDescription(memory);
+
+        if (buttonText != null)
+            buttonText.text = "선택하기";
+
+        if (icon != null)
+        {
+            icon.sprite = memory.icon != null ? memory.icon : placeholderIcon;
+            icon.enabled = true;
+        }
+
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void Select()
+    {
+        rewardUI?.SelectReward(rewardIndex);
+    }
+
+    private string BuildDescription(MemoryData memory)
+    {
+        StringBuilder builder = new StringBuilder(memory.description);
+
+        AppendStat(builder, "체력", memory.health);
+        AppendStat(builder, "공격력", memory.attack);
+        AppendStat(builder, "방어력", memory.defense);
+        AppendStat(builder, "치명타 확률", memory.criticalChance, "%");
+        AppendStat(builder, "치명타 피해", memory.criticalDamage, "%");
+        AppendStat(builder, "피흡", memory.lifeSteal, "%");
+        AppendStat(builder, "매력", memory.charm);
+
+        return builder.ToString();
+    }
+
+    private void AppendStat(StringBuilder builder, string label, float value, string suffix = "")
+    {
+        if (Mathf.Approximately(value, 0f))
+            return;
+
+        builder.AppendLine();
+        builder.Append(label);
+        builder.Append(value > 0f ? " +" : " ");
+        builder.Append(value.ToString("0.#"));
+        builder.Append(suffix);
+    }
+
+    private string GetRarityName(MemoryRarity rarity)
+    {
+        switch (rarity)
+        {
+            case MemoryRarity.Common:
+                return "흔함";
+            case MemoryRarity.Rare:
+                return "희귀함";
+            case MemoryRarity.Important:
+                return "중요함";
+            case MemoryRarity.Legendary:
+                return "전설";
+            default:
+                return rarity.ToString();
+        }
+    }
+}
