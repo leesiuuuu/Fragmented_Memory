@@ -76,7 +76,7 @@ public class PlayerStats : MonoBehaviour
             damage = Mathf.RoundToInt(
                 attack * (criticalDamage / 100f));
 
-            Debug.Log("Critical!");
+            // Debug.Log("Critical!");
         }
 
         return damage;

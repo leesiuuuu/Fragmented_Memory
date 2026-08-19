@@ -96,6 +96,22 @@ public class SkillManager : MonoBehaviour
 
     public void PokeDamage()
     {
+        if(!playerHP.IsDead && EffectManager.Instance != null)
+        {
+            Vector3 effectPosition =
+                transform.position
+                + (spriteRenderer.flipX ? Vector3.left : Vector3.right);
+            Quaternion effectRotation = spriteRenderer.flipX
+                ? Quaternion.Euler(0f, 180f, 0f)
+                : Quaternion.identity;
+
+            EffectManager.Instance.Play(
+                EffectId.Poke,
+                effectPosition,
+                effectRotation
+            );
+        }
+
         AttackDamage(1.25f);
     }
 
@@ -105,6 +121,22 @@ public class SkillManager : MonoBehaviour
 
     public void StrikeDamage()
     {
+        if(!playerHP.IsDead && EffectManager.Instance != null)
+        {
+            Vector3 effectPosition =
+                transform.position
+                + (spriteRenderer.flipX ? Vector3.left : Vector3.right);
+            Quaternion effectRotation = spriteRenderer.flipX
+                ? Quaternion.Euler(0f, 180f, 0f)
+                : Quaternion.identity;
+
+            EffectManager.Instance.Play(
+                EffectId.Strike,
+                effectPosition,
+                effectRotation
+            );
+        }
+
         AttackDamage(2f);
     }
 

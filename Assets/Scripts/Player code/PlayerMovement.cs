@@ -86,6 +86,15 @@ public class PlayerMovement : MonoBehaviour
             jumpCount++;
 
             isGround = false;
+
+            if(EffectManager.Instance != null)
+            {
+                EffectManager.Instance.Play(
+                    EffectId.Jump,
+                    transform.position,
+                    Quaternion.identity
+                );
+            }
         }
 
 

@@ -4,6 +4,7 @@ public class PlayerHP : MonoBehaviour
 {
     private PlayerStats stats;
     private Animator animator;
+    private PlayerInvincibility invincibility;
 
     [SerializeField] private HPBar hpBar;
 
@@ -14,6 +15,7 @@ public class PlayerHP : MonoBehaviour
     {
         stats = GetComponent<PlayerStats>();
         animator = GetComponent<Animator>();
+        invincibility = GetComponent<PlayerInvincibility>();
 
         if (stats != null)
             stats.StatsChanged += UpdateHPBar;
@@ -32,7 +34,7 @@ public class PlayerHP : MonoBehaviour
 
     public int TakeDamage(int rawDamage)
     {
-        if (isDead)
+        if (isDead || (invincibility != null && invincibility.IsInvincible))
             return 0;
 
         int finalDamage = DamageCalculator.Calculate(
@@ -41,6 +43,9 @@ public class PlayerHP : MonoBehaviour
         int effectiveDamage = Mathf.Min(finalDamage, stats.currentHealth);
 
         stats.currentHealth -= effectiveDamage;
+
+        if(effectiveDamage > 0 && invincibility != null)
+            invincibility.StartHitInvincibility();
 
         hpBar.SetHP(stats.currentHealth, stats.maxHealth);
 
@@ -69,7 +74,7 @@ public class PlayerHP : MonoBehaviour
 
         isDead = true;
 
-        Debug.Log("플레이어 사망");
+        // Debug.Log("플레이어 사망");
         animator.SetTrigger("Death");
 
         // TODO
