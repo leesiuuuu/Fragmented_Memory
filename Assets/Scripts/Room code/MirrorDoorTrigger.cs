@@ -1,18 +1,20 @@
 using UnityEngine;
 
-public class MirrorDoorTrigger : MonoBehaviour
+public class MirrorDoorTrigger : MonoBehaviour, InteractRule
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject mirrorDoor;
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            mirrorDoor.SetActive(false);
+    private bool used;
 
-            gameManager.EnterMirror();
-        }
+    public void Interact()
+    {
+        if (used)
+            return;
+
+        used = true;
+        gameManager?.EnterMirror();
+        mirrorDoor?.SetActive(false);
     }
 }

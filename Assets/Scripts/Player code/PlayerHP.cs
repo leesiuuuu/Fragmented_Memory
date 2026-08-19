@@ -14,6 +14,15 @@ public class PlayerHP : MonoBehaviour
     {
         stats = GetComponent<PlayerStats>();
         animator = GetComponent<Animator>();
+
+        if (stats != null)
+            stats.StatsChanged += UpdateHPBar;
+    }
+
+    private void OnDestroy()
+    {
+        if (stats != null)
+            stats.StatsChanged -= UpdateHPBar;
     }
 
     private void Start()
@@ -21,20 +30,17 @@ public class PlayerHP : MonoBehaviour
         hpBar.SetHP(stats.currentHealth, stats.maxHealth);
     }
 
-    public void TakeDamage(int damage)
+    public int TakeDamage(int rawDamage)
     {
         if (isDead)
-            return;
+            return 0;
 
-        damage -= stats.defense;
+        int finalDamage = DamageCalculator.Calculate(
+            rawDamage,
+            stats.defense);
+        int effectiveDamage = Mathf.Min(finalDamage, stats.currentHealth);
 
-        if (damage < 1)
-            damage = 1;
-
-        stats.currentHealth -= damage;
-
-        if (stats.currentHealth < 0)
-            stats.currentHealth = 0;
+        stats.currentHealth -= effectiveDamage;
 
         hpBar.SetHP(stats.currentHealth, stats.maxHealth);
 
@@ -42,6 +48,8 @@ public class PlayerHP : MonoBehaviour
         {
             Die();
         }
+
+        return effectiveDamage;
     }
 
     public void Heal(int amount)
@@ -68,5 +76,11 @@ public class PlayerHP : MonoBehaviour
         // 이동 정지
         // 사망 애니메이션
         // 게임 오버
+    }
+
+    private void UpdateHPBar()
+    {
+        if (hpBar != null && stats != null)
+            hpBar.SetHP(stats.currentHealth, stats.maxHealth);
     }
 }

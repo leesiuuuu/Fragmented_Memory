@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c476741f71511e6428f49cf7d082917c, type: 3}
   m_Name: New Item
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: "\uC2A4\uD0AC \uAC00\uC18D\uC81C"
-  description: "\uC2A4\uD0AC\uC758 \uCFE8\uD0C0\uC784\uC774 3\uBD84 \uB3D9\uC548
-    3\uCD08\uAC00 \uC904\uC5B4\uB4EC"
+  itemName: "스킬 가속제"
+  description: "스킬의 쿨타임이 3분 동안
+    3초가 줄어듬"
   icon: {fileID: 0}
   price: 1500
   itemType: 1

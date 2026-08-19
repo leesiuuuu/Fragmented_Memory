@@ -7,6 +7,7 @@ public class EnemyHP : MonoBehaviour
     private SpawnManager spawnManager;
 
     [SerializeField] private HPBar hpBar;
+    private bool isDead;
 
 
     private void Awake()
@@ -27,17 +28,17 @@ public class EnemyHP : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage)
+    public int TakeDamage(int rawDamage)
     {
-        damage -= stats.defense;
+        if (isDead)
+            return 0;
 
-        if (damage < 1)
-            damage = 1;
+        int finalDamage = DamageCalculator.Calculate(
+            rawDamage,
+            stats.defense);
+        int effectiveDamage = Mathf.Min(finalDamage, stats.currentHP);
 
-
-        stats.currentHP -= damage;
-
-        stats.currentHP = Mathf.Max(stats.currentHP, 0);
+        stats.currentHP -= effectiveDamage;
 
 
         hpBar.SetHP(stats.currentHP, stats.maxHP);
@@ -47,11 +48,18 @@ public class EnemyHP : MonoBehaviour
         {
             Die();
         }
+
+        return effectiveDamage;
     }
 
 
     private void Die()
     {
+        if (isDead)
+            return;
+
+        isDead = true;
+
         if(spawnManager != null)
         {
             spawnManager.EnemyDead();

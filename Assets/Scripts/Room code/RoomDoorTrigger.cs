@@ -1,21 +1,36 @@
+using System;
 using UnityEngine;
 
-public class RoomDoorTrigger : MonoBehaviour
+public class RoomDoorTrigger : MonoBehaviour, InteractRule
 {
-    [SerializeField] private GameManager gameManager;
+    public event Action<RoomDoorTrigger> Entered;
 
-    private bool isTriggered = false;
+    private bool canUse;
+    private bool used;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Awake()
     {
-        if (isTriggered)
+        canUse = false;
+        used = false;
+    }
+
+    public void SetInteractable(bool value)
+    {
+        canUse = value;
+        used = false;
+
+        gameObject.SetActive(value);
+    }
+
+    public void Interact()
+    {
+        if (!canUse)
             return;
 
-        if (!other.CompareTag("Player"))
+        if (used)
             return;
 
-        isTriggered = true;
-
-        gameManager.MoveNextRoom();
+        used = true;
+        Entered?.Invoke(this);
     }
 }

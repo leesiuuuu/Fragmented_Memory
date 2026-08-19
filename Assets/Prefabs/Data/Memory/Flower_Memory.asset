@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4506280ca4450934cbb3664ac4ae0686, type: 3}
   m_Name: Flower_Memory
   m_EditorClassIdentifier: Assembly-CSharp::MemoryData
-  memoryName: "\uAF43\uC78E\uC758 \uC870\uAC01"
-  description: "\uB5A8\uC5B4\uC9C4 \uAF43\uC78E\uC758 \uD55C \uC870\uAC01\uC774\uB2E4.
-    \uB2E4\uC2DC \uAF43\uC774 \uB418\uC5B4\uC904 \uC21C \uC5C6\uACA0\uC9C0"
+  memoryName: "꽃잎의 조각"
+  description: "떨어진 꽃잎의 한 조각이다.
+    다시 꽃이 되어줄 순 없겠지"
   icon: {fileID: 0}
   type: 0
   rarity: 0
