@@ -19,3 +19,4 @@ Tools/**/bin/
 *.tmp
 *.user
 *.userprefs
+.vs/
