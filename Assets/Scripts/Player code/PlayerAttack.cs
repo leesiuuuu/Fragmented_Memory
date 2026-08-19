@@ -24,7 +24,6 @@ public class PlayerAttack : MonoBehaviour
     private bool comboQueued = false;
     private bool canAttack = true;
     private bool isAttacking = false;
-    private bool isComboWindowOpen = false;
 
 
 
@@ -84,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 StartAttack();
             }
-            else if(isAttacking && isComboWindowOpen)
+            else if(isAttacking)
             {
                 comboQueued = true;
             }
@@ -101,7 +100,6 @@ public class PlayerAttack : MonoBehaviour
 
         comboQueued = false;
         isAttacking = true;
-        isComboWindowOpen = false;
 
         attackCombo = 1;
 
@@ -154,19 +152,25 @@ public class PlayerAttack : MonoBehaviour
 
 
     // Animation Event
-    public void OpenComboWindow()
+    public void PlayBasicAttackEffect()
     {
-        if (isAttacking)
-            isComboWindowOpen = true;
+        if(playerHP.IsDead || EffectManager.Instance == null)
+            return;
+
+        Quaternion effectRotation = spriteRenderer.flipX
+            ? Quaternion.Euler(0f, 180f, 0f)
+            : Quaternion.identity;
+
+        EffectManager.Instance.Play(
+            EffectId.BasicAttack,
+            attackCollider.bounds.center,
+            effectRotation
+        );
     }
-
-
 
     // Animation Event
     public void CheckCombo()
     {
-        isComboWindowOpen = false;
-
         if(comboQueued)
         {
             comboQueued = false;
@@ -191,7 +195,6 @@ public class PlayerAttack : MonoBehaviour
 
         comboQueued = false;
         isAttacking = false;
-        isComboWindowOpen = false;
 
 
         attackCombo = 0;
@@ -227,7 +230,6 @@ public class PlayerAttack : MonoBehaviour
 
         comboQueued = false;
         isAttacking = false;
-        isComboWindowOpen = false;
         attackCombo = 0;
         canAttack = true;
     }

@@ -40,6 +40,15 @@ public class EnemyHP : MonoBehaviour
 
         stats.currentHP -= effectiveDamage;
 
+        // if (effectiveDamage > 0 && EffectManager.Instance != null)
+        // {
+        //     EffectManager.Instance.Play(
+        //         EffectId.EnemyHit,
+        //         transform.position,
+        //         Quaternion.identity
+        //     );
+        // }
+
 
         hpBar.SetHP(stats.currentHP, stats.maxHP);
 
