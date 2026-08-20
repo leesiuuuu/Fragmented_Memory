@@ -1369,9 +1369,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d8b741bcfe73e4280629f893b0c9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  roomPrefab: {fileID: 5728052231096034427, guid: 91b50ffb5e7f5ab43905f8df51ea6672, type: 3}
+  stageData: {fileID: 11400000, guid: 2127bf263bc94169a726ac9f4f392524, type: 2}
   mirror: {fileID: 1732365700}
   player: {fileID: 1197494125}
+  fixedStageSeed: 0
+  powerPerDepth: 0.15
 --- !u!4 &1779261042
 Transform:
   m_ObjectHideFlags: 0
