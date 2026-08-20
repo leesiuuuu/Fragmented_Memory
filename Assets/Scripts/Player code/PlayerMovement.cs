@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGround = false;
     float normalGravityScale;
+    float externalMovementMultiplier = 1f;
 
 
 
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
 
             rigid.AddForce(
-                Vector2.up * jumpPower,
+                Vector2.up * jumpPower * externalMovementMultiplier,
                 ForceMode2D.Impulse
             );
 
@@ -110,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
             rigid.linearVelocity =
                 new Vector2(
-                    direction * dashPower,
+                    direction * dashPower * externalMovementMultiplier,
                     0f
                 );
 
@@ -152,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rigid.linearVelocity =
                 new Vector2(
-                    h * moveSpeed,
+                    h * moveSpeed * externalMovementMultiplier,
                     rigid.linearVelocity.y
                 );
         }
@@ -195,6 +196,12 @@ public class PlayerMovement : MonoBehaviour
     void ResetDash()
     {
         canDash = true;
+    }
+
+
+    public void SetExternalMovementMultiplier(float multiplier)
+    {
+        externalMovementMultiplier = Mathf.Max(0f, multiplier);
     }
 
     private void OnDisable()
