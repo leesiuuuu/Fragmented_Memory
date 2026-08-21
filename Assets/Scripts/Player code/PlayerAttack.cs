@@ -24,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
     private bool comboQueued = false;
     private bool canAttack = true;
     private bool isAttacking = false;
+    private readonly HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
 
 
 
@@ -128,7 +129,7 @@ public class PlayerAttack : MonoBehaviour
                 0f
             );
 
-        HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
+        hitEnemies.Clear();
 
         foreach(Collider2D enemy in enemies)
         {

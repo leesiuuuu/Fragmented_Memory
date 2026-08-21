@@ -200,6 +200,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 200001, guid: 736deb9b70e54f85a38c1fbe8c313a91, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 200001, guid: 736deb9b70e54f85a38c1fbe8c313a91, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 200001, guid: 736deb9b70e54f85a38c1fbe8c313a91, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40
+      objectReference: {fileID: 0}
     - target: {fileID: 200003, guid: 736deb9b70e54f85a38c1fbe8c313a91, type: 3}
       propertyPath: m_isOrthographic
       value: 1
@@ -2211,7 +2223,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 765817543720433917, guid: 6bb59fca8aa59b24a91887e88cdd6366, type: 3}
       propertyPath: m_text
-      value: "\uBCF4\uC0C1 \uC120\uD0DD"
+      value: "보상 선택"
       objectReference: {fileID: 0}
     - target: {fileID: 765817543720433917, guid: 6bb59fca8aa59b24a91887e88cdd6366, type: 3}
       propertyPath: m_fontSize
