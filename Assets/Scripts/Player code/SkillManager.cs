@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    private const float StrikeRiseSpeed = 35f;
+    private const float StrikeFallSpeed = 30f;
+    private const float StrikeForwardSpeed = 4f;
+
     private Animator animator;
     private PlayerStats playerStats;
     private PlayerCombat combat;
     private SpriteRenderer spriteRenderer;
     private PlayerHP playerHP;
+    private Rigidbody2D rigid;
+    private PlayerMovement movement;
 
 
     [SerializeField] private float pokeCoolTime = 2f;
@@ -16,6 +22,7 @@ public class SkillManager : MonoBehaviour
 
     private bool canPoke = true;
     private bool canStrike = true;
+    private readonly HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
 
 
 
@@ -26,6 +33,8 @@ public class SkillManager : MonoBehaviour
         combat = GetComponent<PlayerCombat>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerHP = GetComponent<PlayerHP>();
+        rigid = GetComponent<Rigidbody2D>();
+        movement = GetComponent<PlayerMovement>();
     }
 
 
@@ -119,8 +128,52 @@ public class SkillManager : MonoBehaviour
 
     // Animation Event
 
+    public void StrikeRise()
+    {
+        rigid.linearVelocity = new Vector2(
+            rigid.linearVelocity.x,
+            StrikeRiseSpeed
+        );
+    }
+
+
+
+    // Animation Event
+
+    public void StrikeHover()
+    {
+        rigid.linearVelocity = new Vector2(
+            rigid.linearVelocity.x,
+            0f
+        );
+    }
+
+
+
+    // Animation Event
+
+    public void StrikeFall()
+    {
+        float direction = spriteRenderer.flipX ? -1f : 1f;
+
+        movement.SetForcedHorizontalSpeed(
+            direction * StrikeForwardSpeed
+        );
+
+        rigid.linearVelocity = new Vector2(
+            rigid.linearVelocity.x,
+            -StrikeFallSpeed
+        );
+    }
+
+
+
+    // Animation Event
+
     public void StrikeDamage()
     {
+        movement.ClearForcedHorizontalSpeed();
+
         if(!playerHP.IsDead && EffectManager.Instance != null)
         {
             Vector3 effectPosition =
@@ -173,7 +226,7 @@ public class SkillManager : MonoBehaviour
 
 
 
-        HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
+        hitEnemies.Clear();
 
         foreach(Collider2D enemy in enemies)
         {
