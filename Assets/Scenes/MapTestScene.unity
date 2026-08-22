@@ -2197,7 +2197,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 765817543720433917, guid: 6bb59fca8aa59b24a91887e88cdd6366, type: 3}
       propertyPath: m_text
-      value: "\uBCF4\uC0C1 \uC120\uD0DD"
+      value: "보상 선택"
       objectReference: {fileID: 0}
     - target: {fileID: 765817543720433917, guid: 6bb59fca8aa59b24a91887e88cdd6366, type: 3}
       propertyPath: m_fontSize

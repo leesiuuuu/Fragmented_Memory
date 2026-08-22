@@ -1,0 +1,709 @@
+fileFormatVersion: 2
+guid: 39724184d1d027e438309453eddf1f68
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3557860162993216877
+    second: Stage2_Enemy1_0
+  - first:
+      213: -1170878192667829602
+    second: Stage2_Enemy1_1
+  - first:
+      213: -2123605895976634330
+    second: Stage2_Enemy1_2
+  - first:
+      213: 5827424766361651183
+    second: Stage2_Enemy1_3
+  - first:
+      213: 5373671167980332167
+    second: Stage2_Enemy1_4
+  - first:
+      213: 3570125178529653998
+    second: Stage2_Enemy1_5
+  - first:
+      213: -1331374281828036364
+    second: Stage2_Enemy1_6
+  - first:
+      213: -8224397839871756125
+    second: Stage2_Enemy1_7
+  - first:
+      213: 3429671193779141470
+    second: Stage2_Enemy1_8
+  - first:
+      213: 1900241272038853942
+    second: Stage2_Enemy1_9
+  - first:
+      213: 1514675506715210845
+    second: Stage2_Enemy1_10
+  - first:
+      213: -4091817312075641952
+    second: Stage2_Enemy1_11
+  - first:
+      213: 1059969914170016081
+    second: Stage2_Enemy1_12
+  - first:
+      213: -2442467742519773087
+    second: Stage2_Enemy1_13
+  - first:
+      213: -5385105590020653303
+    second: Stage2_Enemy1_14
+  - first:
+      213: -6867830965433928595
+    second: Stage2_Enemy1_15
+  - first:
+      213: 5713840802505474165
+    second: Stage2_Enemy1_16
+  - first:
+      213: 1559528147244304826
+    second: Stage2_Enemy1_17
+  - first:
+      213: -1274306271552212528
+    second: Stage2_Enemy1_18
+  - first:
+      213: 2389948481151299573
+    second: Stage2_Enemy1_19
+  - first:
+      213: -7332781543570937250
+    second: Stage2_Enemy1_20
+  - first:
+      213: -7364043630133447630
+    second: Stage2_Enemy1_21
+  - first:
+      213: 6142577689624984672
+    second: Stage2_Enemy1_22
+  - first:
+      213: 2280724166624017048
+    second: Stage2_Enemy1_23
+  - first:
+      213: 5375147770457703857
+    second: Stage2_Enemy1_24
+  - first:
+      213: -1207031510989983471
+    second: Stage2_Enemy1_25
+  - first:
+      213: -2288231988878243693
+    second: Stage2_Enemy1_26
+  - first:
+      213: 5353540221662848671
+    second: Stage2_Enemy1_27
+  - first:
+      213: -9122273434201946245
+    second: Stage2_Enemy1_28
+  - first:
+      213: 6811380541623010009
+    second: Stage2_Enemy1_29
+  - first:
+      213: 6464958287803176362
+    second: Stage2_Enemy1_30
+  - first:
+      213: 5886403698632213977
+    second: Stage2_Enemy1_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 18
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: WitchStand_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 69
+        width: 60
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 392a6483801ff9ec0800000000000000
+      internalID: -7376158875098006012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchStand_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 69
+        width: 60
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9a58c2cc7430cfe0800000000000000
+      internalID: -1501955931498713811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchStand_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 69
+        width: 60
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 628336f50bf6782e0800000000000000
+      internalID: 4446488268423295664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchStand_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 69
+        width: 60
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe7cc4233fb2fd050800000000000000
+      internalID: -392772427536281535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchStand_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 69
+        width: 60
+        height: 59
+      alignment: 9
+      pivot: {x: 0.3, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 784e933d47d139a40800000000000000
+      internalID: -553842931399675125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5
+        width: 52
+        height: 55
+      alignment: 9
+      pivot: {x: 0.3, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee420fd3fe1ab8130800000000000000
+      internalID: 9104403080965488796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 5
+        width: 28
+        height: 56
+      alignment: 9
+      pivot: {x: 0.55, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f09c840522068de0800000000000000
+      internalID: 2786955321494418980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 5
+        width: 28
+        height: 55
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a834f64db11ddd80800000000000000
+      internalID: 6136782532557090057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 5
+        width: 27
+        height: 55
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b789197c3a89f20800000000000000
+      internalID: 1443618720243854690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 5
+        width: 29
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d89677e530f5a10800000000000000
+      internalID: -2342201777567197538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_5
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 5
+        width: 42
+        height: 55
+      alignment: 9
+      pivot: {x: 0.35, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d54beb72955350510800000000000000
+      internalID: 1253479332467687510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 5
+        width: 43
+        height: 55
+      alignment: 9
+      pivot: {x: 0.35, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ab00f385d1f637c0800000000000000
+      internalID: -4091127929034061782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 5
+        width: 43
+        height: 55
+      alignment: 9
+      pivot: {x: 0.35, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15184be5505c5be00800000000000000
+      internalID: 485547643097545988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchAttack_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 5
+        width: 53
+        height: 55
+      alignment: 9
+      pivot: {x: 0.3, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16832c7678c9a1ed0800000000000000
+      internalID: -5488029585827989268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchProjectile_1
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 16
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdc97a4cc12887e438e7a989cb252d08
+      internalID: 1357075004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchProjectile_2
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 13
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ffb84b1715f38498cdda6c088e9cde
+      internalID: -549552520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchProjectile_3
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 13
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbb14038ca4ae9e41bd06b8ccb829f96
+      internalID: 1518016956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchProjectile_4
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 13
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b981ff9ae1c984bb5a9ad22430921b
+      internalID: -983980026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchProjectile_5
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 13
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc7d6b04ddf2d0949afbdbe24ad7c478
+      internalID: -81969936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchProjectile_6
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 9
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f95984ca60644a45a5337abdf0e0c76
+      internalID: -769959405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WitchProjectile_7
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 9
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60083f8fbd59a04e9d35c77404e89fc
+      internalID: 766848639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 21c92d667c12b7f468bfc50c5255adc8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      WitchAttack_0: 9104403080965488796
+      WitchAttack_1: 2786955321494418980
+      WitchAttack_2: 6136782532557090057
+      WitchAttack_3: 1443618720243854690
+      WitchAttack_4: -2342201777567197538
+      WitchAttack_5: 1253479332467687510
+      WitchAttack_6: -4091127929034061782
+      WitchAttack_7: 485547643097545988
+      WitchAttack_8: -5488029585827989268
+      WitchProjectile_1: 1357075004
+      WitchProjectile_2: -549552520
+      WitchProjectile_3: 1518016956
+      WitchProjectile_4: -983980026
+      WitchProjectile_5: -81969936
+      WitchProjectile_6: -769959405
+      WitchProjectile_7: 766848639
+      WitchStand_0: -7376158875098006012
+      WitchStand_1: -1501955931498713811
+      WitchStand_2: 4446488268423295664
+      WitchStand_3: -392772427536281535
+      WitchStand_4: -553842931399675125
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,866 @@
+fileFormatVersion: 2
+guid: 46d3625e47a0909459fed9a3075bcf9c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8217617202212829904
+    second: Stage3_Enemy3_0
+  - first:
+      213: -3295740220910793661
+    second: Stage3_Enemy3_1
+  - first:
+      213: -3335480545856660453
+    second: Stage3_Enemy3_2
+  - first:
+      213: 2371809502765083834
+    second: Stage3_Enemy3_3
+  - first:
+      213: 3733406561025424475
+    second: Stage3_Enemy3_4
+  - first:
+      213: 7975594272810075572
+    second: Stage3_Enemy3_5
+  - first:
+      213: -1085012022505035242
+    second: Stage3_Enemy3_6
+  - first:
+      213: 5609447224692775943
+    second: Stage3_Enemy3_7
+  - first:
+      213: -3730116848416423077
+    second: Stage3_Enemy3_8
+  - first:
+      213: 7591918629077869233
+    second: Stage3_Enemy3_9
+  - first:
+      213: -1457465217271500040
+    second: Stage3_Enemy3_10
+  - first:
+      213: 3142079654024008656
+    second: Stage3_Enemy3_11
+  - first:
+      213: -1097608223537001817
+    second: Stage3_Enemy3_12
+  - first:
+      213: 5591614297111535499
+    second: Stage3_Enemy3_13
+  - first:
+      213: 5350501605178379818
+    second: Stage3_Enemy3_14
+  - first:
+      213: 1032139663951204176
+    second: Stage3_Enemy3_15
+  - first:
+      213: 4117344939894142432
+    second: Stage3_Enemy3_16
+  - first:
+      213: -8470693243028945713
+    second: Stage3_Enemy3_17
+  - first:
+      213: 6303275430772871354
+    second: Stage3_Enemy3_18
+  - first:
+      213: 6356082073122363030
+    second: Stage3_Enemy3_19
+  - first:
+      213: -7149154485358276844
+    second: Stage3_Enemy3_20
+  - first:
+      213: -8883771712551762391
+    second: Stage3_Enemy3_21
+  - first:
+      213: 597592118524884330
+    second: Stage3_Enemy3_22
+  - first:
+      213: 2553660989314040301
+    second: Stage3_Enemy3_23
+  - first:
+      213: 3030897468284534084
+    second: Stage3_Enemy3_24
+  - first:
+      213: 8183763283426765192
+    second: Stage3_Enemy3_25
+  - first:
+      213: -2036584776564872371
+    second: Stage3_Enemy3_26
+  - first:
+      213: 1084138474024169502
+    second: Stage3_Enemy3_27
+  - first:
+      213: 91132023228541116
+    second: Stage3_Enemy3_28
+  - first:
+      213: 8717610080883069879
+    second: Stage3_Enemy3_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 18
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CaptainAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 392
+        width: 118
+        height: 120
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03507f181b825fd80800000000000000
+      internalID: -8217617202212829904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainAttack_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 392
+        width: 118
+        height: 120
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34c05ac0bbd2342d0800000000000000
+      internalID: -3295740220910793661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainAttack_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 392
+        width: 118
+        height: 120
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1cdcfc9d1ef5b1d0800000000000000
+      internalID: -3335480545856660453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainStand_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 118
+        height: 117
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc65372d2c5ae020800000000000000
+      internalID: 2371809502765083834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainStand_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 264
+        width: 118
+        height: 117
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5c7800ac79bfc330800000000000000
+      internalID: 3733406561025424475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainStand_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 264
+        width: 118
+        height: 117
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b50c7f0cb00fae60800000000000000
+      internalID: 7975594272810075572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainStand_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 264
+        width: 118
+        height: 117
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a2f8d605341f0f0800000000000000
+      internalID: -1085012022505035242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainStand_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 264
+        width: 118
+        height: 117
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70c1d1ed782c8dd40800000000000000
+      internalID: 5609447224692775943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 136
+        width: 118
+        height: 114
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5380774d76fb3cc0800000000000000
+      internalID: -3730116848416423077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 132
+        width: 118
+        height: 118
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b26bd9f4c9eb5960800000000000000
+      internalID: 7591918629077869233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 131
+        width: 118
+        height: 119
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f27b0c5b1b06cbe0800000000000000
+      internalID: -1457465217271500040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 131
+        width: 118
+        height: 119
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d355124cc8ea9b20800000000000000
+      internalID: 3142079654024008656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 131
+        width: 118
+        height: 119
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aa8785d22384c0f0800000000000000
+      internalID: -1097608223537001817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 131
+        width: 118
+        height: 119
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8f145cd397699d40800000000000000
+      internalID: 5591614297111535499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 131
+        width: 118
+        height: 119
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e80da9cdcc04a40800000000000000
+      internalID: 5350501605178379818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 131
+        width: 118
+        height: 119
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f076c4e85e25e00800000000000000
+      internalID: 1032139663951204176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainDie_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 131
+        width: 118
+        height: 119
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e57420886fb32930800000000000000
+      internalID: 4117344939894142432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 118
+        height: 111
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc445f7006d027a80800000000000000
+      internalID: -8470693243028945713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 8
+        width: 118
+        height: 111
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab01aacab9bb97750800000000000000
+      internalID: 6303275430772871354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 8
+        width: 118
+        height: 111
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 696dfa338f6553850800000000000000
+      internalID: 6356082073122363030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_3
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 9
+        width: 118
+        height: 111
+      alignment: 9
+      pivot: {x: 0.4, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41f44d79fd919cc90800000000000000
+      internalID: -7149154485358276844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 9
+        width: 118
+        height: 110
+      alignment: 9
+      pivot: {x: 0.4, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92640b712b086b480800000000000000
+      internalID: -8883771712551762391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 9
+        width: 118
+        height: 110
+      alignment: 9
+      pivot: {x: 0.4, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a65bf399dd21b4800800000000000000
+      internalID: 597592118524884330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 9
+        width: 118
+        height: 110
+      alignment: 9
+      pivot: {x: 0.4, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de106d0d32d607320800000000000000
+      internalID: 2553660989314040301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 9
+        width: 118
+        height: 110
+      alignment: 9
+      pivot: {x: 0.4, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44dfab36039ef0a20800000000000000
+      internalID: 3030897468284534084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 9
+        width: 118
+        height: 110
+      alignment: 9
+      pivot: {x: 0.4, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 889698ac851929170800000000000000
+      internalID: 8183763283426765192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_9
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 8
+        width: 118
+        height: 111
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4be1ed9fe89cb3e0800000000000000
+      internalID: -2036584776564872371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CaptainMove_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 8
+        width: 118
+        height: 111
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e107b87b232ab0f00800000000000000
+      internalID: 1084138474024169502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5c60ccf48eb9dd340be39816560b1788
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":11.0,"y":4.0},"gridSpriteSize":{"x":118.0,"y":117.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":10.0,"y":14.0},"pivot":{"x":0.4000000059604645,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      CaptainAttack_0: -8217617202212829904
+      CaptainAttack_1: -3295740220910793661
+      CaptainAttack_2: -3335480545856660453
+      CaptainDie_0: -3730116848416423077
+      CaptainDie_1: 7591918629077869233
+      CaptainDie_2: -1457465217271500040
+      CaptainDie_3: 3142079654024008656
+      CaptainDie_4: -1097608223537001817
+      CaptainDie_5: 5591614297111535499
+      CaptainDie_6: 5350501605178379818
+      CaptainDie_7: 1032139663951204176
+      CaptainDie_8: 4117344939894142432
+      CaptainMove_0: -8470693243028945713
+      CaptainMove_1: 6303275430772871354
+      CaptainMove_10: 1084138474024169502
+      CaptainMove_2: 6356082073122363030
+      CaptainMove_3: -7149154485358276844
+      CaptainMove_4: -8883771712551762391
+      CaptainMove_5: 597592118524884330
+      CaptainMove_6: 2553660989314040301
+      CaptainMove_7: 3030897468284534084
+      CaptainMove_8: 8183763283426765192
+      CaptainMove_9: -2036584776564872371
+      CaptainStand_0: 2371809502765083834
+      CaptainStand_1: 3733406561025424475
+      CaptainStand_2: 7975594272810075572
+      CaptainStand_3: -1085012022505035242
+      CaptainStand_4: 5609447224692775943
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

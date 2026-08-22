@@ -1,0 +1,629 @@
+fileFormatVersion: 2
+guid: 9df4e41c2291d9b4189e6dd37ffcef07
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8733630910576162704
+    second: Stage1_Enemy3_0
+  - first:
+      213: 3707220299016613102
+    second: Stage1_Enemy3_1
+  - first:
+      213: -4890381491040662118
+    second: Stage1_Enemy3_2
+  - first:
+      213: -2857408585068792776
+    second: Stage1_Enemy3_3
+  - first:
+      213: 6723122286514378866
+    second: Stage1_Enemy3_4
+  - first:
+      213: -31738092126719304
+    second: Stage1_Enemy3_5
+  - first:
+      213: 1281894993734729393
+    second: Stage1_Enemy3_6
+  - first:
+      213: -6265926942441599685
+    second: Stage1_Enemy3_7
+  - first:
+      213: 8150873347660107664
+    second: Stage1_Enemy3_8
+  - first:
+      213: 6227272029151728125
+    second: Stage1_Enemy3_9
+  - first:
+      213: -1013984544309292396
+    second: Stage1_Enemy3_10
+  - first:
+      213: -8759298846322195051
+    second: Stage1_Enemy3_11
+  - first:
+      213: 3463173202237674229
+    second: Stage1_Enemy3_12
+  - first:
+      213: 3277923878273999050
+    second: Stage1_Enemy3_13
+  - first:
+      213: 4625814613392589055
+    second: Stage1_Enemy3_14
+  - first:
+      213: 8617614622690903155
+    second: Stage1_Enemy3_15
+  - first:
+      213: -8812436311884617925
+    second: Stage1_Enemy3_16
+  - first:
+      213: -3100667552562438538
+    second: Stage1_Enemy3_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 18
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HslimeMove_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 195
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0788cb7a5f8ebc680800000000000000
+      internalID: -8733630910576162704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeMove_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 195
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeca0036831b27330800000000000000
+      internalID: 3707220299016613102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeMove_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 195
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9d406ab1ffd12cb0800000000000000
+      internalID: -4890381491040662118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeStand_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 131
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 834b2d4f7027858d0800000000000000
+      internalID: -2857408585068792776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeStand_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 131
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 278933559145d4d50800000000000000
+      internalID: 6723122286514378866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeStand_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 131
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b230f49f5e3f8ff0800000000000000
+      internalID: -31738092126719304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeStand_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 131
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bef8ec74b43ac110800000000000000
+      internalID: 1281894993734729393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDashAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac0ea4d66668d7d20800000000000000
+      internalID: 3277923878273999050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDashAttack_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 3
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff0831cd1e1323040800000000000000
+      internalID: 4625814613392589055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDashAttack_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37404bc57dae79770800000000000000
+      internalID: 8617614622690903155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDashAttack_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 3
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b372d585ddfe3b580800000000000000
+      internalID: -8812436311884617925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDashAttack_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 3
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67e9feaf94738f4d0800000000000000
+      internalID: -3100667552562438538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDashAttack_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 3
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5750d72aa25b5af48999fe980b6447d4
+      internalID: 510041323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDie_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 67
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10051901e1cf20b4bb327e525ef38ac7
+      internalID: 1047185209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDie_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 67
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a7821310b06ee41b262d9613ce7613
+      internalID: -603423427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDie_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 67
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de10abc714fef454db4bcbcabb536836
+      internalID: -1127048790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDie_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 67
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3429ba49a914471499ba031c6dbc0c35
+      internalID: -748872042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDie_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 67
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa0227fc762192e46a315dbeb3369ccc
+      internalID: 1617009216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HslimeDie_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 67
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 064200a9ce1d34849a46e43d4902b8bb
+      internalID: -2058327643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 56905cdc9b1feb04e80e542aeb360363
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":4.0},"gridSpriteSize":{"x":62.0,"y":61.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":2.0,"y":3.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      1: 3707220299016613102
+      HslimeDashAttack_0: 3277923878273999050
+      HslimeDashAttack_1: 4625814613392589055
+      HslimeDashAttack_2: 8617614622690903155
+      HslimeDashAttack_3: -8812436311884617925
+      HslimeDashAttack_4: -3100667552562438538
+      HslimeDashAttack_5: 510041323
+      HslimeDie_0: 1047185209
+      HslimeDie_1: -603423427
+      HslimeDie_2: -1127048790
+      HslimeDie_3: -748872042
+      HslimeDie_4: 1617009216
+      HslimeDie_5: -2058327643
+      HslimeMove_0: -2857408585068792776
+      HslimeMove_1: 6723122286514378866
+      HslimeMove_2: -31738092126719304
+      HslimeMove_3: 1281894993734729393
+      HslimeStand_0: -2857408585068792776
+      HslimeStand_1: 6723122286514378866
+      HslimeStand_2: -31738092126719304
+      HslimeStand_3: 1281894993734729393
+      HslimeThrowAttack_0: -8733630910576162704
+      HslimeThrowAttack_1: 3707220299016613102
+      HslimeThrowAttack_2: -4890381491040662118
+      Stage1_Enemy3_1HslimeMove_0: 3707220299016613102
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

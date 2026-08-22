@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
     PlayerHP playerHP;
+    PlayerCombat combat;
 
 
     int jumpCount = 0;
@@ -27,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGround = false;
     float normalGravityScale;
+    float externalMovementMultiplier = 1f;
+    float? forcedHorizontalSpeed;
 
 
 
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerHP = GetComponent<PlayerHP>();
+        combat = GetComponent<PlayerCombat>();
         normalGravityScale = rigid.gravityScale;
     }
 
@@ -50,11 +54,11 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
 
 
-        if (h < 0)
+        if (!combat.IsBusy && h < 0)
         {
             spriteRenderer.flipX = true;
         }
-        else if (h > 0)
+        else if (!combat.IsBusy && h > 0)
         {
             spriteRenderer.flipX = false;
         }
@@ -66,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Space)
             || Input.GetKeyDown(KeyCode.W)
             || Input.GetKeyDown(KeyCode.UpArrow))
+            && !combat.IsBusy
             && !isDash
             && jumpCount < 2)
         {
@@ -78,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
 
             rigid.AddForce(
-                Vector2.up * jumpPower,
+                Vector2.up * jumpPower * externalMovementMultiplier,
                 ForceMode2D.Impulse
             );
 
@@ -110,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
             rigid.linearVelocity =
                 new Vector2(
-                    direction * dashPower,
+                    direction * dashPower * externalMovementMultiplier,
                     0f
                 );
 
@@ -152,7 +157,10 @@ public class PlayerMovement : MonoBehaviour
         {
             rigid.linearVelocity =
                 new Vector2(
-                    h * moveSpeed,
+                    forcedHorizontalSpeed
+                        ?? (combat.IsBusy
+                            ? 0f
+                            : h * moveSpeed * externalMovementMultiplier),
                     rigid.linearVelocity.y
                 );
         }
@@ -195,6 +203,24 @@ public class PlayerMovement : MonoBehaviour
     void ResetDash()
     {
         canDash = true;
+    }
+
+
+    public void SetExternalMovementMultiplier(float multiplier)
+    {
+        externalMovementMultiplier = Mathf.Max(0f, multiplier);
+    }
+
+
+    public void SetForcedHorizontalSpeed(float speed)
+    {
+        forcedHorizontalSpeed = speed;
+    }
+
+
+    public void ClearForcedHorizontalSpeed()
+    {
+        forcedHorizontalSpeed = null;
     }
 
     private void OnDisable()
