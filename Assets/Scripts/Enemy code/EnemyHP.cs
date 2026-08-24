@@ -37,12 +37,19 @@ public class EnemyHP : MonoBehaviour
 
     public int TakeDamage(int rawDamage)
     {
+        return TakeDamage(rawDamage, false);
+    }
+
+
+    public int TakeDamage(int rawDamage, bool ignoreDefense)
+    {
         if (isDead)
             return 0;
 
         int finalDamage = DamageCalculator.Calculate(
             rawDamage,
-            stats.defense);
+            stats.defense,
+            ignoreDefense);
         int effectiveDamage = Mathf.Min(finalDamage, stats.currentHP);
 
         stats.currentHP -= effectiveDamage;

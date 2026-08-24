@@ -16,7 +16,7 @@ public class EnemyGasArea : MonoBehaviour
 
     private void Awake()
     {
-        damageFilter.NoFilter();
+        damageFilter = ContactFilter2D.noFilter;
     }
 
 

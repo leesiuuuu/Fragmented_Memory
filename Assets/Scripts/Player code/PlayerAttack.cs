@@ -145,9 +145,18 @@ public class PlayerAttack : MonoBehaviour
                     );
 
 
-                enemyHP.TakeDamage(damage);
+                int dealtDamage = enemyHP.TakeDamage(damage);
+                HealFromDamage(dealtDamage);
             }
         }
+    }
+
+    private void HealFromDamage(int damage)
+    {
+        if (damage <= 0 || playerStats.CurrentLifeSteal <= 0f)
+            return;
+
+        playerHP.Heal(Mathf.RoundToInt(damage * playerStats.CurrentLifeSteal / 100f));
     }
 
 

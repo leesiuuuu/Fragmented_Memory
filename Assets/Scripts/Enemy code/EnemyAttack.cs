@@ -76,6 +76,7 @@ public class EnemyAttack : MonoBehaviour
     private bool isMeleeAttacking;
     private bool isLandingForAttack;
     private bool stoppedForPlayerDeath;
+    private bool isStunned;
     private readonly List<Collider2D> meleeHits = new List<Collider2D>(16);
     private ContactFilter2D attackFilter;
 
@@ -90,7 +91,7 @@ public class EnemyAttack : MonoBehaviour
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         ownerCollider = GetComponent<Collider2D>();
-        attackFilter.NoFilter();
+        attackFilter = ContactFilter2D.noFilter;
     }
 
 
@@ -108,6 +109,9 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
+        if (isStunned)
+            return;
+
         if (playerHP != null && playerHP.IsDead)
         {
             if (!stoppedForPlayerDeath)
@@ -160,6 +164,23 @@ public class EnemyAttack : MonoBehaviour
     public void EndDashAttack()
     {
         dashAttackActive = false;
+    }
+
+
+    public void SetStunned(bool stunned)
+    {
+        isStunned = stunned;
+
+        if (!stunned)
+            return;
+
+        CancelInvoke();
+        jumpAttackActive = false;
+        dashAttackActive = false;
+        isThrowing = false;
+        isAreaAttacking = false;
+        isMeleeAttacking = false;
+        isLandingForAttack = false;
     }
 
 

@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     float externalMovementMultiplier = 1f;
     float? forcedHorizontalSpeed;
 
+    public float CurrentMoveSpeed => moveSpeed * externalMovementMultiplier;
+    public event System.Action MovementSpeedChanged;
+
 
 
     void Awake()
@@ -208,7 +211,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetExternalMovementMultiplier(float multiplier)
     {
-        externalMovementMultiplier = Mathf.Max(0f, multiplier);
+        float nextMultiplier = Mathf.Max(0f, multiplier);
+
+        if (Mathf.Approximately(externalMovementMultiplier, nextMultiplier))
+            return;
+
+        externalMovementMultiplier = nextMultiplier;
+        MovementSpeedChanged?.Invoke();
     }
 
 

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    private int temporaryAttack;
+    private float temporaryLifeSteal;
+
     [Header("기본 스탯")]
     public int maxHealth = 1500;
     public int attack = 300;
@@ -21,6 +24,8 @@ public class PlayerStats : MonoBehaviour
     [Header("현재 스탯")]
     public int currentHealth;
     public event System.Action StatsChanged;
+    public int CurrentAttack => attack + temporaryAttack;
+    public float CurrentLifeSteal => lifeSteal + temporaryLifeSteal;
 
     private void Awake()
     {
@@ -69,16 +74,28 @@ public class PlayerStats : MonoBehaviour
 
     public int GetAttackDamage()
     {
-        int damage = attack;
+        int damage = CurrentAttack;
 
         if (Random.Range(0f, 100f) <= criticalChance)
         {
             damage = Mathf.RoundToInt(
-                attack * (criticalDamage / 100f));
+                CurrentAttack * (criticalDamage / 100f));
 
             // Debug.Log("Critical!");
         }
 
         return damage;
+    }
+
+    public void SetTemporaryAttack(int amount)
+    {
+        temporaryAttack = amount;
+        StatsChanged?.Invoke();
+    }
+
+    public void SetTemporaryLifeSteal(float amount)
+    {
+        temporaryLifeSteal = amount;
+        StatsChanged?.Invoke();
     }
 }

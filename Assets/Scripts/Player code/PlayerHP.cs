@@ -5,17 +5,20 @@ public class PlayerHP : MonoBehaviour
     private PlayerStats stats;
     private Animator animator;
     private PlayerInvincibility invincibility;
+    private ParryManager parryManager;
 
     [SerializeField] private HPBar hpBar;
 
     private bool isDead;
     public bool IsDead => isDead;
+    public event System.Action<int, int> HealthChanged;
 
     private void Awake()
     {
         stats = GetComponent<PlayerStats>();
         animator = GetComponent<Animator>();
         invincibility = GetComponent<PlayerInvincibility>();
+        parryManager = GetComponent<ParryManager>();
 
         if (stats != null)
             stats.StatsChanged += UpdateHPBar;
@@ -37,6 +40,9 @@ public class PlayerHP : MonoBehaviour
         if (isDead || (invincibility != null && invincibility.IsInvincible))
             return 0;
 
+        if (parryManager != null && parryManager.TryParry())
+            return 0;
+
         int finalDamage = DamageCalculator.Calculate(
             rawDamage,
             stats.defense);
@@ -48,6 +54,7 @@ public class PlayerHP : MonoBehaviour
             invincibility.StartHitInvincibility();
 
         hpBar.SetHP(stats.currentHealth, stats.maxHealth);
+        HealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
 
         if (stats.currentHealth <= 0)
         {
@@ -65,6 +72,7 @@ public class PlayerHP : MonoBehaviour
             stats.currentHealth = stats.maxHealth;
 
         hpBar.SetHP(stats.currentHealth, stats.maxHealth);
+        HealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
     }
 
     private void Die()
