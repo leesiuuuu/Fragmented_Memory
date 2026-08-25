@@ -9,6 +9,7 @@ public class ParryManager : MonoBehaviour
     [SerializeField] private Vector2 parryOffset = new Vector2(1f, 0f);
     [SerializeField] private LayerMask parryLayers = ~0;
 
+    private Animator animator;
     private SpriteRenderer spriteRenderer;
     private PlayerHP playerHP;
     private PlayerCombat combat;
@@ -19,6 +20,7 @@ public class ParryManager : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerHP = GetComponent<PlayerHP>();
         combat = GetComponent<PlayerCombat>();
@@ -30,7 +32,11 @@ public class ParryManager : MonoBehaviour
             return;
 
         if (Input.GetKeyDown(parryKey) && !combat.IsBusy)
+        {
+            combat.StartAction();
             parryEndTime = Time.time + parryDuration;
+            animator.SetTrigger("Parry");
+        }
     }
 
     public bool TryParry()
@@ -65,6 +71,11 @@ public class ParryManager : MonoBehaviour
 
         CanPoke = false;
         return true;
+    }
+
+    public void EndParry()
+    {
+        combat.EndAction();
     }
 
     private void OnDrawGizmosSelected()

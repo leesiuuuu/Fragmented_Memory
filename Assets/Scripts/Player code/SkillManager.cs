@@ -196,8 +196,15 @@ public class SkillManager : MonoBehaviour
     {
         combat.StartAction();
         canUltimate = false;
-        ShowTemporaryVisual(GetAttackCenter(ultimateOffset), ultimateSize,
-            new Color(1f, 1f, 1f, 0.6f));
+        animator.SetTrigger("Ultimate");
+        Invoke(nameof(ResetUltimateCoolTime), UltimateCoolTime);
+    }
+
+    public void UltimateDamage()
+    {
+        if (playerHP.IsDead)
+            return;
+
         AttackDamage(UltimateDamageMultiplier, ultimateOffset, ultimateSize, true);
 
         if (ultimateBuffRoutine != null)
@@ -205,8 +212,6 @@ public class SkillManager : MonoBehaviour
 
         IsUltimateBuffActive = true;
         ultimateBuffRoutine = StartCoroutine(UltimateBuff());
-        Invoke(nameof(EndSkill), codeSkillActionDuration);
-        Invoke(nameof(ResetUltimateCoolTime), UltimateCoolTime);
     }
 
     public void PokeDamage()
