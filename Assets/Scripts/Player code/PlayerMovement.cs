@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     PlayerHP playerHP;
     PlayerCombat combat;
+    PlayerInvincibility invincibility;
 
 
     int jumpCount = 0;
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         playerHP = GetComponent<PlayerHP>();
         combat = GetComponent<PlayerCombat>();
+        invincibility = GetComponent<PlayerInvincibility>();
         normalGravityScale = rigid.gravityScale;
     }
 
@@ -113,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
         {
             canDash = false;
             isDash = true;
+            invincibility?.StartDashInvincibility();
 
             float direction = spriteRenderer.flipX ? -1 : 1;
 
@@ -194,6 +197,7 @@ public class PlayerMovement : MonoBehaviour
     void EndDash()
     {
         isDash = false;
+        invincibility?.EndDashInvincibility();
         rigid.gravityScale = normalGravityScale;
         rigid.linearVelocity = new Vector2(
             rigid.linearVelocity.x,
@@ -239,6 +243,7 @@ public class PlayerMovement : MonoBehaviour
 
         isDash = false;
         canDash = true;
+        invincibility?.EndDashInvincibility();
 
         if (rigid != null)
             rigid.gravityScale = normalGravityScale;
