@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 적 프리팹 설정에 따라 필요한 공격을 실행한다.
+// 이동 공격은 EnemyMovement가 시작과 끝을 알린다. 나머지는 거리와 쿨타임으로 선택한다.
 public class EnemyAttack : MonoBehaviour
 {
     private EnemyStats stats;
@@ -14,6 +16,7 @@ public class EnemyAttack : MonoBehaviour
     private static readonly int RangedAttack = Animator.StringToHash("RangedAttack");
     private static readonly int MeleeAttack = Animator.StringToHash("MeleeAttack");
     private static readonly int Landing = Animator.StringToHash("Landing");
+    private static readonly int ContactAttack = Animator.StringToHash("ContactAttack");
 
     [Header("공격 전 착지")]
     [SerializeField] private bool useLandingBeforeAttack;
@@ -22,6 +25,7 @@ public class EnemyAttack : MonoBehaviour
     [Header("접촉 공격")]
     [SerializeField] private bool useContactAttack;
     [SerializeField] private float contactAttackCooldown = 2f;
+    [SerializeField] private bool useContactAttackAnimation;
 
     [Header("특수 이동 공격")]
     [SerializeField] private bool useJumpImpactAttack;
@@ -41,6 +45,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float projectileDamageMultiplier = 0.5f;
     [SerializeField] private float throwDelay = 0.25f;
     [SerializeField] private float throwAnimationDuration = 0.333f;
+    [SerializeField] private bool useProjectileAnimationEvent;
 
     [Header("범위 공격")]
     [SerializeField] private bool useAreaAttack;
@@ -72,6 +77,8 @@ public class EnemyAttack : MonoBehaviour
     private float nextAreaAttackTime;
     private float nextMeleeAttackTime;
     private bool isThrowing;
+    private bool isContactAttacking;
+    private PlayerHP contactAttackTarget;
     private bool isAreaAttacking;
     private bool isMeleeAttacking;
     private bool isLandingForAttack;
@@ -80,7 +87,8 @@ public class EnemyAttack : MonoBehaviour
     private readonly List<Collider2D> meleeHits = new List<Collider2D>(16);
     private ContactFilter2D attackFilter;
 
-    public bool IsStationaryAttacking => isThrowing || isAreaAttacking || isMeleeAttacking
+    public bool IsStationaryAttacking => isThrowing || isContactAttacking
+        || isAreaAttacking || isMeleeAttacking
         || isLandingForAttack;
 
 
@@ -178,6 +186,8 @@ public class EnemyAttack : MonoBehaviour
         jumpAttackActive = false;
         dashAttackActive = false;
         isThrowing = false;
+        isContactAttacking = false;
+        contactAttackTarget = null;
         isAreaAttacking = false;
         isMeleeAttacking = false;
         isLandingForAttack = false;
@@ -220,6 +230,15 @@ public class EnemyAttack : MonoBehaviour
         if (useContactAttack && Time.time >= nextContactAttackTime)
         {
             nextContactAttackTime = Time.time + contactAttackCooldown;
+
+            if (useContactAttackAnimation)
+            {
+                isContactAttacking = true;
+                contactAttackTarget = playerHP;
+                animator.SetTrigger(ContactAttack);
+                return;
+            }
+
             playerHP.TakeDamage(stats.attack);
         }
     }
@@ -308,6 +327,10 @@ public class EnemyAttack : MonoBehaviour
     {
         isLandingForAttack = false;
         animator.SetTrigger(RangedAttack);
+
+        if (useProjectileAnimationEvent)
+            return;
+
         Invoke(nameof(SpawnProjectile), throwDelay);
         Invoke(nameof(FinishThrowAttack), throwAnimationDuration);
     }
@@ -322,7 +345,7 @@ public class EnemyAttack : MonoBehaviour
     }
 
 
-    private void SpawnProjectile()
+    public void SpawnProjectile()
     {
         if (player == null || playerHP == null || playerHP.IsDead)
             return;
@@ -398,9 +421,25 @@ public class EnemyAttack : MonoBehaviour
     }
 
 
-    private void FinishThrowAttack()
+    public void FinishThrowAttack()
     {
         isThrowing = false;
+    }
+
+
+    public void ApplyContactAttackDamage()
+    {
+        if (!isContactAttacking || contactAttackTarget == null || contactAttackTarget.IsDead)
+            return;
+
+        contactAttackTarget.TakeDamage(stats.attack);
+    }
+
+
+    public void FinishContactAttack()
+    {
+        isContactAttacking = false;
+        contactAttackTarget = null;
     }
 
 
@@ -421,6 +460,8 @@ public class EnemyAttack : MonoBehaviour
         stoppedForPlayerDeath = true;
         CancelInvoke();
         isThrowing = false;
+        isContactAttacking = false;
+        contactAttackTarget = null;
         isAreaAttacking = false;
         isMeleeAttacking = false;
         isLandingForAttack = false;
@@ -431,6 +472,8 @@ public class EnemyAttack : MonoBehaviour
     {
         CancelInvoke();
         isThrowing = false;
+        isContactAttacking = false;
+        contactAttackTarget = null;
         isAreaAttacking = false;
         isMeleeAttacking = false;
         isLandingForAttack = false;

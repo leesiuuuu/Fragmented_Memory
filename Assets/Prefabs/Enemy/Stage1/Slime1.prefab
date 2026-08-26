@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 1398020363954212421}
   - component: {fileID: -8453922492764064474}
   - component: {fileID: 868505644877056222}
+  - component: {fileID: 938049667104981655}
   m_Layer: 0
   m_Name: Slime1
   m_TagString: Enemy
@@ -227,12 +228,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8069619478552258361, guid: 60c47d7dd4054d84cb6a46788ed58478, type: 3}
+  m_Sprite: {fileID: 4097260106649167521, guid: 60c47d7dd4054d84cb6a46788ed58478, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.21, y: 0.18}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -280,6 +281,10 @@ MonoBehaviour:
   stoppingDistance: 1.3
   detectionRange: 6
   invertFacing: 0
+  useFlyingMovement: 0
+  flyingHeight: 0.5
+  takeoffSpeed: 1.5
+  landingSpeed: 1.2
   useHopMovement: 1
   hopPower: 5
   hopCooldown: 0.7
@@ -305,8 +310,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8713bf57f9d3b2b4498d07168379d22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
+  useLandingBeforeAttack: 0
+  landingDuration: 0.417
   useContactAttack: 1
   contactAttackCooldown: 3
+  useContactAttackAnimation: 1
   useJumpImpactAttack: 0
   useDashImpactAttack: 0
   useRangedAttack: 0
@@ -317,9 +325,29 @@ MonoBehaviour:
   rangedAttackCooldown: 3
   projectileSpeed: 7
   projectileLifetime: 4
+  projectileMaxDistance: 0
   projectileHomingDuration: 0
+  projectileDamageMultiplier: 0.5
   throwDelay: 0.25
   throwAnimationDuration: 0.333
+  useProjectileAnimationEvent: 0
+  useAreaAttack: 0
+  areaPrefab: {fileID: 0}
+  areaPoint: {fileID: 0}
+  areaAttackRange: 3
+  areaAttackCooldown: 4
+  areaDuration: 2
+  areaDamageInterval: 0.5
+  areaTravelDistance: 2
+  areaTravelDuration: 0.25
+  areaAttackDelay: 0.167
+  areaAttackAnimationDuration: 0.333
+  useMeleeAttack: 0
+  attackPoint: {fileID: 0}
+  meleeAttackRange: 1.5
+  meleeAttackCooldown: 4
+  meleeAttackDelay: 0.167
+  meleeAttackAnimationDuration: 0.25
 --- !u!114 &3820308879397721962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +361,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
   hpBar: {fileID: 6762040416143710936}
-  deathAnimation: {fileID: 0}
+  deathAnimation: {fileID: 7400000, guid: a33d351789032254289d4566f7654dce, type: 2}
+  deathDuration: 2
+  hideHPBarOnDeath: 1
 --- !u!114 &1398020363954212421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +436,20 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05, y: 0.4}
   m_Size: {x: 1.1, y: 0.7}
   m_Direction: 1
+--- !u!114 &938049667104981655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482695373007947413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076da3b1880f4942f5e112609c8db897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMemoryDrop
+  settings: {fileID: 11400000, guid: efcdf48ca84a5e14db33b140f2e541df, type: 2}
+  dropOffset: {x: 0, y: 0.5}
 --- !u!1 &8567879259017051910
 GameObject:
   m_ObjectHideFlags: 0

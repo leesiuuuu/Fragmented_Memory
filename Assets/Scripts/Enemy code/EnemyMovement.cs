@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 플레이어와의 거리에 따라 필요한 이동을 실행한다. 추적과 점프와 큰 점프와 지상 돌진을 지원한다.
+// 특수 이동 중에는 EnemyAttack에 공격 판정 시작과 종료를 전달한다.
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rigid;
@@ -12,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
 
     private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
     private static readonly int Jump = Animator.StringToHash("Jump");
+    private static readonly int JumpAttack = Animator.StringToHash("JumpAttack");
     private static readonly int DashAttack = Animator.StringToHash("DashAttack");
 
     [Header("추적")]
@@ -198,7 +201,7 @@ public class EnemyMovement : MonoBehaviour
         leftGroundAfterJump = false;
         nextJumpTime = Time.time + jumpCooldown;
         rigid.linearVelocity = new Vector2(direction * jumpHorizontalSpeed, jumpPower);
-        animator.SetTrigger(Jump);
+        animator.SetTrigger(JumpAttack);
         enemyAttack?.BeginJumpAttack();
 
         return true;
