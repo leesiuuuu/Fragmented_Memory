@@ -820,6 +820,7 @@ GameObject:
   - component: {fileID: 1197494136}
   - component: {fileID: 1197494140}
   - component: {fileID: 1197494135}
+  - component: {fileID: 900000001}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1060,8 +1061,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cebb11d4cf47742b0c190d31797e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillManager
-  pokeCoolTime: 2
-  strikeCoolTime: 3
+  wavePrefab: {fileID: 400000, guid: a7b0c84905d7420cb65d829fc7d552d0, type: 3}
+  strongWavePrefab: {fileID: 400000, guid: a7b0c84905d7420cb65d829fc7d552d0, type: 3}
+  areaVisualPrefab: {fileID: 300000, guid: bf568296261f43708bd2eea806ccf551, type: 3}
 --- !u!114 &1197494137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,6 +1391,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 890511190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &900000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197494125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b5a91f2d504fe08fab53ed2675b725, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatusUI
+  toggleKey: 9
+  panelPrefab: {fileID: 100005, guid: 194c5e66f95f4b66991e1d8476efccbe, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

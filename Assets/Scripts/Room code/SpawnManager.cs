@@ -96,6 +96,15 @@ public class SpawnManager : MonoBehaviour
             if (enemyHP != null)
                 enemyHP.SetSpawnManager(this);
 
+            // 조각 드롭 확률에는 현재 플레이어의 매력이 필요하다.
+            // 적이 플레이어를 직접 찾지 않도록 이미 받은 지갑에서 같은 오브젝트의 스탯을 넘긴다.
+            EnemyMemoryDrop memoryDrop = enemy.GetComponent<EnemyMemoryDrop>();
+
+            if (memoryDrop != null)
+                memoryDrop.Initialize(rewardWallet != null
+                    ? rewardWallet.GetComponent<PlayerStats>()
+                    : null);
+
             enemyCount++;
         }
 
