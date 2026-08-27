@@ -17,6 +17,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   type: 0
   rarity: 1
+  synergy: 9
   health: 250
   attack: 50
   defense: -50

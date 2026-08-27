@@ -15,6 +15,12 @@ public enum MemoryRarity
 }
 
 
+public enum SynergyType
+{
+    None, StrongWarrior, OvercomeTrauma, Dreamer, Passion,
+    Gambler, Rose, Despair, Escape, Fear, Petal
+}
+
 [CreateAssetMenu(fileName = "New Memory", menuName = "Memory/Memory Data")]
 public class MemoryData : ScriptableObject
 {
@@ -32,6 +38,8 @@ public class MemoryData : ScriptableObject
 
     public MemoryRarity rarity;
 
+
+    public SynergyType synergy;
 
     [Header("능력치 증가")]
     public float health;
