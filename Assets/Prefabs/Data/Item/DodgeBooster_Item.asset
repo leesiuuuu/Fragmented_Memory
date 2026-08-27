@@ -17,3 +17,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   price: 40000
   itemType: 1
+  effectType: 8
+  effectValue: 1
+  duration: 0

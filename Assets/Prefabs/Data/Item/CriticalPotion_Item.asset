@@ -16,4 +16,7 @@ MonoBehaviour:
   description: "치명타 확률이 2분 동안 25% 증가함"
   icon: {fileID: 0}
   price: 2000
-  itemType: 1
+  itemType: 0
+  effectType: 3
+  effectValue: 25
+  duration: 120

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65c92a077ff4831e4d0015f8b7ca786, type: 3}
+  m_Name: MemoryDropSettings
+  m_EditorClassIdentifier: Assembly-CSharp::MemoryDropSettings
+  pickupPrefab: {fileID: 910129333110927141, guid: 154db2bddd313c746b0a53aa39dad3c5, type: 3}
+  memories:
+  - {fileID: 11400000, guid: b27c6ffb5ae44175b9630b1397c6afbb, type: 2}
+  - {fileID: 11400000, guid: 8bade53e39a5b8f4d9cb0cd64d899efe, type: 2}
+  - {fileID: 11400000, guid: a0fbf18082c94d89910cf258d20f9b25, type: 2}
+  - {fileID: 11400000, guid: 42db5d6786d8440d9695f8614bded322, type: 2}
+  - {fileID: 11400000, guid: 88f87832514fb6548a905b7ce6b04d5a, type: 2}
+  - {fileID: 11400000, guid: 26667e99ade542529217a86d34a1503b, type: 2}

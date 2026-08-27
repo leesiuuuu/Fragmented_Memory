@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,32 +10,53 @@ public class ShopItemSlot : MonoBehaviour
     [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private TMP_Text priceText;
     [SerializeField] private Button buyButton;
-    [SerializeField] private GameObject soldOutObject;
-
-    private ShopManager shopManager;
     private int itemIndex;
+    private Action<int> selected;
 
     private void Awake()
     {
-        buyButton.onClick.AddListener(Buy);
+        buyButton.onClick.AddListener(Select);
+
+        RectTransform buttonRect = buyButton.transform as RectTransform;
+        if (buttonRect != null)
+        {
+            buttonRect.anchorMin = Vector2.zero;
+            buttonRect.anchorMax = Vector2.one;
+            buttonRect.anchoredPosition = Vector2.zero;
+            buttonRect.sizeDelta = Vector2.zero;
+        }
+
+        TMP_Text buttonText = buyButton.GetComponentInChildren<TMP_Text>();
+        if (buttonText != null)
+            buttonText.gameObject.SetActive(false);
     }
 
-    public void Setup(ShopManager manager, int index, ItemData item, bool isPurchased)
+    private void OnDestroy()
     {
-        shopManager = manager;
+        buyButton.onClick.RemoveListener(Select);
+    }
+
+    public void Setup(int index, ItemData item, Action<int> onSelected)
+    {
         itemIndex = index;
+        selected = onSelected;
 
         icon.sprite = item.icon;
         icon.enabled = item.icon != null;
-        itemNameText.text = item.itemName;
-        descriptionText.text = item.description;
-        priceText.text = item.price.ToString();
-        buyButton.interactable = !isPurchased;
-
-        if (soldOutObject != null)
-            soldOutObject.SetActive(isPurchased);
+        itemNameText.gameObject.SetActive(false);
+        descriptionText.gameObject.SetActive(false);
+        priceText.gameObject.SetActive(false);
+        buyButton.interactable = true;
 
         gameObject.SetActive(true);
+    }
+
+    public void SetSelected(bool isSelected)
+    {
+        if (buyButton.image != null)
+            buyButton.image.color = isSelected
+                ? new Color(1f, 0.88f, 0.55f, 0.3f)
+                : Color.clear;
     }
 
     public void Hide()
@@ -42,8 +64,8 @@ public class ShopItemSlot : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void Buy()
+    private void Select()
     {
-        shopManager?.Buy(itemIndex);
+        selected?.Invoke(itemIndex);
     }
 }
