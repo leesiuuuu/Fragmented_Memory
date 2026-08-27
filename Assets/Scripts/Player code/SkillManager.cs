@@ -1,24 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-// 기본 입력 키 (각 입력은 담당 컴포넌트의 Inspector에서 변경 가능)
-// Z: 검기
-// X: 패링
-// C: 강한 참격
-// R: 찌르기 (패링 성공 후 다음 찌르기 강화)
-// F: 내려찍기
-// V: 궁극기
-// Tab: 플레이어 상태 패널 열기/닫기
+// 기본 입력 키는 담당 컴포넌트의 Inspector에서 변경할 수 있다.
+// 이동은 A와 D를 사용한다.
+// 점프는 Space를 사용한다.
+// 대쉬는 왼쪽 Shift를 사용한다.
+// 일반 공격은 마우스 왼쪽 버튼을 사용한다.
+// 패링은 마우스 오른쪽 버튼을 사용한다.
+// 검기는 Q를 사용한다.
+// 강한 참격은 R을 사용한다.
+// 찌르기는 F를 사용한다. 패링 성공 후 다음 찌르기가 강화된다.
+// 내려찍기는 T를 사용한다.
+// 궁극기는 G를 사용한다.
+// 상호작용은 E를 사용한다.
+// 플레이어 상태 패널은 Tab으로 열고 닫는다.
+// 소모품 인벤토리는 I로 열고 닫는다.
+// 선택한 소모품은 E로 사용한다.
+// 일시정지는 Esc를 사용한다.
 public class SkillManager : MonoBehaviour
 {
     private const float StrikeRiseSpeed = 35f;
     private const float StrikeFallSpeed = 30f;
-    private const float WaveDamageMultiplier = 0.75f;
-    private const float WaveCoolTime = 3f;
+    private const float SlashDamageMultiplier = 0.75f;
+    private const float SlashCoolTime = 3f;
     private const float StrongMeleeDamageMultiplier = 1.5f;
-    private const float StrongWaveDamageMultiplier = 1f;
-    private const float StrongSlashCoolTime = 6f;
+    private const float StrongStrikeProjectileDamageMultiplier = 1f;
+    private const float StrongStrikeCoolTime = 6f;
     private const float PokeDamageMultiplier = 1f;
     private const float ParryPokeDamageMultiplier = 1.25f;
     private const float PokeLifeStealIncrease = 20f;
@@ -31,47 +40,56 @@ public class SkillManager : MonoBehaviour
     private const int UltimateAttackBonus = 100;
     private const float UltimateBuffDuration = 10f;
     private const float UltimateCoolTime = 12f;
+    private const float CodeSkillActionDuration = 0.25f;
 
     [Header("입력")]
-    [SerializeField] private KeyCode waveKey = KeyCode.Z;
-    [SerializeField] private KeyCode strongSlashKey = KeyCode.C;
-    [SerializeField] private KeyCode pokeKey = KeyCode.R;
-    [SerializeField] private KeyCode strikeKey = KeyCode.F;
+    [FormerlySerializedAs("waveKey")]
+    [SerializeField] private KeyCode slashKey = KeyCode.Q;
+    [FormerlySerializedAs("strongSlashKey")]
+    [SerializeField] private KeyCode strongStrikeKey = KeyCode.R;
+    [SerializeField] private KeyCode pokeKey = KeyCode.F;
+    [SerializeField] private KeyCode strikeKey = KeyCode.C;
     [SerializeField] private KeyCode ultimateKey = KeyCode.V;
 
     [Header("검기")]
-    [SerializeField] private PlayerSkillProjectile wavePrefab;
-    [SerializeField] private Vector2 waveSpawnOffset = new Vector2(1f, 0f);
-    [SerializeField] private Vector2 waveSize = new Vector2(1.2f, 0.4f);
-    [SerializeField] private float waveSpeed = 10f;
-    [SerializeField] private float waveMaxDistance = 8f;
+    [FormerlySerializedAs("wavePrefab")]
+    [SerializeField] private PlayerSkillProjectile slashPrefab;
+    [FormerlySerializedAs("waveSpawnOffset")]
+    [SerializeField] private Vector2 slashSpawnOffset = new Vector2(1f, 0f);
+    [FormerlySerializedAs("waveSize")]
+    [SerializeField] private Vector2 slashSize = new Vector2(1.2f, 0.4f);
+    [FormerlySerializedAs("waveSpeed")]
+    [SerializeField] private float slashSpeed = 10f;
+    [FormerlySerializedAs("waveMaxDistance")]
+    [SerializeField] private float slashMaxDistance = 8f;
 
     [Header("강한 참격")]
-    [SerializeField] private Vector2 strongMeleeSize = new Vector2(2.5f, 1.8f);
+    [SerializeField] private GameObject strongMeleeAttackBoxPrefab;
     [SerializeField] private Vector2 strongMeleeOffset = new Vector2(1.2f, 0f);
-    [SerializeField] private PlayerSkillProjectile strongWavePrefab;
-    [SerializeField] private Vector2 strongWaveSpawnOffset = new Vector2(1f, 0f);
-    [SerializeField] private Vector2 strongWaveSize = new Vector2(1.8f, 0.8f);
-    [SerializeField] private float strongWaveDelay = 0.15f;
-    [SerializeField] private float strongWaveSpeed = 8f;
-    [SerializeField] private float strongWaveMaxDistance = 6f;
+    [FormerlySerializedAs("strongWavePrefab")]
+    [SerializeField] private PlayerSkillProjectile strongStrikeProjectilePrefab;
+    [FormerlySerializedAs("strongWaveSpawnOffset")]
+    [SerializeField] private Vector2 strongStrikeProjectileSpawnOffset = new Vector2(1f, 0f);
+    [FormerlySerializedAs("strongWaveSize")]
+    [SerializeField] private Vector2 strongStrikeProjectileSize = new Vector2(1.8f, 0.8f);
+    [FormerlySerializedAs("strongWaveSpeed")]
+    [SerializeField] private float strongStrikeProjectileSpeed = 8f;
+    [FormerlySerializedAs("strongWaveMaxDistance")]
+    [SerializeField] private float strongStrikeProjectileMaxDistance = 6f;
 
     [Header("찌르기")]
-    [SerializeField] private Vector2 pokeSize = new Vector2(1.5f, 1f);
+    [SerializeField] private GameObject pokeAttackBoxPrefab;
     [SerializeField] private Vector2 pokeOffset = new Vector2(1f, 0f);
     [SerializeField] private float pokeLifeStealDuration = 5f;
 
     [Header("내려찍기")]
-    [SerializeField] private Vector2 strikeDirectSize = new Vector2(1.5f, 1f);
-    [SerializeField] private Vector2 strikeAreaSize = new Vector2(4f, 2f);
+    [SerializeField] private GameObject strikeDirectAttackBoxPrefab;
+    [SerializeField] private GameObject strikeAreaAttackBoxPrefab;
     [SerializeField] private Vector2 strikeOffset = new Vector2(1f, 0f);
 
     [Header("궁극기")]
-    [SerializeField] private Vector2 ultimateSize = new Vector2(4f, 1.5f);
+    [SerializeField] private GameObject ultimateAttackBoxPrefab;
     [SerializeField] private Vector2 ultimateOffset = new Vector2(2f, 0f);
-    [Header("임시 연출")]
-    [SerializeField] private SkillAreaVisual areaVisualPrefab;
-    [SerializeField] private float codeSkillActionDuration = 0.25f;
 
     private Animator animator;
     private PlayerStats playerStats;
@@ -81,8 +99,8 @@ public class SkillManager : MonoBehaviour
     private Rigidbody2D rigid;
     private PlayerMovement movement;
     private ParryManager parryManager;
-    private bool canWave = true;
-    private bool canStrongSlash = true;
+    private bool canSlash = true;
+    private bool canStrongStrike = true;
     private bool canPoke = true;
     private bool canStrike = true;
     private bool canUltimate = true;
@@ -94,6 +112,9 @@ public class SkillManager : MonoBehaviour
 
     private Coroutine pokeLifeStealRoutine;
     private Coroutine ultimateBuffRoutine;
+    private PlayerSynergyManager synergyManager;
+    private Coroutine skillCooldownRoutine;
+    private float skillCooldownReduction;
 
     private void Awake()
     {
@@ -105,6 +126,7 @@ public class SkillManager : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         movement = GetComponent<PlayerMovement>();
         parryManager = GetComponent<ParryManager>();
+        synergyManager = GetComponent<PlayerSynergyManager>();
     }
 
     private void Update()
@@ -117,11 +139,11 @@ public class SkillManager : MonoBehaviour
 
     private void SkillInput()
     {
-        if (Input.GetKeyDown(waveKey) && !combat.IsBusy && canWave)
-            Wave();
+        if (Input.GetKeyDown(slashKey) && !combat.IsBusy && canSlash)
+            Slash();
 
-        if (Input.GetKeyDown(strongSlashKey) && !combat.IsBusy && canStrongSlash)
-            StrongSlash();
+        if (Input.GetKeyDown(strongStrikeKey) && !combat.IsBusy && canStrongStrike)
+            StrongStrike();
 
         if (Input.GetKeyDown(pokeKey) && !combat.IsBusy && canPoke)
             Poke(parryManager != null && parryManager.ConsumePoke());
@@ -133,44 +155,60 @@ public class SkillManager : MonoBehaviour
             Ultimate();
     }
 
-    private void Wave()
+    private void Slash()
     {
-        if (wavePrefab == null)
+        if (slashPrefab == null)
         {
             Debug.LogError("[SkillManager] 검기 투사체 프리팹이 연결되지 않았습니다.", this);
             return;
         }
 
         combat.StartAction();
-        canWave = false;
-        SpawnProjectile(wavePrefab, waveSpawnOffset, waveSize, WaveDamageMultiplier,
-            waveSpeed, waveMaxDistance);
-        Invoke(nameof(EndSkill), codeSkillActionDuration);
-        Invoke(nameof(ResetWaveCoolTime), WaveCoolTime);
+        canSlash = false;
+        animator.SetTrigger("Slash");
+        Invoke(nameof(ResetSlashCoolTime), GetSkillCooldown(SlashCoolTime));
     }
 
-    private void StrongSlash()
+    private void StrongStrike()
     {
         combat.StartAction();
-        canStrongSlash = false;
-        ShowTemporaryVisual(GetAttackCenter(strongMeleeOffset), strongMeleeSize,
-            new Color(1f, 1f, 1f, 0.5f));
-        AttackDamage(StrongMeleeDamageMultiplier, strongMeleeOffset, strongMeleeSize);
-        Invoke(nameof(SpawnStrongWave), strongWaveDelay);
-        Invoke(nameof(EndSkill), codeSkillActionDuration);
-        Invoke(nameof(ResetStrongSlashCoolTime), StrongSlashCoolTime);
+        canStrongStrike = false;
+        animator.SetTrigger("StrongStrike");
+        Invoke(nameof(ResetStrongStrikeCoolTime), GetSkillCooldown(StrongStrikeCoolTime));
     }
 
-    private void SpawnStrongWave()
+    public void SlashProjectile()
     {
-        if (strongWavePrefab == null)
+        if (playerHP.IsDead)
+            return;
+
+        SpawnProjectile(slashPrefab, slashSpawnOffset, slashSize, SlashDamageMultiplier,
+            slashSpeed, slashMaxDistance);
+    }
+
+    public void StrongStrikeMeleeDamage()
+    {
+        if (playerHP.IsDead)
+            return;
+
+        AttackDamage(StrongMeleeDamageMultiplier, strongMeleeOffset,
+            strongMeleeAttackBoxPrefab);
+    }
+
+    public void StrongStrikeProjectile()
+    {
+        if (playerHP.IsDead)
+            return;
+
+        if (strongStrikeProjectilePrefab == null)
         {
             Debug.LogError("[SkillManager] 강한 참격 투사체 프리팹이 연결되지 않았습니다.", this);
             return;
         }
 
-        SpawnProjectile(strongWavePrefab, strongWaveSpawnOffset, strongWaveSize,
-            StrongWaveDamageMultiplier, strongWaveSpeed, strongWaveMaxDistance);
+        SpawnProjectile(strongStrikeProjectilePrefab, strongStrikeProjectileSpawnOffset,
+            strongStrikeProjectileSize, StrongStrikeProjectileDamageMultiplier,
+            strongStrikeProjectileSpeed, strongStrikeProjectileMaxDistance);
     }
 
     private void Poke(bool parrySucceeded)
@@ -181,7 +219,7 @@ public class SkillManager : MonoBehaviour
             ? ParryPokeDamageMultiplier
             : PokeDamageMultiplier;
         animator.SetTrigger("Poke");
-        Invoke(nameof(ResetPokeCoolTime), PokeCoolTime);
+        Invoke(nameof(ResetPokeCoolTime), GetSkillCooldown(PokeCoolTime));
     }
 
     private void Strike()
@@ -189,7 +227,7 @@ public class SkillManager : MonoBehaviour
         combat.StartAction();
         canStrike = false;
         animator.SetTrigger("Strike");
-        Invoke(nameof(ResetStrikeCoolTime), StrikeCoolTime);
+        Invoke(nameof(ResetStrikeCoolTime), GetSkillCooldown(StrikeCoolTime));
     }
 
     private void Ultimate()
@@ -197,7 +235,7 @@ public class SkillManager : MonoBehaviour
         combat.StartAction();
         canUltimate = false;
         animator.SetTrigger("Ultimate");
-        Invoke(nameof(ResetUltimateCoolTime), UltimateCoolTime);
+        Invoke(nameof(ResetUltimateCoolTime), GetSkillCooldown(UltimateCoolTime));
     }
 
     public void UltimateDamage()
@@ -205,7 +243,8 @@ public class SkillManager : MonoBehaviour
         if (playerHP.IsDead)
             return;
 
-        AttackDamage(UltimateDamageMultiplier, ultimateOffset, ultimateSize, true);
+        AttackDamage(UltimateDamageMultiplier, ultimateOffset,
+            ultimateAttackBoxPrefab, true);
 
         if (ultimateBuffRoutine != null)
             StopCoroutine(ultimateBuffRoutine);
@@ -219,7 +258,7 @@ public class SkillManager : MonoBehaviour
         if (!playerHP.IsDead && EffectManager.Instance != null)
             PlayEffect(EffectId.Poke);
 
-        AttackDamage(pendingPokeDamageMultiplier, pokeOffset, pokeSize);
+        AttackDamage(pendingPokeDamageMultiplier, pokeOffset, pokeAttackBoxPrefab);
 
         if (pokeLifeStealRoutine != null)
             StopCoroutine(pokeLifeStealRoutine);
@@ -251,9 +290,15 @@ public class SkillManager : MonoBehaviour
             PlayEffect(EffectId.Strike);
 
         Vector2 center = GetAttackCenter(strikeOffset);
-        ShowTemporaryVisual(center, strikeAreaSize, new Color(1f, 1f, 1f, 0.45f));
-        Collider2D[] directHits = Physics2D.OverlapBoxAll(center, strikeDirectSize, 0f);
-        Collider2D[] areaHits = Physics2D.OverlapBoxAll(center, strikeAreaSize, 0f);
+        BoxCollider2D directAttackBox = SpawnAttackBox(strikeDirectAttackBoxPrefab, center);
+        BoxCollider2D areaAttackBox = SpawnAttackBox(strikeAreaAttackBoxPrefab, center);
+        if (directAttackBox == null || areaAttackBox == null)
+            return;
+
+        Collider2D[] directHits = Physics2D.OverlapBoxAll(
+            directAttackBox.bounds.center, directAttackBox.bounds.size, 0f);
+        Collider2D[] areaHits = Physics2D.OverlapBoxAll(
+            areaAttackBox.bounds.center, areaAttackBox.bounds.size, 0f);
         HashSet<EnemyHP> directEnemies = CollectEnemies(directHits);
 
         foreach (EnemyHP enemy in directEnemies)
@@ -274,10 +319,15 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    private void AttackDamage(float multiplier, Vector2 offset, Vector2 size,
+    private void AttackDamage(float multiplier, Vector2 offset, GameObject attackBoxPrefab,
         bool ignoreDefense = false)
     {
-        Collider2D[] enemies = Physics2D.OverlapBoxAll(GetAttackCenter(offset), size, 0f);
+        BoxCollider2D attackBox = SpawnAttackBox(attackBoxPrefab, GetAttackCenter(offset));
+        if (attackBox == null)
+            return;
+
+        Collider2D[] enemies = Physics2D.OverlapBoxAll(
+            attackBox.bounds.center, attackBox.bounds.size, 0f);
         hitEnemies.Clear();
 
         foreach (Collider2D hit in enemies)
@@ -292,6 +342,8 @@ public class SkillManager : MonoBehaviour
     {
         int damage = Mathf.RoundToInt(playerStats.GetAttackDamage() * multiplier);
         int dealtDamage = enemy.TakeDamage(damage, ignoreDefense);
+
+        synergyManager?.OnDamageDealt(enemy, dealtDamage);
 
         if (dealtDamage > 0 && playerStats.CurrentLifeSteal > 0f)
             playerHP.Heal(Mathf.RoundToInt(dealtDamage * playerStats.CurrentLifeSteal / 100f));
@@ -315,13 +367,32 @@ public class SkillManager : MonoBehaviour
             speed, distance, multiplier);
     }
 
-    private void ShowTemporaryVisual(Vector2 position, Vector2 size, Color color)
+    private BoxCollider2D SpawnAttackBox(GameObject prefab, Vector2 position)
     {
-        if (areaVisualPrefab == null)
-            return;
+        if (prefab == null)
+        {
+            Debug.LogError("[SkillManager] 공격 판정 프리팹이 연결되지 않았습니다.", this);
+            return null;
+        }
 
-        SkillAreaVisual visual = Instantiate(areaVisualPrefab, position, Quaternion.identity);
-        visual.Show(size, color, spriteRenderer.sortingOrder + 1, codeSkillActionDuration);
+        GameObject instance = Instantiate(prefab, position, Quaternion.identity);
+        BoxCollider2D attackBox = instance.GetComponent<BoxCollider2D>();
+        if (attackBox == null)
+        {
+            Debug.LogError("[SkillManager] 공격 판정 프리팹에 BoxCollider2D가 없습니다.", instance);
+            Destroy(instance);
+            return null;
+        }
+
+        SpriteRenderer visual = instance.GetComponent<SpriteRenderer>();
+        if (visual != null)
+        {
+            visual.sortingLayerID = spriteRenderer.sortingLayerID;
+            visual.sortingOrder = spriteRenderer.sortingOrder + 1;
+        }
+
+        Destroy(instance, CodeSkillActionDuration);
+        return attackBox;
     }
 
     private Vector2 GetAttackCenter(Vector2 offset)
@@ -375,8 +446,31 @@ public class SkillManager : MonoBehaviour
         combat.EndAction();
     }
 
-    private void ResetWaveCoolTime() => canWave = true;
-    private void ResetStrongSlashCoolTime() => canStrongSlash = true;
+    public void ApplySkillCooldownReduction(float amount, float duration)
+    {
+        if (skillCooldownRoutine != null)
+            StopCoroutine(skillCooldownRoutine);
+
+        skillCooldownRoutine = StartCoroutine(SkillCooldownEffect(amount, duration));
+    }
+
+    private IEnumerator SkillCooldownEffect(float amount, float duration)
+    {
+        skillCooldownReduction = Mathf.Max(0f, amount);
+
+        yield return new WaitForSeconds(duration);
+
+        skillCooldownReduction = 0f;
+        skillCooldownRoutine = null;
+    }
+
+    private float GetSkillCooldown(float baseCooldown)
+    {
+        return Mathf.Max(0f, baseCooldown - skillCooldownReduction);
+    }
+
+    private void ResetSlashCoolTime() => canSlash = true;
+    private void ResetStrongStrikeCoolTime() => canStrongStrike = true;
     private void ResetPokeCoolTime() => canPoke = true;
     private void ResetStrikeCoolTime() => canStrike = true;
     private void ResetUltimateCoolTime() => canUltimate = true;
@@ -390,24 +484,14 @@ public class SkillManager : MonoBehaviour
         playerStats?.SetTemporaryLifeSteal(0f);
         IsLifeStealBoostActive = false;
         IsUltimateBuffActive = false;
-        canWave = true;
-        canStrongSlash = true;
+        skillCooldownReduction = 0f;
+        skillCooldownRoutine = null;
+        canSlash = true;
+        canStrongStrike = true;
         canPoke = true;
         canStrike = true;
         canUltimate = true;
         pendingPokeDamageMultiplier = PokeDamageMultiplier;
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        float direction = renderer != null && renderer.flipX ? -1f : 1f;
-        Vector2 position = transform.position;
-        Gizmos.DrawWireCube(position + new Vector2(strongMeleeOffset.x * direction,
-            strongMeleeOffset.y), strongMeleeSize);
-        Gizmos.DrawWireCube(position + new Vector2(strikeOffset.x * direction,
-            strikeOffset.y), strikeAreaSize);
-        Gizmos.DrawWireCube(position + new Vector2(ultimateOffset.x * direction,
-            ultimateOffset.y), ultimateSize);
-    }
 }

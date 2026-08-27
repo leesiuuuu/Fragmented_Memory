@@ -9,12 +9,20 @@ public class PlayerSkillProjectile : MonoBehaviour
     private readonly HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
     private PlayerStats stats;
     private PlayerHP playerHP;
+    private PlayerSynergyManager synergyManager;
     private Vector2 startPosition;
     private Vector2 direction;
     private float speed;
     private float maxDistance;
     private float damageMultiplier;
     private bool ignoreDefense;
+    private Vector3 visualBaseScale;
+
+    private void Awake()
+    {
+        if (visual != null)
+            visualBaseScale = visual.transform.localScale;
+    }
 
     public void Initialize(
         PlayerStats playerStats,
@@ -27,6 +35,7 @@ public class PlayerSkillProjectile : MonoBehaviour
     {
         stats = playerStats;
         playerHP = ownerHP;
+        synergyManager = ownerHP != null ? ownerHP.GetComponent<PlayerSynergyManager>() : null;
         direction = moveDirection.normalized;
         speed = moveSpeed;
         maxDistance = distance;
@@ -35,7 +44,14 @@ public class PlayerSkillProjectile : MonoBehaviour
         startPosition = transform.position;
 
         if (visual != null)
+        {
             visual.flipX = direction.x < 0f;
+            visual.transform.localScale = new Vector3(
+                visualBaseScale.x / transform.localScale.x,
+                visualBaseScale.y / transform.localScale.y,
+                visualBaseScale.z);
+        }
+
     }
 
     private void FixedUpdate()
@@ -57,6 +73,7 @@ public class PlayerSkillProjectile : MonoBehaviour
 
         int damage = Mathf.RoundToInt(stats.GetAttackDamage() * damageMultiplier);
         int dealtDamage = enemy.TakeDamage(damage, ignoreDefense);
+        synergyManager?.OnDamageDealt(enemy, dealtDamage);
 
         if (dealtDamage > 0 && stats.CurrentLifeSteal > 0f)
             playerHP.Heal(Mathf.RoundToInt(dealtDamage * stats.CurrentLifeSteal / 100f));
