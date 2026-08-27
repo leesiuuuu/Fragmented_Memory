@@ -6,12 +6,15 @@ public class PlayerHP : MonoBehaviour
     private Animator animator;
     private PlayerInvincibility invincibility;
     private ParryManager parryManager;
+    private ItemInventory itemInventory;
+    private PlayerSynergyManager synergyManager;
 
     [SerializeField] private HPBar hpBar;
 
     private bool isDead;
     public bool IsDead => isDead;
     public event System.Action<int, int> HealthChanged;
+    public event System.Action Died;
 
     private void Awake()
     {
@@ -19,6 +22,8 @@ public class PlayerHP : MonoBehaviour
         animator = GetComponent<Animator>();
         invincibility = GetComponent<PlayerInvincibility>();
         parryManager = GetComponent<ParryManager>();
+        itemInventory = GetComponent<ItemInventory>();
+        synergyManager = GetComponent<PlayerSynergyManager>();
 
         if (stats != null)
             stats.StatsChanged += UpdateHPBar;
@@ -43,12 +48,13 @@ public class PlayerHP : MonoBehaviour
         if (parryManager != null && parryManager.TryParry())
             return 0;
 
-        int finalDamage = DamageCalculator.Calculate(
-            rawDamage,
-            stats.defense);
+        int finalDamage = synergyManager != null && synergyManager.IsDespairInstantDeath
+            ? stats.currentHealth
+            : DamageCalculator.Calculate(rawDamage, stats.CurrentDefense);
         int effectiveDamage = Mathf.Min(finalDamage, stats.currentHealth);
 
         stats.currentHealth -= effectiveDamage;
+        synergyManager?.OnPlayerDamaged();
 
         if(effectiveDamage > 0 && invincibility != null)
             invincibility.StartHitInvincibility();
@@ -58,6 +64,9 @@ public class PlayerHP : MonoBehaviour
 
         if (stats.currentHealth <= 0)
         {
+            if (TryRevive())
+                return effectiveDamage;
+
             Die();
         }
 
@@ -82,13 +91,37 @@ public class PlayerHP : MonoBehaviour
 
         isDead = true;
 
-        // Debug.Log("플레이어 사망");
         animator.SetTrigger("Death");
+        Died?.Invoke();
+    }
 
-        // TODO
-        // 이동 정지
-        // 사망 애니메이션
-        // 게임 오버
+    public void RestoreAfterRun()
+    {
+        isDead = false;
+        stats.currentHealth = stats.maxHealth;
+        hpBar.SetHP(stats.currentHealth, stats.maxHealth);
+        HealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
+    }
+
+    private bool TryRevive()
+    {
+        if (itemInventory == null)
+            return false;
+
+        foreach (ItemInventory.Entry entry in itemInventory.Items)
+        {
+            if (entry.item != null && entry.item.effectType == ItemEffectType.Revival)
+            {
+                ItemData revivalItem = entry.item;
+                itemInventory.Consume(revivalItem);
+                stats.currentHealth = Mathf.Max(1, Mathf.RoundToInt(stats.maxHealth * revivalItem.effectValue / 100f));
+                hpBar.SetHP(stats.currentHealth, stats.maxHealth);
+                HealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void UpdateHPBar()

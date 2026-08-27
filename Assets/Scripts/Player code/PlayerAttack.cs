@@ -1,29 +1,35 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    private const float AttackBoxDuration = 0.25f;
+
     private Animator animator;
     private PlayerStats playerStats;
     private PlayerCombat combat;
     private PlayerHP playerHP;
     private SpriteRenderer spriteRenderer;
+    private PlayerSynergyManager synergyManager;
+
+    [Header("입력")]
+    [SerializeField] private KeyCode attackKey = KeyCode.Mouse0;
 
     [Header("Attack Box")]
     [SerializeField] private Transform attackBox;
-    private BoxCollider2D attackCollider;
-
+    [SerializeField] private GameObject attackBoxPrefab;
     [SerializeField] private float attackBoxOffset = 1f;
-
 
     [Header("Attack")]
     [SerializeField] private float attackCoolTime = 0.5f;
-
 
     private int attackCombo = 0;
     private bool comboQueued = false;
     private bool canAttack = true;
     private bool isAttacking = false;
+    private float attackCooldownMultiplier = 1f;
+    private Coroutine attackCooldownRoutine;
     private readonly HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
 
 
@@ -35,8 +41,8 @@ public class PlayerAttack : MonoBehaviour
         combat = GetComponent<PlayerCombat>();
         playerHP = GetComponent<PlayerHP>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        synergyManager = GetComponent<PlayerSynergyManager>();
 
-        attackCollider = attackBox.GetComponent<BoxCollider2D>();
     }
 
 
@@ -78,7 +84,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackInput()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(attackKey))
         {
             if(!combat.IsBusy && canAttack)
             {
@@ -121,6 +127,9 @@ public class PlayerAttack : MonoBehaviour
         if(playerHP.IsDead)
             return;
 
+        BoxCollider2D attackCollider = SpawnAttackBox();
+        if (attackCollider == null)
+            return;
 
         Collider2D[] enemies =
             Physics2D.OverlapBoxAll(
@@ -147,6 +156,7 @@ public class PlayerAttack : MonoBehaviour
 
                 int dealtDamage = enemyHP.TakeDamage(damage);
                 HealFromDamage(dealtDamage);
+                synergyManager?.OnDamageDealt(enemyHP, dealtDamage);
             }
         }
     }
@@ -173,7 +183,7 @@ public class PlayerAttack : MonoBehaviour
 
         EffectManager.Instance.Play(
             EffectId.BasicAttack,
-            attackCollider.bounds.center,
+            attackBox.position,
             effectRotation
         );
     }
@@ -218,8 +228,58 @@ public class PlayerAttack : MonoBehaviour
 
         Invoke(
             nameof(ResetAttackCoolTime),
-            attackCoolTime
+            attackCoolTime * attackCooldownMultiplier
         );
+    }
+
+    private BoxCollider2D SpawnAttackBox()
+    {
+        if (attackBoxPrefab == null)
+        {
+            Debug.LogError("[PlayerAttack] 일반 공격 판정 프리팹이 연결되지 않았습니다.", this);
+            return null;
+        }
+
+        GameObject instance = Instantiate(attackBoxPrefab, attackBox.position, Quaternion.identity);
+        BoxCollider2D collider = instance.GetComponent<BoxCollider2D>();
+
+        if (collider == null)
+        {
+            Debug.LogError("[PlayerAttack] 일반 공격 판정 프리팹에 BoxCollider2D가 없습니다.", instance);
+            Destroy(instance);
+            return null;
+        }
+
+        SpriteRenderer visual = instance.GetComponent<SpriteRenderer>();
+        if (visual != null)
+        {
+            visual.sortingLayerID = spriteRenderer.sortingLayerID;
+            visual.sortingOrder = spriteRenderer.sortingOrder + 1;
+        }
+
+        Destroy(instance, AttackBoxDuration);
+        return collider;
+    }
+
+
+    public void ApplyAttackCooldownReduction(float percent, float duration)
+    {
+        if (attackCooldownRoutine != null)
+            StopCoroutine(attackCooldownRoutine);
+
+        attackCooldownRoutine = StartCoroutine(
+            AttackCooldownEffect(Mathf.Clamp(percent, 0f, 100f), duration));
+    }
+
+
+    private IEnumerator AttackCooldownEffect(float percent, float duration)
+    {
+        attackCooldownMultiplier = 1f - percent / 100f;
+
+        yield return new WaitForSeconds(duration);
+
+        attackCooldownMultiplier = 1f;
+        attackCooldownRoutine = null;
     }
 
 
@@ -242,27 +302,8 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = false;
         attackCombo = 0;
         canAttack = true;
+        attackCooldownMultiplier = 1f;
+        attackCooldownRoutine = null;
     }
 
-
-
-    private void OnDrawGizmosSelected()
-    {
-        if(attackBox == null)
-            return;
-
-
-        BoxCollider2D collider =
-            attackBox.GetComponent<BoxCollider2D>();
-
-
-        if(collider == null)
-            return;
-
-
-        Gizmos.DrawWireCube(
-            attackBox.position,
-            collider.size
-        );
-    }
 }

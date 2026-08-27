@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
 
+// 패링 입력 시간을 열어 두고 PlayerHP가 피격될 때 성공 여부를 판정한다.
+// 성공 상태는 다음 찌르기가 소비한다. 성공 표시는 그때까지 유지된다.
 public class ParryManager : MonoBehaviour
 {
-    [SerializeField] private KeyCode parryKey = KeyCode.X;
+    [SerializeField] private KeyCode parryKey = KeyCode.Mouse1;
     [SerializeField] private float parryDuration = 0.2f;
     [SerializeField] private Vector2 parrySize = new Vector2(2f, 1.5f);
     [SerializeField] private Vector2 parryOffset = new Vector2(1f, 0f);

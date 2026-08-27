@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     int jumpCount = 0;
+    int additionalJumpCount;
+    int maxDashCount = 1;
+    int dashCount = 1;
 
 
     public float moveSpeed = 9f;
@@ -24,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     public float dashFallSpeed = 3f;
 
 
-    bool canDash = true;
     bool isDash = false;
 
     bool isGround = false;
@@ -77,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             || Input.GetKeyDown(KeyCode.UpArrow))
             && !combat.IsBusy
             && !isDash
-            && jumpCount < 2)
+            && jumpCount < 2 + additionalJumpCount)
         {
 
             rigid.linearVelocity =
@@ -111,9 +113,9 @@ public class PlayerMovement : MonoBehaviour
 
         // 대쉬
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCount > 0)
         {
-            canDash = false;
+            dashCount--;
             isDash = true;
             invincibility?.StartDashInvincibility();
 
@@ -137,13 +139,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameplayInputLock.IsLocked)
-        {
-            rigid.linearVelocity = new Vector2(0f, rigid.linearVelocity.y);
-            animator.SetFloat("move speed", 0f);
-            return;
-        }
-
         if(playerHP.IsDead)
         {
             rigid.linearVelocity = Vector2.zero;
@@ -151,6 +146,13 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("move speed", 0);
             animator.SetFloat("jump power", 0);
 
+            return;
+        }
+
+        if (GameplayInputLock.IsLocked)
+        {
+            rigid.linearVelocity = new Vector2(0f, rigid.linearVelocity.y);
+            animator.SetFloat("move speed", 0f);
             return;
         }
 
@@ -209,7 +211,10 @@ public class PlayerMovement : MonoBehaviour
 
     void ResetDash()
     {
-        canDash = true;
+        dashCount = Mathf.Min(dashCount + 1, maxDashCount);
+
+        if (dashCount < maxDashCount)
+            Invoke(nameof(ResetDash), dashCooldown);
     }
 
 
@@ -222,6 +227,21 @@ public class PlayerMovement : MonoBehaviour
 
         externalMovementMultiplier = nextMultiplier;
         MovementSpeedChanged?.Invoke();
+    }
+
+
+    public void AddMaxJumpCount(int amount)
+    {
+        if (amount > 0)
+            additionalJumpCount += amount;
+    }
+
+
+    public void AddMaxDashCount(int amount)
+    {
+        int addedCount = Mathf.Max(0, amount);
+        maxDashCount += addedCount;
+        dashCount += addedCount;
     }
 
 
@@ -242,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
         CancelInvoke(nameof(ResetDash));
 
         isDash = false;
-        canDash = true;
+        dashCount = maxDashCount;
         invincibility?.EndDashInvincibility();
 
         if (rigid != null)
