@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private int maxMemoryCount = 8;
+    [SerializeField] private int maxMemoryCount = 18;
 
     private PlayerStats playerStats;
     private List<MemoryData> memories = new List<MemoryData>();
+    private int additionalMemoryCount;
 
-    public int MaxMemoryCount => maxMemoryCount;
+    public int MaxMemoryCount => maxMemoryCount + additionalMemoryCount;
     public event Action Changed;
 
     private void Awake()
@@ -19,7 +20,7 @@ public class Inventory : MonoBehaviour
 
     public bool AddMemory(MemoryData memory)
     {
-        if (memory == null || memories.Count >= maxMemoryCount)
+        if (memory == null || memories.Count >= MaxMemoryCount)
             return false;
 
         memories.Add(memory);
@@ -59,7 +60,17 @@ public class Inventory : MonoBehaviour
 
     public bool IsFull()
     {
-        return memories.Count >= maxMemoryCount;
+        return memories.Count >= MaxMemoryCount;
+    }
+
+    public void SetAdditionalMemoryCount(int amount)
+    {
+        int nextCount = Mathf.Max(0, amount);
+        if (additionalMemoryCount == nextCount)
+            return;
+
+        additionalMemoryCount = nextCount;
+        Changed?.Invoke();
     }
 
     private StatData ConvertToStat(MemoryData memory)
