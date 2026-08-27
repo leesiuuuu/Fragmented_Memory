@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 868505644877056222}
   - component: {fileID: 7000000000000000001}
   - component: {fileID: 7685485058951037933}
+  - component: {fileID: 4924640737858269888}
   m_Layer: 0
   m_Name: Mask
   m_TagString: Enemy
@@ -461,6 +462,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStageSlow
   speedMultiplier: 0.5
+--- !u!114 &4924640737858269888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482695373007947413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076da3b1880f4942f5e112609c8db897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMemoryDrop
+  settings: {fileID: 11400000, guid: efcdf48ca84a5e14db33b140f2e541df, type: 2}
+  dropOffset: {x: 0, y: 0.5}
 --- !u!1 &8567879259017051910
 GameObject:
   m_ObjectHideFlags: 0

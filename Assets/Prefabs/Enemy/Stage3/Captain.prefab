@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 1398020363954212421}
   - component: {fileID: -8453922492764064474}
   - component: {fileID: 868505644877056222}
+  - component: {fileID: 5189128696146002538}
   m_Layer: 0
   m_Name: Captain
   m_TagString: Enemy
@@ -392,7 +393,7 @@ MonoBehaviour:
   hpBar: {fileID: 6762040416143710936}
   deathAnimation: {fileID: 7400000, guid: 659eaa3a512865b4b8e2261a4649fae6, type: 2}
   deathDuration: 2
-  hideHPBarOnDeath: 0
+  hideHPBarOnDeath: 1
 --- !u!114 &1398020363954212421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +466,20 @@ CapsuleCollider2D:
   m_Offset: {x: -0.2, y: 1}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &5189128696146002538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482695373007947413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076da3b1880f4942f5e112609c8db897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMemoryDrop
+  settings: {fileID: 11400000, guid: efcdf48ca84a5e14db33b140f2e541df, type: 2}
+  dropOffset: {x: 0, y: 0.5}
 --- !u!1 &8567879259017051910
 GameObject:
   m_ObjectHideFlags: 0

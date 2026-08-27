@@ -1,5 +1,8 @@
+using System.Collections;
 using UnityEngine;
 
+// EnemyStats의 현재 체력을 갱신한다. 체력이 끝나면 드롭과 방 진행과 사망 연출을 처리한다.
+// 사망 연출 중에는 이동과 공격과 물리 충돌을 멈춘다. 연출이 끝나면 적 오브젝트를 제거한다.
 public class EnemyHP : MonoBehaviour
 {
     private EnemyStats stats;
@@ -14,6 +17,7 @@ public class EnemyHP : MonoBehaviour
     [SerializeField] private float deathDuration = 2f;
     [SerializeField] private bool hideHPBarOnDeath;
     private bool isDead;
+    private Coroutine burnRoutine;
 
 
     private void Awake()
@@ -32,6 +36,28 @@ public class EnemyHP : MonoBehaviour
     public void SetSpawnManager(SpawnManager manager)
     {
         spawnManager = manager;
+    }
+
+    public void ApplyBurn(int damagePerTick, float duration)
+    {
+        if (isDead)
+            return;
+
+        if (burnRoutine != null)
+            StopCoroutine(burnRoutine);
+        burnRoutine = StartCoroutine(Burn(damagePerTick, duration));
+    }
+
+    private IEnumerator Burn(int damagePerTick, float duration)
+    {
+        float elapsed = 0f;
+        while (!isDead && elapsed < duration)
+        {
+            yield return new WaitForSeconds(0.5f);
+            elapsed += 0.5f;
+            TakeDamage(damagePerTick, true);
+        }
+        burnRoutine = null;
     }
 
 
@@ -83,6 +109,8 @@ public class EnemyHP : MonoBehaviour
 
         isDead = true;
 
+        GetComponent<EnemyMemoryDrop>()?.TryDrop();
+
         if (hideHPBarOnDeath && hpBar != null)
             hpBar.gameObject.SetActive(false);
 
@@ -113,7 +141,10 @@ public class EnemyHP : MonoBehaviour
             attack.enabled = false;
 
         if (rigid != null)
+        {
             rigid.linearVelocity = Vector2.zero;
+            rigid.simulated = false;
+        }
 
         animator.SetTrigger(Death);
         float duration = deathDuration > 0f
