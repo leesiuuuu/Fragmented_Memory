@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ShopInteract realityShop;
 
+    [SerializeField] private Transform realitySpawnPoint;
+
 
     [Header("시드")]
     // 0이면 거울에 들어갈 때마다 새 판. 값을 박으면 그 판이 그대로 재현되므로 디버깅용으로 쓴다.
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
     private StageMap map;
     private MapNode currentNode;
     private GameObject currentRoom;
+    private bool waitingForStageReward;
 
 
     public StageData Stage => stageData;
@@ -91,6 +94,36 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void EndRun()
+    {
+        if (rewardManager != null)
+            rewardManager.RewardSelected -= HandleStageRewardSelected;
+
+        waitingForStageReward = false;
+
+        if (currentRoom != null)
+            Destroy(currentRoom);
+
+        currentRoom = null;
+        currentNode = null;
+        map = null;
+
+        if (player != null && realitySpawnPoint != null)
+        {
+            player.transform.SetPositionAndRotation(
+                realitySpawnPoint.position,
+                realitySpawnPoint.rotation);
+
+            Rigidbody2D rigid = player.GetComponent<Rigidbody2D>();
+
+            if (rigid != null)
+                rigid.linearVelocity = Vector2.zero;
+        }
+
+        EnterReality();
+    }
+
+
     public void RefreshRealityShop()
     {
         shopManager?.PrepareShop();
@@ -116,7 +149,7 @@ public class GameManager : MonoBehaviour
         // 보스방에서 또 문을 타면 next가 둘 다 null이라 보스가 무한히 다시 로드된다
         if (currentNode.type == RoomType.Boss)
         {
-            Debug.Log("[GameManager] 스테이지 클리어 — 다음 스테이지 전환은 아직 미구현");
+            ShowStageReward();
             return;
         }
 
@@ -153,6 +186,38 @@ public class GameManager : MonoBehaviour
     {
         if (currentNode != null)
             currentNode.cleared = true;
+    }
+
+
+    private void ShowStageReward()
+    {
+        if (waitingForStageReward)
+            return;
+
+        if (rewardManager != null)
+        {
+            waitingForStageReward = true;
+            rewardManager.RewardSelected -= HandleStageRewardSelected;
+            rewardManager.RewardSelected += HandleStageRewardSelected;
+
+            if (rewardManager.GenerateRewards())
+                return;
+
+            rewardManager.RewardSelected -= HandleStageRewardSelected;
+            waitingForStageReward = false;
+        }
+
+        EndRun();
+    }
+
+
+    private void HandleStageRewardSelected()
+    {
+        if (rewardManager != null)
+            rewardManager.RewardSelected -= HandleStageRewardSelected;
+
+        waitingForStageReward = false;
+        EndRun();
     }
 
 
@@ -218,7 +283,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        roomManager.SetRewardManager(rewardManager);
         roomManager.ExitSelected += HandleRoomExit;
         roomManager.StartRoom(this, node, player);
     }

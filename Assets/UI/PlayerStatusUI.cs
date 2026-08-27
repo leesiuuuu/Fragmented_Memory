@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 
+// 플레이어의 실제 스탯과 체력 변경을 받아 상태 패널에 표시한다.
+// Tab으로 패널을 열고 닫는다. 열린 동안에는 플레이 입력을 막는다.
 public class PlayerStatusUI : MonoBehaviour
 {
     private const string InputLockId = "PlayerStatusUI";
@@ -95,14 +97,15 @@ public class PlayerStatusUI : MonoBehaviour
             $"플레이어 상태\n\n"+
             $"체력  {stats.currentHealth} / {stats.maxHealth}\n"+
             $"공격력  {stats.CurrentAttack}\n"+
-            $"방어력  {stats.defense}\n"+
-            $"치명타 확률  {stats.criticalChance:0.##}%\n"+
-            $"치명타 데미지  {stats.criticalDamage:0.##}%\n"+
+            $"방어력  {stats.CurrentDefense}\n"+
+            $"치명타 확률  {stats.CurrentCriticalChance:0.##}%\n"+
+            $"치명타 데미지  {stats.CurrentCriticalDamage:0.##}%\n"+
             $"피흡  {stats.CurrentLifeSteal:0.##}%\n"+
-            $"매력  {stats.charm}"+
+            $"매력  {stats.CurrentCharm}"+
             (string.IsNullOrEmpty(activeEffects)
                 ? string.Empty
-                : $"\n\n적용 중인 효과{activeEffects}");
+                : $"\n\n적용 중인 효과{activeEffects}")+
+            "\n\n<size=70%><color=#FFFFFF>Tab 닫기</color></size>";
     }
 
     private void SetVisible(bool visible)

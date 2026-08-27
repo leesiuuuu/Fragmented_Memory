@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+// 문과 거울과 상점과 기억 조각의 상호작용을 한 곳에서 처리한다.
+// 인벤토리가 열려 있을 때는 같은 E 입력을 소모품 사용에 사용한다.
 public class PlayerInteract : MonoBehaviour
 {
     private InteractRule currentTarget;
