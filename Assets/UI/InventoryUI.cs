@@ -8,8 +8,6 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TMP_Text countText;
     [SerializeField] private InventorySlotUI slotTemplate;
     [SerializeField] private Transform slotRoot;
-    [SerializeField] private PlayerSynergyManager synergyManager;
-    [SerializeField] private SynergySlotUI[] synergySlots;
 
     private readonly List<InventorySlotUI> slots = new List<InventorySlotUI>();
 
@@ -17,13 +15,9 @@ public class InventoryUI : MonoBehaviour
     {
         if (inventory == null)
             inventory = FindFirstObjectByType<Inventory>();
-        if (synergyManager == null && inventory != null)
-            synergyManager = inventory.GetComponent<PlayerSynergyManager>();
 
         if (inventory != null)
             inventory.Changed += Refresh;
-        if (synergyManager != null)
-            synergyManager.Changed += RefreshSynergies;
 
         BuildSlots();
         Refresh();
@@ -33,8 +27,6 @@ public class InventoryUI : MonoBehaviour
     {
         if (inventory != null)
             inventory.Changed -= Refresh;
-        if (synergyManager != null)
-            synergyManager.Changed -= RefreshSynergies;
     }
 
     private void BuildSlots()
@@ -61,19 +53,5 @@ public class InventoryUI : MonoBehaviour
 
         for (int i = 0; i < slots.Count; i++)
             slots[i].Show(i < memories.Count ? memories[i] : null);
-
-        RefreshSynergies();
-    }
-
-    private void RefreshSynergies()
-    {
-        if (synergyManager == null || synergySlots == null)
-            return;
-
-        foreach (SynergySlotUI slot in synergySlots)
-        {
-            if (slot != null)
-                slot.Refresh(synergyManager);
-        }
     }
 }
