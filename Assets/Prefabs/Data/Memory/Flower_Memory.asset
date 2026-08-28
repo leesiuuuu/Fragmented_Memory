@@ -15,7 +15,7 @@ MonoBehaviour:
   memoryName: "꽃잎의 조각"
   description: "떨어진 꽃잎의 한 조각이다.
     다시 꽃이 되어줄 순 없겠지"
-  icon: {fileID: 0}
+  icon: {fileID: 8181081092598581178, guid: 508c1a7aa2f0cd549b87d3572e25a972, type: 3}
   type: 0
   rarity: 0
   synergy: 10

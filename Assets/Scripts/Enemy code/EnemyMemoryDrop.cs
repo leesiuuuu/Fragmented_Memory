@@ -5,6 +5,8 @@ public class EnemyMemoryDrop : MonoBehaviour
 {
     private const float NormalDropChance = 15f;
     private const float EliteDropChance = 10f;
+    private const float GroundSearchHeight = 5f;
+    private const float GroundSearchDistance = 50f;
 
     [SerializeField] private MemoryDropSettings settings;
     [SerializeField] private Vector2 dropOffset = new Vector2(0f, 0.5f);
@@ -38,9 +40,43 @@ public class EnemyMemoryDrop : MonoBehaviour
         if (memory == null)
             return;
 
+        Vector2 spawnPosition = (Vector2)transform.position + dropOffset;
         MemoryPickup pickup = Instantiate(settings.PickupPrefab,
-            (Vector2)transform.position + dropOffset, Quaternion.identity);
+            spawnPosition, Quaternion.identity);
         pickup.Initialize(memory);
+
+        if (TryGetGroundPosition(spawnPosition, out float groundY))
+        {
+            SpriteRenderer renderer = pickup.GetComponent<SpriteRenderer>();
+            float spriteHeight = renderer != null ? renderer.bounds.extents.y : 0f;
+            pickup.transform.position = new Vector2(
+                spawnPosition.x,
+                groundY + spriteHeight);
+        }
+    }
+
+    private bool TryGetGroundPosition(Vector2 origin, out float groundY)
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            origin + Vector2.up * GroundSearchHeight,
+            Vector2.down,
+            GroundSearchDistance);
+
+        bool found = false;
+        groundY = float.MinValue;
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (!hits[i].collider.CompareTag("Ground")
+                || hits[i].point.y > origin.y
+                || hits[i].point.y <= groundY)
+                continue;
+
+            groundY = hits[i].point.y;
+            found = true;
+        }
+
+        return found;
     }
 
     private MemoryData SelectMemory(bool isElite)

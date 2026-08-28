@@ -15,7 +15,7 @@ MonoBehaviour:
   memoryName: "전사의 조각"
   description: "강한 힘만으로는 사랑을 얻을
     수 없다."
-  icon: {fileID: 0}
+  icon: {fileID: -1195683675641600831, guid: 508c1a7aa2f0cd549b87d3572e25a972, type: 3}
   type: 0
   rarity: 1
   synergy: 1

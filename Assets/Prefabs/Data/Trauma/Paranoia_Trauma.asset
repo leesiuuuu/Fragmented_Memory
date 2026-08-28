@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MemoryData
   memoryName: "피해망상의 조각"
   description: "한 없이 작아진 마음에 누구라도 작은 말로 상처 입힐 수 있어 작은 마음은 아무도 오지 못하게 가시를 세울 뿐이다."
-  icon: {fileID: 0}
+  icon: {fileID: 7913578407841688220, guid: 508c1a7aa2f0cd549b87d3572e25a972, type: 3}
   type: 1
   rarity: 2
   synergy: 2
