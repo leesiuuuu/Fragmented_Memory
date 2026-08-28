@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "점프 강화제"
   description: "점프 횟수가 1회 증가함"
-  icon: {fileID: 0}
+  icon: {fileID: 2029542551908640097, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
+  detailIcon: {fileID: -7855203551248514480, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
   price: 30000
   itemType: 1
   effectType: 5

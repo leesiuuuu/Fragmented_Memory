@@ -15,7 +15,8 @@ MonoBehaviour:
   itemName: "스킬 가속제"
   description: "스킬의 쿨타임이 3분 동안
     3초가 줄어듬"
-  icon: {fileID: 0}
+  icon: {fileID: 8033092973025764044, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
+  detailIcon: {fileID: 4337684191699249041, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
   price: 1500
   itemType: 1
   effectType: 6

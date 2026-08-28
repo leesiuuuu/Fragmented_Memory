@@ -22,6 +22,8 @@ public class ShopUI : MonoBehaviour
     private CurrencyWallet wallet;
     private int selectedIndex = -1;
     private int openedFrame;
+    private TMP_Text purchaseResultText;
+    private GameObject purchaseResultBackground;
 
     public void Initialize(ShopManager manager)
     {
@@ -32,6 +34,52 @@ public class ShopUI : MonoBehaviour
     {
         if (detailBuyButton != null)
             detailBuyButton.onClick.AddListener(BuySelected);
+
+        if (detailDescriptionText != null)
+        {
+            GameObject popupObject = Instantiate(
+                detailDescriptionText.gameObject,
+                transform);
+            popupObject.name = "PurchaseResultPopup";
+            purchaseResultText = popupObject.GetComponent<TMP_Text>();
+
+            RectTransform popupRect = popupObject.transform as RectTransform;
+            if (popupRect != null)
+            {
+                popupRect.anchorMin = new Vector2(0.5f, 0.5f);
+                popupRect.anchorMax = new Vector2(0.5f, 0.5f);
+                popupRect.anchoredPosition = Vector2.zero;
+                popupRect.sizeDelta = new Vector2(600f, 180f);
+            }
+
+            GameObject backgroundObject = new GameObject("Background");
+            backgroundObject.transform.SetParent(transform, false);
+            purchaseResultBackground = backgroundObject;
+
+            RectTransform backgroundRect = backgroundObject.AddComponent<RectTransform>();
+            backgroundRect.anchorMin = new Vector2(0.5f, 0.5f);
+            backgroundRect.anchorMax = new Vector2(0.5f, 0.5f);
+            backgroundRect.anchoredPosition = Vector2.zero;
+            backgroundRect.sizeDelta = new Vector2(600f, 180f);
+
+            RawImage background = backgroundObject.AddComponent<RawImage>();
+            if (background != null)
+            {
+                background.texture = Texture2D.whiteTexture;
+                background.color = new Color(0f, 0f, 0f, 0.55f);
+                background.raycastTarget = false;
+            }
+            backgroundObject.transform.SetSiblingIndex(popupObject.transform.GetSiblingIndex());
+            if (purchaseResultText != null)
+            {
+                purchaseResultText.alignment = TextAlignmentOptions.Center;
+                purchaseResultText.fontSize = 40f;
+                purchaseResultText.fontWeight = FontWeight.Bold;
+                purchaseResultText.transform.SetAsLastSibling();
+            }
+            popupObject.SetActive(false);
+            backgroundObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -68,12 +116,13 @@ public class ShopUI : MonoBehaviour
         gameObject.SetActive(true);
         openedFrame = Time.frameCount;
         GameplayInputLock.SetLocked(InputLockId, true);
-        selectedIndex = -1;
+        selectedIndex = shopManager.CurrentItems.Count > 0 ? 0 : -1;
         Refresh();
     }
 
     public void Close()
     {
+        HidePurchaseResult();
         GameplayInputLock.SetLocked(InputLockId, false);
         gameObject.SetActive(false);
     }
@@ -128,11 +177,31 @@ public class ShopUI : MonoBehaviour
 
         PurchaseResult result = shopManager.Buy(selectedIndex);
 
-        if (result == PurchaseResult.Success && detailDescriptionText != null)
-        {
-            ItemData item = shopManager.CurrentItems[selectedIndex];
-            detailDescriptionText.text = $"{item.description}\n\n구매 완료\n\n<size=70%><color=#FFFFFF>E 닫기</color></size>";
-        }
+        ShowPurchaseResult(result == PurchaseResult.Success ? "구매 완료" : "구매 실패");
+    }
+
+    private void ShowPurchaseResult(string message)
+    {
+        if (purchaseResultText == null)
+            return;
+
+        purchaseResultText.text = message;
+        purchaseResultText.transform.SetAsLastSibling();
+        purchaseResultText.gameObject.SetActive(true);
+        if (purchaseResultBackground != null)
+            purchaseResultBackground.SetActive(true);
+        CancelInvoke(nameof(HidePurchaseResult));
+        Invoke(nameof(HidePurchaseResult), 1f);
+    }
+
+    private void HidePurchaseResult()
+    {
+        CancelInvoke(nameof(HidePurchaseResult));
+
+        if (purchaseResultText != null)
+            purchaseResultText.gameObject.SetActive(false);
+        if (purchaseResultBackground != null)
+            purchaseResultBackground.SetActive(false);
     }
 
     private void RefreshDetails()
@@ -150,7 +219,7 @@ public class ShopUI : MonoBehaviour
             if (detailNameText != null)
                 detailNameText.text = "상품을 선택하세요";
             if (detailDescriptionText != null)
-                detailDescriptionText.text = "<size=70%><color=#FFFFFF>E 닫기</color></size>";
+                detailDescriptionText.text = string.Empty;
             if (detailPriceText != null)
                 detailPriceText.text = string.Empty;
             if (detailBuyButton != null)
@@ -161,13 +230,13 @@ public class ShopUI : MonoBehaviour
         ItemData item = shopManager.CurrentItems[selectedIndex];
         if (detailIcon != null)
         {
-            detailIcon.sprite = item.icon;
-            detailIcon.enabled = item.icon != null;
+            detailIcon.sprite = item.detailIcon;
+            detailIcon.enabled = item.detailIcon != null;
         }
         if (detailNameText != null)
             detailNameText.text = item.itemName;
         if (detailDescriptionText != null)
-            detailDescriptionText.text = $"{item.description}\n\n<size=70%><color=#FFFFFF>E 닫기</color></size>";
+            detailDescriptionText.text = item.description;
         if (detailPriceText != null)
             detailPriceText.text = $"가격  {item.price}";
         if (detailBuyButton != null)
@@ -194,6 +263,6 @@ public class ShopUI : MonoBehaviour
     private void UpdateStarDust(int amount)
     {
         if (starDustText != null)
-            starDustText.text = amount.ToString();
+            starDustText.text = $"별의 가루: {amount}";
     }
 }

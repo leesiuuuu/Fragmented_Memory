@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "치명적인 물약"
   description: "치명타 확률이 2분 동안 25% 증가함"
-  icon: {fileID: 0}
+  icon: {fileID: 1801263428120863714, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
+  detailIcon: {fileID: -5971942374765049077, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
   price: 2000
   itemType: 0
   effectType: 3

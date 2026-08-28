@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "회피 강화제"
   description: "회피 횟수가 1회 증가함"
-  icon: {fileID: 0}
+  icon: {fileID: -2821042892349479055, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
+  detailIcon: {fileID: -2064859774160998932, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
   price: 40000
   itemType: 1
   effectType: 8

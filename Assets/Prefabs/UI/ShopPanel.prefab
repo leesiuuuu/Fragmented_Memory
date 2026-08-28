@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -55}
+  m_AnchoredPosition: {x: 2.7088013, y: 193.5}
   m_SizeDelta: {x: 440, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1156178786539282977
@@ -308,8 +308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 75}
-  m_SizeDelta: {x: 170, y: 170}
+  m_AnchoredPosition: {x: 2.7088013, y: -5}
+  m_SizeDelta: {x: 285.4175, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3693775991779304790
 CanvasRenderer:
@@ -716,7 +716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 320}
+  m_AnchoredPosition: {x: -225, y: 285}
   m_SizeDelta: {x: 1000, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &514032057570176907
@@ -747,7 +747,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "상점"
+  m_text: "\uC0C1\uC810"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1202,7 +1202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -125}
+  m_AnchoredPosition: {x: 0, y: -185}
   m_SizeDelta: {x: 440, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3690424063744185404
@@ -1749,7 +1749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매"
+  m_text: "\uAD6C\uB9E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -1886,7 +1886,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매 완료"
+  m_text: "\uAD6C\uB9E4 \uC644\uB8CC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -2310,7 +2310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매"
+  m_text: "\uAD6C\uB9E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -2553,7 +2553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 205}
+  m_AnchoredPosition: {x: 0, y: 266}
   m_SizeDelta: {x: 440, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8351215361520449625
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "상품을 선택하세요"
+  m_text: "\uC0C1\uD488\uC744 \uC120\uD0DD\uD558\uC138\uC694"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -2721,7 +2721,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매"
+  m_text: "\uAD6C\uB9E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매 완료"
+  m_text: "\uAD6C\uB9E4 \uC644\uB8CC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -2971,8 +2971,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -110}
-  m_SizeDelta: {x: 180, y: 180}
+  m_AnchoredPosition: {x: 18, y: -217}
+  m_SizeDelta: {x: 210, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7330321400953899465
 CanvasRenderer:
@@ -3094,7 +3094,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매 완료"
+  m_text: "\uAD6C\uB9E4 \uC644\uB8CC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -3321,7 +3321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 520, y: 320}
+  m_AnchoredPosition: {x: 520, y: 350}
   m_SizeDelta: {x: 240, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6672067326199073098
@@ -3352,7 +3352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -3385,7 +3385,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3540,8 +3540,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 110}
-  m_SizeDelta: {x: 180, y: 180}
+  m_AnchoredPosition: {x: -240, y: 63}
+  m_SizeDelta: {x: 210, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8148997010035027806
 CanvasRenderer:
@@ -3804,14 +3804,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 8152293696574561645, guid: 5665318f26374f74e9ddf18124b2690c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3834,6 +3834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopUI
   shopManager: {fileID: 0}
+  closeKey: 101
   starDustText: {fileID: 1812408845013688815}
   closeButton: {fileID: 5798904744218219246}
   detailIcon: {fileID: 779095695125212535}
@@ -3913,7 +3914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매"
+  m_text: "\uAD6C\uB9E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -4187,7 +4188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매 완료"
+  m_text: "\uAD6C\uB9E4 \uC644\uB8CC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -4298,8 +4299,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 390, y: 0}
-  m_SizeDelta: {x: 500, y: 520}
+  m_AnchoredPosition: {x: 412, y: -13}
+  m_SizeDelta: {x: 400, y: 650}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4245908112806232985
 CanvasRenderer:
@@ -4322,7 +4323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16, g: 0.16, b: 0.16, a: 0.95}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4638,8 +4639,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 110}
-  m_SizeDelta: {x: 180, y: 180}
+  m_AnchoredPosition: {x: 18, y: 63}
+  m_SizeDelta: {x: 210, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7292336039955646774
 CanvasRenderer:
@@ -4737,8 +4738,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: -110}
-  m_SizeDelta: {x: 180, y: 180}
+  m_AnchoredPosition: {x: -240, y: -217}
+  m_SizeDelta: {x: 210, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6752278996517516471
 CanvasRenderer:
@@ -5134,7 +5135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매 완료"
+  m_text: "\uAD6C\uB9E4 \uC644\uB8CC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -5408,7 +5409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매"
+  m_text: "\uAD6C\uB9E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -5790,7 +5791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -200}
+  m_AnchoredPosition: {x: 0, y: -239}
   m_SizeDelta: {x: 260, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &532104678738833489
@@ -5821,7 +5822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1793361916554337566, guid: 5665318f26374f74e9ddf18124b2690c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6077,7 +6078,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "구매"
+  m_text: "\uAD6C\uB9E4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91fce04332e05744e8303624c7001075, type: 2}
   m_sharedMaterial: {fileID: -5982610189179376153, guid: 91fce04332e05744e8303624c7001075, type: 2}
@@ -6190,8 +6191,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: -110}
-  m_SizeDelta: {x: 180, y: 180}
+  m_AnchoredPosition: {x: -497, y: -217}
+  m_SizeDelta: {x: 210, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6149182105128660277
 CanvasRenderer:
@@ -6403,11 +6404,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1496962911969601289, guid: 0a83eb158698b2446a0eee967af96d44, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 1496962911969601289, guid: 0a83eb158698b2446a0eee967af96d44, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 180
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 1496962911969601289, guid: 0a83eb158698b2446a0eee967af96d44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6439,11 +6440,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1496962911969601289, guid: 0a83eb158698b2446a0eee967af96d44, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -500
+      value: -497
       objectReference: {fileID: 0}
     - target: {fileID: 1496962911969601289, guid: 0a83eb158698b2446a0eee967af96d44, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 110
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 1496962911969601289, guid: 0a83eb158698b2446a0eee967af96d44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
