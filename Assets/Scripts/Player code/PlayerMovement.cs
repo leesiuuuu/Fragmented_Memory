@@ -3,18 +3,18 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D rigid;
-    SpriteRenderer spriteRenderer;
-    Animator animator;
-    PlayerHP playerHP;
-    PlayerCombat combat;
-    PlayerInvincibility invincibility;
+    private Rigidbody2D rigid;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private PlayerHP playerHP;
+    private PlayerCombat combat;
+    private PlayerInvincibility invincibility;
 
 
-    int jumpCount = 0;
-    int additionalJumpCount;
-    int maxDashCount = 1;
-    int dashCount = 1;
+    private int jumpCount = 0;
+    private int additionalJumpCount;
+    private int maxDashCount = 1;
+    private int dashCount = 1;
 
 
     public float moveSpeed = 9f;
@@ -27,19 +27,19 @@ public class PlayerMovement : MonoBehaviour
     public float dashFallSpeed = 3f;
 
 
-    bool isDash = false;
+    private bool isDash = false;
 
-    bool isGround = false;
-    float normalGravityScale;
-    float externalMovementMultiplier = 1f;
-    float? forcedHorizontalSpeed;
+    private bool isGround = false;
+    private float normalGravityScale;
+    private float externalMovementMultiplier = 1f;
+    private float? forcedHorizontalSpeed;
 
     public float CurrentMoveSpeed => moveSpeed * externalMovementMultiplier;
     public event System.Action MovementSpeedChanged;
 
 
 
-    void Awake()
+    private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void Update()
+    private void Update()
     {
         if (playerHP.IsDead || GameplayInputLock.IsLocked)
             return;
@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
             isGround = false;
 
-            if(EffectManager.Instance != null)
+            if (EffectManager.Instance != null)
             {
                 EffectManager.Instance.Play(
                     EffectId.Jump,
@@ -117,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
         {
             dashCount--;
             isDash = true;
+            animator.SetTrigger("Dash");
             invincibility?.StartDashInvincibility();
 
             float direction = spriteRenderer.flipX ? -1 : 1;
@@ -137,9 +138,9 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if(playerHP.IsDead)
+        if (playerHP.IsDead)
         {
             rigid.linearVelocity = Vector2.zero;
 
@@ -161,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
 
 
-        if(!isDash)
+        if (!isDash)
         {
             rigid.linearVelocity =
                 new Vector2(
@@ -196,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void EndDash()
+    private void EndDash()
     {
         isDash = false;
         invincibility?.EndDashInvincibility();
@@ -209,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void ResetDash()
+    private void ResetDash()
     {
         dashCount = Mathf.Min(dashCount + 1, maxDashCount);
 
@@ -271,9 +272,9 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             jumpCount = 0;
             isGround = true;
@@ -282,9 +283,9 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGround = false;
         }
