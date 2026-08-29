@@ -11,7 +11,12 @@ public enum ItemEffectType
     Heal,
     Attack,
     Defense,
-    CriticalChance
+    CriticalChance,
+    AttackCooldown,
+    JumpCount,
+    SkillCooldown,
+    Revival,
+    DashCount
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Item/Item Data")]
@@ -24,6 +29,8 @@ public class ItemData : ScriptableObject
 
     public Sprite icon;
 
+    public Sprite detailIcon;
+
     public int price;
 
     public ItemType itemType;
@@ -34,9 +41,13 @@ public class ItemData : ScriptableObject
     [Min(0f)]
     public float effectValue;
 
+    [Min(0f)]
+    public float duration;
+
     private void OnValidate()
     {
         price = Mathf.Max(0, price);
         effectValue = Mathf.Max(0f, effectValue);
+        duration = Mathf.Max(0f, duration);
     }
 }

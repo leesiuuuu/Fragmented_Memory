@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
     [Header("Rewards")]
     [SerializeField, Min(0)] private int clearStarDustReward = 50;
-    [SerializeField, Min(0f)] private float rewardDisplayDelay = 1.2f;
 
     [Header("Managers")]
     [SerializeField] private SpawnManager spawnManager;
@@ -28,7 +26,6 @@ public class RoomManager : MonoBehaviour
     private bool isCleared;
 
     private CurrencyWallet rewardWallet;
-    private RewardManager rewardManager;
 
     public MapNode Node => node;
 
@@ -56,20 +53,6 @@ public class RoomManager : MonoBehaviour
                     door.Entered -= HandleDoorEntered;
             }
         }
-
-        if (rewardManager != null)
-            rewardManager.RewardSelected -= HandleRewardSelected;
-    }
-
-    public void SetRewardManager(RewardManager manager)
-    {
-        if (rewardManager != null)
-            rewardManager.RewardSelected -= HandleRewardSelected;
-
-        rewardManager = manager;
-
-        if (rewardManager != null && isCleared)
-            rewardManager.RewardSelected += HandleRewardSelected;
     }
 
     public void StartRoom(GameManager game, MapNode mapNode, GameObject player)
@@ -139,15 +122,8 @@ public class RoomManager : MonoBehaviour
         // 기본 보상
         rewardWallet?.Add(clearStarDustReward);
 
-        // 보상 선택을 완료한 뒤 문을 연다.
-        if (rewardManager != null)
-        {
-            rewardManager.RewardSelected -= HandleRewardSelected;
-            rewardManager.RewardSelected += HandleRewardSelected;
-            StartCoroutine(ShowRewardAfterDelay());
-            return;
-        }
-
+        // 조각 선택은 모든 방을 끝낸 뒤 현실로 돌아가기 전에 한 번만 띄운다.
+        // 방은 별가루만 지급하고 문을 열며, 스테이지 보상은 GameManager가 처리한다.
         OpenDoors();
     }
 
@@ -171,19 +147,6 @@ public class RoomManager : MonoBehaviour
             gameManager.OnRoomCleared();
 
         Debug.Log($"[RoomManager] 방 클리어 — {(node != null ? node.type.ToString() : "?")}");
-    }
-
-    private IEnumerator ShowRewardAfterDelay()
-    {
-        yield return new WaitForSeconds(rewardDisplayDelay);
-
-        if (rewardManager != null && rewardManager.GenerateRewards())
-            yield break;
-
-        if (rewardManager != null)
-            rewardManager.RewardSelected -= HandleRewardSelected;
-
-        OpenDoors();
     }
 
     private void CloseDoors()
@@ -213,14 +176,6 @@ public class RoomManager : MonoBehaviour
 
             door.SetInteractable(!door.IsBackDoor || canGoBack);
         }
-    }
-
-    private void HandleRewardSelected()
-    {
-        if (rewardManager != null)
-            rewardManager.RewardSelected -= HandleRewardSelected;
-
-        OpenDoors();
     }
 
     private void HandleDoorEntered(RoomDoorTrigger door)

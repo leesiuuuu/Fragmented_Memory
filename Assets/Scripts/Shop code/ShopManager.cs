@@ -6,7 +6,6 @@ public enum PurchaseResult
 {
     Success,
     InvalidItem,
-    AlreadyPurchased,
     InsufficientFunds,
     EffectUnavailable
 }
@@ -17,8 +16,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private ItemEffectApplier effectApplier;
 
     private readonly List<ItemData> currentItems = new List<ItemData>();
-    private readonly List<bool> purchased = new List<bool>();
     private CurrencyWallet wallet;
+    private ItemInventory itemInventory;
 
     public IReadOnlyList<ItemData> CurrentItems => currentItems;
     public CurrencyWallet Wallet => wallet;
@@ -29,13 +28,13 @@ public class ShopManager : MonoBehaviour
     public void Initialize(GameObject player)
     {
         wallet = player != null ? player.GetComponent<CurrencyWallet>() : null;
+        itemInventory = player != null ? player.GetComponent<ItemInventory>() : null;
         effectApplier?.Initialize(player);
     }
 
     public void PrepareShop()
     {
         currentItems.Clear();
-        purchased.Clear();
 
         foreach (ItemData item in itemPool)
         {
@@ -43,15 +42,9 @@ public class ShopManager : MonoBehaviour
                 continue;
 
             currentItems.Add(item);
-            purchased.Add(false);
         }
 
         ShopChanged?.Invoke();
-    }
-
-    public bool IsPurchased(int index)
-    {
-        return index >= 0 && index < purchased.Count && purchased[index];
     }
 
     public PurchaseResult Buy(int index)
@@ -59,19 +52,24 @@ public class ShopManager : MonoBehaviour
         if (wallet == null || effectApplier == null || index < 0 || index >= currentItems.Count)
             return Fail(PurchaseResult.InvalidItem);
 
-        if (purchased[index])
-            return Fail(PurchaseResult.AlreadyPurchased);
-
         ItemData item = currentItems[index];
 
-        if (!effectApplier.CanApply(item))
+        bool isConsumable = item.itemType == ItemType.Potion;
+
+        if (isConsumable && itemInventory == null)
+            return Fail(PurchaseResult.EffectUnavailable);
+
+        if (!isConsumable && !effectApplier.CanApply(item))
             return Fail(PurchaseResult.EffectUnavailable);
 
         if (!wallet.TrySpend(item.price))
             return Fail(PurchaseResult.InsufficientFunds);
 
-        effectApplier.Apply(item);
-        purchased[index] = true;
+        if (isConsumable)
+            itemInventory.Add(item);
+        else
+            effectApplier.Apply(item);
+
         ItemPurchased?.Invoke(index, item);
         ShopChanged?.Invoke();
         return PurchaseResult.Success;

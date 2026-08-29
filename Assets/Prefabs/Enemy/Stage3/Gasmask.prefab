@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 1398020363954212421}
   - component: {fileID: -3911313690113566097}
   - component: {fileID: 846051028077903215}
+  - component: {fileID: 2451415637969421837}
   m_Layer: 0
   m_Name: Gasmask
   m_TagString: Enemy
@@ -361,7 +362,7 @@ MonoBehaviour:
   hpBar: {fileID: 6762040416143710936}
   deathAnimation: {fileID: 7400000, guid: 5d3fd6afde5c4e244a7d911b75e79731, type: 2}
   deathDuration: 2
-  hideHPBarOnDeath: 0
+  hideHPBarOnDeath: 1
 --- !u!114 &1398020363954212421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +435,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.7}
   m_Size: {x: 0.9, y: 1.3}
   m_Direction: 0
+--- !u!114 &2451415637969421837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482695373007947413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076da3b1880f4942f5e112609c8db897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMemoryDrop
+  settings: {fileID: 11400000, guid: efcdf48ca84a5e14db33b140f2e541df, type: 2}
+  dropOffset: {x: 0, y: 0.5}
 --- !u!1 &7348800051750550191
 GameObject:
   m_ObjectHideFlags: 0

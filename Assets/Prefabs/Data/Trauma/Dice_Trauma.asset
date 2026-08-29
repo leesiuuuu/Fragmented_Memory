@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MemoryData
   memoryName: "주사위의 조각"
   description:
-  icon: {fileID: 0}
+  icon: {fileID: 6643135209321178255, guid: 508c1a7aa2f0cd549b87d3572e25a972, type: 3}
   type: 1
   rarity: 3
+  synergy: 5
   health: 0
   attack: 200
   defense: 100

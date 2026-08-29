@@ -60,7 +60,6 @@ public class RewardManager : MonoBehaviour
         return true;
     }
 
-
     public IReadOnlyList<MemoryData> GetRewards()
     {
         return currentRewards;

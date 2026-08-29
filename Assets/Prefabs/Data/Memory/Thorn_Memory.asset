@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MemoryData
   memoryName: "가시의 조각"
   description:
-  icon: {fileID: 0}
+  icon: {fileID: 2193399858929290969, guid: 508c1a7aa2f0cd549b87d3572e25a972, type: 3}
   type: 0
   rarity: 1
+  synergy: 6
   health: 250
   attack: 50
   defense: 100

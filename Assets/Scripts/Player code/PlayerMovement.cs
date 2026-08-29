@@ -3,14 +3,18 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D rigid;
-    SpriteRenderer spriteRenderer;
-    Animator animator;
-    PlayerHP playerHP;
-    PlayerCombat combat;
+    private Rigidbody2D rigid;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private PlayerHP playerHP;
+    private PlayerCombat combat;
+    private PlayerInvincibility invincibility;
 
 
-    int jumpCount = 0;
+    private int jumpCount = 0;
+    private int additionalJumpCount;
+    private int maxDashCount = 1;
+    private int dashCount = 1;
 
 
     public float moveSpeed = 9f;
@@ -23,29 +27,32 @@ public class PlayerMovement : MonoBehaviour
     public float dashFallSpeed = 3f;
 
 
-    bool canDash = true;
-    bool isDash = false;
+    private bool isDash = false;
 
-    bool isGround = false;
-    float normalGravityScale;
-    float externalMovementMultiplier = 1f;
-    float? forcedHorizontalSpeed;
+    private bool isGround = false;
+    private float normalGravityScale;
+    private float externalMovementMultiplier = 1f;
+    private float? forcedHorizontalSpeed;
+
+    public float CurrentMoveSpeed => moveSpeed * externalMovementMultiplier;
+    public event System.Action MovementSpeedChanged;
 
 
 
-    void Awake()
+    private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerHP = GetComponent<PlayerHP>();
         combat = GetComponent<PlayerCombat>();
+        invincibility = GetComponent<PlayerInvincibility>();
         normalGravityScale = rigid.gravityScale;
     }
 
 
 
-    void Update()
+    private void Update()
     {
         if (playerHP.IsDead || GameplayInputLock.IsLocked)
             return;
@@ -72,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             || Input.GetKeyDown(KeyCode.UpArrow))
             && !combat.IsBusy
             && !isDash
-            && jumpCount < 2)
+            && jumpCount < 2 + additionalJumpCount)
         {
 
             rigid.linearVelocity =
@@ -92,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
             isGround = false;
 
-            if(EffectManager.Instance != null)
+            if (EffectManager.Instance != null)
             {
                 EffectManager.Instance.Play(
                     EffectId.Jump,
@@ -106,10 +113,12 @@ public class PlayerMovement : MonoBehaviour
 
         // 대쉬
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCount > 0)
         {
-            canDash = false;
+            dashCount--;
             isDash = true;
+            animator.SetTrigger("Dash");
+            invincibility?.StartDashInvincibility();
 
             float direction = spriteRenderer.flipX ? -1 : 1;
 
@@ -129,16 +138,9 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (GameplayInputLock.IsLocked)
-        {
-            rigid.linearVelocity = new Vector2(0f, rigid.linearVelocity.y);
-            animator.SetFloat("move speed", 0f);
-            return;
-        }
-
-        if(playerHP.IsDead)
+        if (playerHP.IsDead)
         {
             rigid.linearVelocity = Vector2.zero;
 
@@ -148,12 +150,19 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if (GameplayInputLock.IsLocked)
+        {
+            rigid.linearVelocity = new Vector2(0f, rigid.linearVelocity.y);
+            animator.SetFloat("move speed", 0f);
+            return;
+        }
+
 
 
         float h = Input.GetAxisRaw("Horizontal");
 
 
-        if(!isDash)
+        if (!isDash)
         {
             rigid.linearVelocity =
                 new Vector2(
@@ -188,9 +197,10 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void EndDash()
+    private void EndDash()
     {
         isDash = false;
+        invincibility?.EndDashInvincibility();
         rigid.gravityScale = normalGravityScale;
         rigid.linearVelocity = new Vector2(
             rigid.linearVelocity.x,
@@ -200,15 +210,39 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void ResetDash()
+    private void ResetDash()
     {
-        canDash = true;
+        dashCount = Mathf.Min(dashCount + 1, maxDashCount);
+
+        if (dashCount < maxDashCount)
+            Invoke(nameof(ResetDash), dashCooldown);
     }
 
 
     public void SetExternalMovementMultiplier(float multiplier)
     {
-        externalMovementMultiplier = Mathf.Max(0f, multiplier);
+        float nextMultiplier = Mathf.Max(0f, multiplier);
+
+        if (Mathf.Approximately(externalMovementMultiplier, nextMultiplier))
+            return;
+
+        externalMovementMultiplier = nextMultiplier;
+        MovementSpeedChanged?.Invoke();
+    }
+
+
+    public void AddMaxJumpCount(int amount)
+    {
+        if (amount > 0)
+            additionalJumpCount += amount;
+    }
+
+
+    public void AddMaxDashCount(int amount)
+    {
+        int addedCount = Mathf.Max(0, amount);
+        maxDashCount += addedCount;
+        dashCount += addedCount;
     }
 
 
@@ -229,7 +263,8 @@ public class PlayerMovement : MonoBehaviour
         CancelInvoke(nameof(ResetDash));
 
         isDash = false;
-        canDash = true;
+        dashCount = maxDashCount;
+        invincibility?.EndDashInvincibility();
 
         if (rigid != null)
             rigid.gravityScale = normalGravityScale;
@@ -237,9 +272,9 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             jumpCount = 0;
             isGround = true;
@@ -248,9 +283,9 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGround = false;
         }

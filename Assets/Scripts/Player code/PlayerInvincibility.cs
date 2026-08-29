@@ -6,10 +6,9 @@ public class PlayerInvincibility : MonoBehaviour
     [SerializeField] private float hitInvincibilityDuration = 0.5f;
 
     private bool isHitInvincible;
+    private bool isDashInvincible;
 
-    public bool IsInvincible => isHitInvincible;
-
-    // TODO: 대시 시작과 종료 시 별도 무적 상태를 변경하고 IsInvincible 판정에 포함한다.
+    public bool IsInvincible => isHitInvincible || isDashInvincible;
 
 
 
@@ -19,6 +18,18 @@ public class PlayerInvincibility : MonoBehaviour
             return;
 
         StartCoroutine(HitInvincibility());
+    }
+
+
+    public void StartDashInvincibility()
+    {
+        isDashInvincible = true;
+    }
+
+
+    public void EndDashInvincibility()
+    {
+        isDashInvincible = false;
     }
 
 
@@ -35,5 +46,6 @@ public class PlayerInvincibility : MonoBehaviour
     private void OnDisable()
     {
         isHitInvincible = false;
+        isDashInvincible = false;
     }
 }
