@@ -1609,11 +1609,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cebb11d4cf47742b0c190d31797e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillManager
-  slashKey: 113
-  strongStrikeKey: 114
-  pokeKey: 102
-  strikeKey: 116
-  ultimateKey: 103
+  slashKey: 49
+  strongStrikeKey: 50
+  pokeKey: 51
+  strikeKey: 52
+  ultimateKey: 53
   slashPrefab: {fileID: 8218432965011468082, guid: 807e39e1f61fd624eb78c05330dd4a89, type: 3}
   slashSpawnOffset: {x: 1, y: 0.7}
   slashSize: {x: 1.2, y: 1}
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   strongMeleeAttackBoxPrefab: {fileID: 100000, guid: e699eedcc5aa40cf9db5f2a01483e8a2, type: 3}
   strongMeleeOffset: {x: 1.2, y: 0}
   strongStrikeProjectilePrefab: {fileID: 7051176612737162477, guid: bc4a1969c4b052742b63260e467e9ee3, type: 3}
-  strongStrikeProjectileSpawnOffset: {x: 1, y: 0}
+  strongStrikeProjectileSpawnOffset: {x: 1, y: 0.7}
   strongStrikeProjectileSize: {x: 1.8, y: 0.8}
   strongStrikeProjectileSpeed: 8
   strongStrikeProjectileMaxDistance: 6
