@@ -1751,10 +1751,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8873753d9e944b639c049dcb3641b919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInventoryUI
-  toggleKey: 105
   useKey: 101
   panelPrefab: {fileID: 2410459261318558053, guid: fdc68abb19408f74884f732a9bfeab25, type: 3}
   effectApplier: {fileID: 416442013}
+  targetCanvas: {fileID: 1549503834}
 --- !u!114 &1197494146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1934,7 +1934,7 @@ RectTransform:
   m_GameObject: {fileID: 1549503831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 711643500}

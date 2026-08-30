@@ -2,15 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // ItemInventory의 소모품 목록을 표시하고 선택한 아이템 사용을 ItemEffectApplier에 맡긴다.
-// I로 패널을 열고 닫는다. 패널 안에서는 E로 선택한 아이템을 사용한다.
+// 소모품 인벤토리는 항상 표시되며, 선택한 아이템은 E로 사용한다.
 public class ItemInventoryUI : MonoBehaviour
 {
-    private const string InputLockId = "ItemInventoryUI";
-
-    [SerializeField] private KeyCode toggleKey = KeyCode.I;
     [SerializeField] private KeyCode useKey = KeyCode.E;
     [SerializeField] private ItemInventoryPanel panelPrefab;
     [SerializeField] private ItemEffectApplier effectApplier;
+    [SerializeField] private Canvas targetCanvas;
 
     private readonly List<ItemInventorySlotUI> slots = new List<ItemInventorySlotUI>();
     private ItemInventory inventory;
@@ -24,9 +22,26 @@ public class ItemInventoryUI : MonoBehaviour
         playerHP = GetComponent<PlayerHP>();
 
         if (panelPrefab != null)
-            panel = Instantiate(panelPrefab);
+            panel = targetCanvas != null
+                ? Instantiate(panelPrefab, targetCanvas.transform)
+                : Instantiate(panelPrefab);
 
-        SetVisible(false);
+        if (panel != null && targetCanvas != null)
+        {
+            Canvas panelCanvas = panel.GetComponent<Canvas>();
+            if (panelCanvas != null)
+            {
+                panelCanvas.renderMode = targetCanvas.renderMode;
+                panelCanvas.worldCamera = targetCanvas.worldCamera;
+                panelCanvas.planeDistance = targetCanvas.planeDistance;
+            }
+        }
+
+        if (panel != null)
+        {
+            panel.PanelRoot.SetActive(true);
+            Refresh();
+        }
     }
 
     private void OnEnable()
@@ -42,22 +57,12 @@ public class ItemInventoryUI : MonoBehaviour
         if (panel == null || playerHP == null || playerHP.IsDead)
             return;
 
-        bool isOpen = panel.PanelRoot.activeSelf;
-
-        if (Input.GetKeyDown(toggleKey) && (isOpen || !GameplayInputLock.IsLocked))
-        {
-            SetVisible(!isOpen);
-            return;
-        }
-
-        if (isOpen && Input.GetKeyDown(useKey))
+        if (!GameplayInputLock.IsLocked && Input.GetKeyDown(useKey))
             UseSelectedItem();
     }
 
     private void OnDisable()
     {
-        GameplayInputLock.SetLocked(InputLockId, false);
-
         if (inventory != null)
             inventory.Changed -= Refresh;
         if (playerHP != null)
@@ -66,22 +71,8 @@ public class ItemInventoryUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameplayInputLock.SetLocked(InputLockId, false);
-
         if (panel != null)
             Destroy(panel.gameObject);
-    }
-
-    private void SetVisible(bool visible)
-    {
-        if (panel == null)
-            return;
-
-        panel.PanelRoot.SetActive(visible);
-        GameplayInputLock.SetLocked(InputLockId, visible);
-
-        if (visible)
-            Refresh();
     }
 
     private void Select(ItemData item)
@@ -92,7 +83,8 @@ public class ItemInventoryUI : MonoBehaviour
 
     private void CloseOnDeath()
     {
-        SetVisible(false);
+        selectedItem = null;
+        Refresh();
     }
 
     private void UseSelectedItem()
@@ -113,6 +105,7 @@ public class ItemInventoryUI : MonoBehaviour
             return;
 
         IReadOnlyList<ItemInventory.Entry> items = inventory.Items;
+        int visibleCount = Mathf.Min(4, items.Count);
 
         if (selectedItem != null && !inventory.Contains(selectedItem))
             selectedItem = null;
@@ -120,22 +113,37 @@ public class ItemInventoryUI : MonoBehaviour
         if (slots.Count == 0 && panel.SlotTemplate != null)
             slots.Add(panel.SlotTemplate);
 
-        while (slots.Count < items.Count)
+        if (panel.SlotTemplate == null || panel.SlotRoot == null)
+            return;
+
+        while (slots.Count < 4)
             slots.Add(Instantiate(panel.SlotTemplate, panel.SlotRoot));
 
         for (int i = 0; i < slots.Count; i++)
         {
-            if (i < items.Count)
-                slots[i].Setup(items[i], items[i].item == selectedItem, Select);
+            if (i < visibleCount)
+                slots[i].Setup(items[i], items[i].item == selectedItem,
+                    Select, ShowTooltip, HideTooltip);
             else
                 slots[i].Hide();
         }
 
+        HideTooltip();
+    }
+
+    private void ShowTooltip(ItemData item)
+    {
+        if (panel.SelectedItemText == null || item == null)
+            return;
+
+        panel.SelectedItemText.text =
+            $"{item.itemName}\n{item.description}\n\n<size=70%><color=#FFFFFF>E 사용</color></size>";
+        panel.SelectedItemText.gameObject.SetActive(true);
+    }
+
+    private void HideTooltip()
+    {
         if (panel.SelectedItemText != null)
-        {
-            panel.SelectedItemText.text = selectedItem == null
-                ? "사용할 아이템을 선택하세요\n\n<size=70%><color=#FFFFFF>I 닫기</color></size>"
-                : $"{selectedItem.itemName}\n{selectedItem.description}\n\n<size=70%><color=#FFFFFF>E 사용. I 닫기</color></size>";
-        }
+            panel.SelectedItemText.gameObject.SetActive(false);
     }
 }
