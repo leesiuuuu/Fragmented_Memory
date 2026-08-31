@@ -9,9 +9,18 @@ UserSettings/
 .vscode/
 
 *.csproj
+# 유니티 생성물이 아니라 손으로 관리하는 툴 — 위 무시 규칙에서 제외한다
+!Tools/**/*.csproj
+Tools/**/bin/
+
 *.sln
 *.slnx
 *.suo
 *.tmp
 *.user
 *.userprefs
+.vs/
+
+# Unity Performance Testing 패키지가 실행할 때마다 새로 쓰는 산출물
+Assets/Resources/PerformanceTestRunInfo.json*
+Assets/Resources/PerformanceTestRunSettings.json*

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01f9a7e9681d8d498c2823473b3d5ad, type: 3}
+  m_Name: Room_Merchant
+  m_EditorClassIdentifier: Assembly-CSharp::RoomData
+  roomName: Room_Merchant
+  type: 2
+  prefabVariants:
+  - {fileID: 5728052231096034427, guid: 91b50ffb5e7f5ab43905f8df51ea6672, type: 3}
+  minEnemyCount: 0
+  maxEnemyCount: 0

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4506280ca4450934cbb3664ac4ae0686, type: 3}
+  m_Name: Warrior_Memory
+  m_EditorClassIdentifier: Assembly-CSharp::MemoryData
+  memoryName: "전사의 조각"
+  description: "강한 힘만으로는 사랑을 얻을
+    수 없다."
+  icon: {fileID: -1195683675641600831, guid: 508c1a7aa2f0cd549b87d3572e25a972, type: 3}
+  type: 0
+  rarity: 0
+  synergy: 1
+  health: 200
+  attack: 100
+  defense: 0
+  criticalChance: 10
+  criticalDamage: 100
+  lifeSteal: 0
+  charm: -50
