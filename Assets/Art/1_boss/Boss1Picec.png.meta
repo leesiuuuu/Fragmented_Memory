@@ -1,0 +1,1690 @@
+fileFormatVersion: 2
+guid: 13560a55621154b4d89e66c80aa64f19
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5142225238053901561
+    second: Boss1Picec_0
+  - first:
+      213: -9071890167332700386
+    second: Boss1Picec_1
+  - first:
+      213: 8353129104089827074
+    second: Boss1Picec_2
+  - first:
+      213: 952638724565801305
+    second: Boss1Picec_3
+  - first:
+      213: 3455469941706245996
+    second: Boss1Picec_4
+  - first:
+      213: -6906816590068645291
+    second: Boss1Picec_5
+  - first:
+      213: 6063748280073242370
+    second: Boss1Picec_6
+  - first:
+      213: -8353475319706702979
+    second: Boss1Picec_7
+  - first:
+      213: 4719307160781225719
+    second: Boss1Picec_8
+  - first:
+      213: 6434075074200082154
+    second: Boss1Picec_9
+  - first:
+      213: 8916024033280693617
+    second: Boss1Picec_10
+  - first:
+      213: -1965025623006887694
+    second: Boss1Picec_11
+  - first:
+      213: 1005548095979557910
+    second: Boss1Picec_12
+  - first:
+      213: 8054048774078480814
+    second: Boss1Picec_13
+  - first:
+      213: -2671314688300257130
+    second: Boss1Picec_14
+  - first:
+      213: 9097054961793756189
+    second: Boss1Picec_15
+  - first:
+      213: -7490509017195811897
+    second: Boss1Picec_16
+  - first:
+      213: -7145126000517292619
+    second: Boss1Picec_17
+  - first:
+      213: 1463809792518380769
+    second: Boss1Picec_18
+  - first:
+      213: -2239961816474170653
+    second: Boss1Picec_19
+  - first:
+      213: 2455852058656074731
+    second: Boss1Picec_20
+  - first:
+      213: -2503872285362111417
+    second: Boss1Picec_21
+  - first:
+      213: 4357983066067144732
+    second: Boss1Picec_22
+  - first:
+      213: 8943640857524673226
+    second: Boss1Picec_23
+  - first:
+      213: -2041723070136835591
+    second: Boss1Picec_24
+  - first:
+      213: -8736628591569738328
+    second: Boss1Picec_25
+  - first:
+      213: -1665194462825156381
+    second: Boss1Picec_26
+  - first:
+      213: -2223535334855055687
+    second: Boss1Picec_27
+  - first:
+      213: 6173453218679387701
+    second: Boss1Picec_28
+  - first:
+      213: 2844518406456464149
+    second: Boss1Picec_29
+  - first:
+      213: -650952604064623213
+    second: Boss1Picec_30
+  - first:
+      213: -4270456207481523329
+    second: Boss1Picec_31
+  - first:
+      213: 105802299906492312
+    second: Boss1Picec_32
+  - first:
+      213: 2034992181960496960
+    second: Boss1Picec_33
+  - first:
+      213: 3898614707252467713
+    second: Boss1Picec_34
+  - first:
+      213: 2518340729915247637
+    second: Boss1Picec_35
+  - first:
+      213: -7221904331914547439
+    second: Boss1Picec_36
+  - first:
+      213: -2712048515855275140
+    second: Boss1Picec_37
+  - first:
+      213: 2972966185666212179
+    second: Boss1Picec_38
+  - first:
+      213: -2927442333420257866
+    second: Boss1Picec_39
+  - first:
+      213: -3788175204932201048
+    second: Boss1Picec_40
+  - first:
+      213: 7011451667312382650
+    second: Boss1Picec_41
+  - first:
+      213: -3398720104703967614
+    second: Boss1Picec_42
+  - first:
+      213: -2588560244204634562
+    second: Boss1Picec_43
+  - first:
+      213: -7513702020913034644
+    second: Boss1Picec_44
+  - first:
+      213: -2121964913893852377
+    second: Boss1Picec_45
+  - first:
+      213: -1135273639785722319
+    second: Boss1Picec_46
+  - first:
+      213: -5907025318289508132
+    second: Boss1Picec_47
+  - first:
+      213: -6758321246645981018
+    second: Boss1Picec_48
+  - first:
+      213: 126102149258019843
+    second: Boss1Picec_49
+  - first:
+      213: -5064383133452465058
+    second: Boss1Picec_50
+  - first:
+      213: 5003410119300807891
+    second: Boss1Picec_51
+  - first:
+      213: -3042564568208963822
+    second: Boss1Picec_52
+  - first:
+      213: -6762252236084812933
+    second: Boss1Picec_53
+  - first:
+      213: -2789324499055910454
+    second: Boss1Picec_54
+  - first:
+      213: -2639566277885091283
+    second: Boss1Picec_55
+  - first:
+      213: -8446554414426685537
+    second: Boss1Picec_56
+  - first:
+      213: -6468114332932210494
+    second: Boss1Picec_57
+  - first:
+      213: 3293659707430720553
+    second: Boss1Picec_58
+  - first:
+      213: 4942312685278481276
+    second: Boss1Picec_59
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss1Picec_0
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 309
+        width: 13
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f4504dfb9adc5740800000000000000
+      internalID: 5142225238053901561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_1
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 314
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1f76ce25fb2a1280800000000000000
+      internalID: -9071890167332700386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_2
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 314
+        width: 16
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2074044d9a64ce370800000000000000
+      internalID: 8353129104089827074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_3
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 319
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95996096fd3783d00800000000000000
+      internalID: 952638724565801305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_4
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 314
+        width: 16
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c67c077aa9b44ff20800000000000000
+      internalID: 3455469941706245996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_5
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 319
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5520f2cb7ee0620a0800000000000000
+      internalID: -6906816590068645291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_6
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 214
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 207c6210fe2c62450800000000000000
+      internalID: 6063748280073242370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_7
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 234
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7ba3e0947e721c80800000000000000
+      internalID: -8353475319706702979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_8
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 237
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fe7258dbd85e7140800000000000000
+      internalID: 4719307160781225719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_9
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 223
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae614e7d03d6a4950800000000000000
+      internalID: 6434075074200082154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_10
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 215
+        width: 18
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1759a808e941cbb70800000000000000
+      internalID: 8916024033280693617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_11
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 229
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f042266b93dab4e0800000000000000
+      internalID: -1965025623006887694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_12
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 220
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6149e696aac64fd00800000000000000
+      internalID: 1005548095979557910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_13
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 220
+        width: 11
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea14e9610bab5cf60800000000000000
+      internalID: 8054048774078480814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_14
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 226
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6907498b1759dead0800000000000000
+      internalID: -2671314688300257130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_15
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 237
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1cebeb1a4b3f3e70800000000000000
+      internalID: 9097054961793756189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_16
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 237
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cbee2b3cbd5c0890800000000000000
+      internalID: -7490509017195811897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_17
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 228
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bd52cf42c967dc90800000000000000
+      internalID: -7145126000517292619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_18
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 227
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ecdbcd204f705410800000000000000
+      internalID: 1463809792518380769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_19
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 227
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ea4e92889e0ae0e0800000000000000
+      internalID: -2239961816474170653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_20
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 216
+        width: 18
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beb6b198f60f41220800000000000000
+      internalID: 2455852058656074731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_21
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 231
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74cbb0c2c65704dd0800000000000000
+      internalID: -2503872285362111417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_22
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 230
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c10991e428aaa7c30800000000000000
+      internalID: 4357983066067144732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_23
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 222
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aca9d6779f13e1c70800000000000000
+      internalID: 8943640857524673226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_24
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 221
+        width: 6
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f126ca6fa75aa3e0800000000000000
+      internalID: -2041723070136835591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_25
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 227
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a5e6f8a59241c680800000000000000
+      internalID: -8736628591569738328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_26
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 236
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e0fb59657a04e8e0800000000000000
+      internalID: -1665194462825156381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_27
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 228
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b66f6cc46a6421e0800000000000000
+      internalID: -2223535334855055687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_28
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 228
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53670e87ef28ca550800000000000000
+      internalID: 6173453218679387701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_29
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 227
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 513d5e57b62c97720800000000000000
+      internalID: 2844518406456464149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_30
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 219
+        width: 6
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 395dc153e0a57f6f0800000000000000
+      internalID: -650952604064623213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_31
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 228
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f73b33484ba4cb4c0800000000000000
+      internalID: -4270456207481523329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_32
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 195
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 897885691a2e77100800000000000000
+      internalID: 105802299906492312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_33
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 190
+        width: 11
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 047d37e8b9ebd3c10800000000000000
+      internalID: 2034992181960496960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_34
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 214
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10895e5ab69aa1630800000000000000
+      internalID: 3898614707252467713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_35
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 206
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c0ff51d81f2f220800000000000000
+      internalID: 2518340729915247637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_36
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 197
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11fe06ef544a6cb90800000000000000
+      internalID: -7221904331914547439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_37
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 188
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7b22de6e3edc5ad0800000000000000
+      internalID: -2712048515855275140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_38
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 131
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 351f1e19ef8124920800000000000000
+      internalID: 2972966185666212179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_39
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 129
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bd7b0045b2af57d0800000000000000
+      internalID: -2927442333420257866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_40
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 91
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a5d213c8b2bd6bc0800000000000000
+      internalID: -3788175204932201048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_41
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 93
+        width: 6
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab299f5a42ead4160800000000000000
+      internalID: 7011451667312382650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_42
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 100
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28e342c621255d0d0800000000000000
+      internalID: -3398720104703967614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_43
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 99
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3efb743c26931cd0800000000000000
+      internalID: -2588560244204634562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_44
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 108
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6a085f32d7f9b790800000000000000
+      internalID: -7513702020913034644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_45
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 100
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72bb38947244d82e0800000000000000
+      internalID: -2121964913893852377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_46
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 100
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13e05b9b3a2be30f0800000000000000
+      internalID: -1135273639785722319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_47
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 99
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd87d1015c7060ea0800000000000000
+      internalID: -5907025318289508132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_48
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 91
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a0f0bf12ae9532a0800000000000000
+      internalID: -6758321246645981018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_49
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 87
+        width: 6
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30400f39c3100c100800000000000000
+      internalID: 126102149258019843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_50
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 7
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5c06145f52b7b9b0800000000000000
+      internalID: -5064383133452465058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_51
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 2
+        width: 6
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dcf48a8efeaf6540800000000000000
+      internalID: 5003410119300807891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_52
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 9
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21707b935a3a6c5d0800000000000000
+      internalID: -3042564568208963822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_53
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 15
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b73e2925b67a722a0800000000000000
+      internalID: -6762252236084812933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_54
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 24
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac16a7685245a49d0800000000000000
+      internalID: -2789324499055910454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_55
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 16
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d222f8d84706e5bd0800000000000000
+      internalID: -2639566277885091283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_56
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 9
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9ff618038fc7ca80800000000000000
+      internalID: -8446554414426685537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_57
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 8
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c086f2a844ac36a0800000000000000
+      internalID: -6468114332932210494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_58
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 7
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 924dc68ad0e65bd20800000000000000
+      internalID: 3293659707430720553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss1Picec_59
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 3
+        width: 6
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7b4ee6a33f969440800000000000000
+      internalID: 4942312685278481276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Boss1Picec_0: 5142225238053901561
+      Boss1Picec_1: -9071890167332700386
+      Boss1Picec_10: 8916024033280693617
+      Boss1Picec_11: -1965025623006887694
+      Boss1Picec_12: 1005548095979557910
+      Boss1Picec_13: 8054048774078480814
+      Boss1Picec_14: -2671314688300257130
+      Boss1Picec_15: 9097054961793756189
+      Boss1Picec_16: -7490509017195811897
+      Boss1Picec_17: -7145126000517292619
+      Boss1Picec_18: 1463809792518380769
+      Boss1Picec_19: -2239961816474170653
+      Boss1Picec_2: 8353129104089827074
+      Boss1Picec_20: 2455852058656074731
+      Boss1Picec_21: -2503872285362111417
+      Boss1Picec_22: 4357983066067144732
+      Boss1Picec_23: 8943640857524673226
+      Boss1Picec_24: -2041723070136835591
+      Boss1Picec_25: -8736628591569738328
+      Boss1Picec_26: -1665194462825156381
+      Boss1Picec_27: -2223535334855055687
+      Boss1Picec_28: 6173453218679387701
+      Boss1Picec_29: 2844518406456464149
+      Boss1Picec_3: 952638724565801305
+      Boss1Picec_30: -650952604064623213
+      Boss1Picec_31: -4270456207481523329
+      Boss1Picec_32: 105802299906492312
+      Boss1Picec_33: 2034992181960496960
+      Boss1Picec_34: 3898614707252467713
+      Boss1Picec_35: 2518340729915247637
+      Boss1Picec_36: -7221904331914547439
+      Boss1Picec_37: -2712048515855275140
+      Boss1Picec_38: 2972966185666212179
+      Boss1Picec_39: -2927442333420257866
+      Boss1Picec_4: 3455469941706245996
+      Boss1Picec_40: -3788175204932201048
+      Boss1Picec_41: 7011451667312382650
+      Boss1Picec_42: -3398720104703967614
+      Boss1Picec_43: -2588560244204634562
+      Boss1Picec_44: -7513702020913034644
+      Boss1Picec_45: -2121964913893852377
+      Boss1Picec_46: -1135273639785722319
+      Boss1Picec_47: -5907025318289508132
+      Boss1Picec_48: -6758321246645981018
+      Boss1Picec_49: 126102149258019843
+      Boss1Picec_5: -6906816590068645291
+      Boss1Picec_50: -5064383133452465058
+      Boss1Picec_51: 5003410119300807891
+      Boss1Picec_52: -3042564568208963822
+      Boss1Picec_53: -6762252236084812933
+      Boss1Picec_54: -2789324499055910454
+      Boss1Picec_55: -2639566277885091283
+      Boss1Picec_56: -8446554414426685537
+      Boss1Picec_57: -6468114332932210494
+      Boss1Picec_58: 3293659707430720553
+      Boss1Picec_59: 4942312685278481276
+      Boss1Picec_6: 6063748280073242370
+      Boss1Picec_7: -8353475319706702979
+      Boss1Picec_8: 4719307160781225719
+      Boss1Picec_9: 6434075074200082154
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
