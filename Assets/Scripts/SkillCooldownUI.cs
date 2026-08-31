@@ -7,6 +7,8 @@ using UnityEngine.UI;
 // 표시할 키와 남은 시간은 SkillUi가 SkillManager에서 직접 읽는다.
 public class SkillCooldownUI : MonoBehaviour
 {
+    private const int SkillSlotCount = 5;
+
     private static readonly SkillSlot[] SlotOrder =
     {
         SkillSlot.Slash,
@@ -22,6 +24,9 @@ public class SkillCooldownUI : MonoBehaviour
     [SerializeField] private float slotSpacing = 12f;
     [SerializeField] private Vector2 anchoredPosition = new Vector2(0f, 40f);
     [SerializeField] private Color slotColor = new Color(0.12f, 0.12f, 0.18f, 0.85f);
+
+    // SkillSlot 순서대로 넣는다. 비워 두면 그 칸은 slotColor 단색으로 남는다.
+    [SerializeField] private Sprite[] skillIcons = new Sprite[SkillSlotCount];
 
     private readonly List<SkillUi> slots = new List<SkillUi>();
 
@@ -79,8 +84,12 @@ public class SkillCooldownUI : MonoBehaviour
         RectTransform rect = slotObject.AddComponent<RectTransform>();
         rect.sizeDelta = slotSize;
 
+        Sprite icon = GetIcon(slot);
+
         Image background = slotObject.AddComponent<Image>();
-        background.color = slotColor;
+        background.sprite = icon;
+        // 아이콘에 이미 배경 타일이 그려져 있으므로 원색 그대로 띄운다.
+        background.color = icon != null ? Color.white : slotColor;
         background.raycastTarget = false;
 
         TMP_Text keyText = CreateText(rect, "Key", 22f,
@@ -92,6 +101,16 @@ public class SkillCooldownUI : MonoBehaviour
         ui.Build(skillManager, slot, background, keyText, cooldownText);
 
         return ui;
+    }
+
+    private Sprite GetIcon(SkillSlot slot)
+    {
+        int index = (int)slot;
+
+        if (skillIcons == null || index < 0 || index >= skillIcons.Length)
+            return null;
+
+        return skillIcons[index];
     }
 
     private static TMP_Text CreateText(RectTransform parent, string name, float fontSize,

@@ -16,6 +16,9 @@ public class SkillUi : MonoBehaviour
 
     private bool onCooldown;
 
+    // 쿨타임 중 아이콘을 어둡게 깔아 두는 비율.
+    private const float CooldownDim = 0.4f;
+
     // SkillCooldownUI가 런타임으로 칸을 만들 때 참조를 한 번에 넘긴다.
     public void Build(SkillManager manager, SkillSlot targetSlot,
         Image image, TMP_Text key, TMP_Text cooldown)
@@ -25,6 +28,17 @@ public class SkillUi : MonoBehaviour
         skillImage = image;
         keyText = key;
         cooldownText = cooldown;
+
+        // 칸을 만든 쪽이 정한 색(아이콘이면 흰색, 아니면 단색 배경)을 준비 상태 색으로 삼는다.
+        if (skillImage != null)
+        {
+            readyColor = skillImage.color;
+            cooldownColor = new Color(
+                readyColor.r * CooldownDim,
+                readyColor.g * CooldownDim,
+                readyColor.b * CooldownDim,
+                readyColor.a);
+        }
 
         RefreshKeyLabel();
         SetCooldownVisible(false);
