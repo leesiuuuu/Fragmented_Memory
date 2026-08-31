@@ -30,9 +30,9 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttacking = false;
     private float attackCooldownMultiplier = 1f;
     private Coroutine attackCooldownRoutine;
-    private readonly HashSet<EnemyHP> hitEnemies = new HashSet<EnemyHP>();
 
-
+    private readonly HashSet<EnemyHP> hitEnemies =
+        new HashSet<EnemyHP>();
 
     private void Awake()
     {
@@ -42,27 +42,21 @@ public class PlayerAttack : MonoBehaviour
         playerHP = GetComponent<PlayerHP>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         synergyManager = GetComponent<PlayerSynergyManager>();
-
     }
-
-
 
     private void Update()
     {
-        if(playerHP.IsDead || GameplayInputLock.IsLocked)
+        if (playerHP.IsDead ||
+            GameplayInputLock.IsLocked)
             return;
 
-
         UpdateAttackBoxDirection();
-
         AttackInput();
     }
 
-
-
     private void UpdateAttackBoxDirection()
     {
-        if(spriteRenderer.flipX)
+        if (spriteRenderer.flipX)
         {
             attackBox.localPosition =
                 new Vector2(
@@ -80,24 +74,20 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-
-
     private void AttackInput()
     {
-        if(Input.GetKeyDown(attackKey))
+        if (Input.GetKeyDown(attackKey))
         {
-            if(!combat.IsBusy && canAttack)
+            if (!combat.IsBusy && canAttack)
             {
                 StartAttack();
             }
-            else if(isAttacking)
+            else if (isAttacking)
             {
                 comboQueued = true;
             }
         }
     }
-
-
 
     private void StartAttack()
     {
@@ -110,7 +100,6 @@ public class PlayerAttack : MonoBehaviour
 
         attackCombo = 1;
 
-
         animator.SetInteger(
             "AttackCombo",
             attackCombo
@@ -119,15 +108,14 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("Attack");
     }
 
-
-
-    // Animation Event
     public void Damage()
     {
-        if(playerHP.IsDead)
+        if (playerHP.IsDead)
             return;
 
-        BoxCollider2D attackCollider = SpawnAttackBox();
+        BoxCollider2D attackCollider =
+            SpawnAttackBox();
+
         if (attackCollider == null)
             return;
 
@@ -140,46 +128,59 @@ public class PlayerAttack : MonoBehaviour
 
         hitEnemies.Clear();
 
-        foreach(Collider2D enemy in enemies)
+        foreach (Collider2D enemy in enemies)
         {
             EnemyHP enemyHP =
                 enemy.GetComponentInParent<EnemyHP>();
 
+            if (enemyHP == null)
+                continue;
 
-            if(enemyHP != null && hitEnemies.Add(enemyHP))
-            {
-                int damage =
-                    Mathf.RoundToInt(
-                        playerStats.GetAttackDamage() * 0.5f
-                    );
+            if (!hitEnemies.Add(enemyHP))
+                continue;
 
+            int damage =
+                Mathf.RoundToInt(
+                    playerStats.GetAttackDamage() * 0.5f
+                );
 
-                int dealtDamage = enemyHP.TakeDamage(damage);
-                HealFromDamage(dealtDamage);
-                synergyManager?.OnDamageDealt(enemyHP, dealtDamage);
-            }
+            int dealtDamage =
+                enemyHP.TakeDamage(damage);
+
+            HealFromDamage(dealtDamage);
+
+            synergyManager?.OnDamageDealt(
+                enemyHP,
+                dealtDamage
+            );
         }
     }
 
     private void HealFromDamage(int damage)
     {
-        if (damage <= 0 || playerStats.CurrentLifeSteal <= 0f)
+        if (damage <= 0 ||
+            playerStats.CurrentLifeSteal <= 0f)
             return;
 
-        playerHP.Heal(Mathf.RoundToInt(damage * playerStats.CurrentLifeSteal / 100f));
+        playerHP.Heal(
+            Mathf.RoundToInt(
+                damage *
+                playerStats.CurrentLifeSteal /
+                100f
+            )
+        );
     }
 
-
-
-    // Animation Event
     public void PlayBasicAttackEffect()
     {
-        if(playerHP.IsDead || EffectManager.Instance == null)
+        if (playerHP.IsDead ||
+            EffectManager.Instance == null)
             return;
 
-        Quaternion effectRotation = spriteRenderer.flipX
-            ? Quaternion.Euler(0f, 180f, 0f)
-            : Quaternion.identity;
+        Quaternion effectRotation =
+            spriteRenderer.flipX
+                ? Quaternion.Euler(0f, 180f, 0f)
+                : Quaternion.identity;
 
         EffectManager.Instance.Play(
             EffectId.BasicAttack,
@@ -188,15 +189,17 @@ public class PlayerAttack : MonoBehaviour
         );
     }
 
-    // Animation Event
     public void CheckCombo()
     {
-        if(comboQueued)
+        if (comboQueued)
         {
             comboQueued = false;
 
-            attackCombo = Mathf.Min(attackCombo + 1, 3);
-
+            attackCombo =
+                Mathf.Min(
+                    attackCombo + 1,
+                    3
+                );
 
             animator.SetInteger(
                 "AttackCombo",
@@ -205,30 +208,24 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-
-
-    // Animation Event
     public void EndAttack()
     {
         combat.EndAction();
 
-
         comboQueued = false;
         isAttacking = false;
 
-
         attackCombo = 0;
-
 
         animator.SetInteger(
             "AttackCombo",
             0
         );
 
-
         Invoke(
             nameof(ResetAttackCoolTime),
-            attackCoolTime * attackCooldownMultiplier
+            attackCoolTime *
+            attackCooldownMultiplier
         );
     }
 
@@ -236,45 +233,77 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackBoxPrefab == null)
         {
-            Debug.LogError("[PlayerAttack] 일반 공격 판정 프리팹이 연결되지 않았습니다.", this);
+            Debug.LogError(
+                "[PlayerAttack] 일반 공격 판정 프리팹이 연결되지 않았습니다.",
+                this
+            );
+
             return null;
         }
 
-        GameObject instance = Instantiate(attackBoxPrefab, attackBox.position, Quaternion.identity);
-        BoxCollider2D collider = instance.GetComponent<BoxCollider2D>();
+        GameObject instance =
+            Instantiate(
+                attackBoxPrefab,
+                attackBox.position,
+                Quaternion.identity
+            );
+
+        BoxCollider2D collider =
+            instance.GetComponent<BoxCollider2D>();
 
         if (collider == null)
         {
-            Debug.LogError("[PlayerAttack] 일반 공격 판정 프리팹에 BoxCollider2D가 없습니다.", instance);
+            Debug.LogError(
+                "[PlayerAttack] 일반 공격 판정 프리팹에 BoxCollider2D가 없습니다.",
+                instance
+            );
+
             Destroy(instance);
             return null;
         }
 
-        SpriteRenderer visual = instance.GetComponent<SpriteRenderer>();
+        SpriteRenderer visual =
+            instance.GetComponent<SpriteRenderer>();
+
         if (visual != null)
         {
-            visual.sortingLayerID = spriteRenderer.sortingLayerID;
-            visual.sortingOrder = spriteRenderer.sortingOrder + 1;
+            visual.sortingLayerID =
+                spriteRenderer.sortingLayerID;
+
+            visual.sortingOrder =
+                spriteRenderer.sortingOrder + 1;
         }
 
-        Destroy(instance, AttackBoxDuration);
+        Destroy(
+            instance,
+            AttackBoxDuration
+        );
+
         return collider;
     }
 
-
-    public void ApplyAttackCooldownReduction(float percent, float duration)
+    public void ApplyAttackCooldownReduction(
+        float percent,
+        float duration)
     {
         if (attackCooldownRoutine != null)
             StopCoroutine(attackCooldownRoutine);
 
-        attackCooldownRoutine = StartCoroutine(
-            AttackCooldownEffect(Mathf.Clamp(percent, 0f, 100f), duration));
+        attackCooldownRoutine =
+            StartCoroutine(
+                AttackCooldownEffect(
+                    Mathf.Clamp(percent, 0f, 100f),
+                    duration
+                )
+            );
     }
 
-
-    private IEnumerator AttackCooldownEffect(float percent, float duration)
+    private IEnumerator AttackCooldownEffect(
+        float percent,
+        float duration)
     {
-        attackCooldownMultiplier = 1f - percent / 100f;
+        attackCooldownMultiplier =
+            1f - percent / 100f;
 
         yield return new WaitForSeconds(duration);
 
@@ -282,18 +311,16 @@ public class PlayerAttack : MonoBehaviour
         attackCooldownRoutine = null;
     }
 
-
-
     private void ResetAttackCoolTime()
     {
         canAttack = true;
     }
 
-
-
     private void OnDisable()
     {
-        CancelInvoke(nameof(ResetAttackCoolTime));
+        CancelInvoke(
+            nameof(ResetAttackCoolTime)
+        );
 
         if (isAttacking)
             combat?.EndAction();
@@ -305,5 +332,4 @@ public class PlayerAttack : MonoBehaviour
         attackCooldownMultiplier = 1f;
         attackCooldownRoutine = null;
     }
-
 }

@@ -50,7 +50,7 @@ public class RoomManager : MonoBehaviour
     private void OnDestroy()
     {
         if (boss != null)
-            boss.Died -= HandleBossDied;
+            boss.OnDeath -= HandleBossDied;
 
         if (doors != null)
         {
@@ -151,14 +151,17 @@ public class RoomManager : MonoBehaviour
             return;
         }
 
-        boss.Died -= HandleBossDied;
-        boss.Died += HandleBossDied;
+        // EnemyHP는 isBoss일 때만 OnDeath를 쏘고 SpawnManager 경로를 건너뛴다.
+        boss.SetBoss();
+
+        boss.OnDeath -= HandleBossDied;
+        boss.OnDeath += HandleBossDied;
     }
 
     private void HandleBossDied()
     {
         if (boss != null)
-            boss.Died -= HandleBossDied;
+            boss.OnDeath -= HandleBossDied;
 
         RoomClear();
     }

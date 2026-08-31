@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerHP : MonoBehaviour
+public class PlayerHP : MonoBehaviour, IPlayerDamageable
 {
     private PlayerStats stats;
     private Animator animator;
@@ -51,12 +51,13 @@ public class PlayerHP : MonoBehaviour
         int finalDamage = synergyManager != null && synergyManager.IsDespairInstantDeath
             ? stats.currentHealth
             : DamageCalculator.Calculate(rawDamage, stats.CurrentDefense);
+
         int effectiveDamage = Mathf.Min(finalDamage, stats.currentHealth);
 
         stats.currentHealth -= effectiveDamage;
         synergyManager?.OnPlayerDamaged();
 
-        if(effectiveDamage > 0 && invincibility != null)
+        if (effectiveDamage > 0 && invincibility != null)
             invincibility.StartHitInvincibility();
 
         hpBar.SetHP(stats.currentHealth, stats.maxHealth);
@@ -71,6 +72,11 @@ public class PlayerHP : MonoBehaviour
         }
 
         return effectiveDamage;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        TakeDamage(Mathf.RoundToInt(damage));
     }
 
     public void Heal(int amount)
@@ -123,7 +129,13 @@ public class PlayerHP : MonoBehaviour
             {
                 ItemData revivalItem = entry.item;
                 itemInventory.Consume(revivalItem);
-                stats.currentHealth = Mathf.Max(1, Mathf.RoundToInt(stats.maxHealth * revivalItem.effectValue / 100f));
+                stats.currentHealth = Mathf.Max(
+                    1,
+                    Mathf.RoundToInt(
+                        stats.maxHealth * revivalItem.effectValue / 100f
+                    )
+                );
+
                 hpBar.SetHP(stats.currentHealth, stats.maxHealth);
                 HealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);
                 return true;
