@@ -1063,7 +1063,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillManager
   wavePrefab: {fileID: 400000, guid: a7b0c84905d7420cb65d829fc7d552d0, type: 3}
   strongWavePrefab: {fileID: 400000, guid: a7b0c84905d7420cb65d829fc7d552d0, type: 3}
-  areaVisualPrefab: {fileID: 300000, guid: bf568296261f43708bd2eea806ccf551, type: 3}
 --- !u!114 &1197494137
 MonoBehaviour:
   m_ObjectHideFlags: 0
