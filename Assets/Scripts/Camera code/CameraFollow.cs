@@ -72,9 +72,14 @@ public class CameraFollow : MonoBehaviour
 
     public Transform Target => target;
 
+    // 연출 호출부가 카메라를 찾아 쓰기 위한 통로. 게임플레이 카메라는 씬당 하나다.
+    public static CameraFollow Active { get; private set; }
+
 
     private void Awake()
     {
+        Active = this;
+
         cam = GetComponent<Camera>();
 
         Transform parent = transform.parent;
@@ -150,6 +155,13 @@ public class CameraFollow : MonoBehaviour
             Mathf.SmoothDamp(transform.position.y, desired.y, ref velocity.y, smoothTimeY, Mathf.Infinity, deltaTime));
 
         ApplyPosition(next);
+    }
+
+
+    private void OnDestroy()
+    {
+        if (Active == this)
+            Active = null;
     }
 
 

@@ -54,6 +54,14 @@ public class EffectManager : MonoBehaviour
             Instance = null;
     }
 
+    // 아직 프리팹을 꽂지 않은 이펙트를 호출부가 조용히 건너뛸 수 있게 한다.
+    // Play는 미등록이면 매번 경고를 찍는데, 선택적인 연출까지 경고로 덮이면 로그를 못 읽는다.
+    public bool IsRegistered(EffectId id)
+    {
+        return poolSettings.ContainsKey(id);
+    }
+
+
     public void Play(EffectId id, Vector3 position, Quaternion rotation)
     {
         EffectInstance effect = GetEffect(id);
