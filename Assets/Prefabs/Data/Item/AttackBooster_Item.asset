@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: -488721925442295091, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
   detailIcon: {fileID: -7573354855677281409, guid: 3b54ee3908873894daeeea7583599f5e, type: 3}
   price: 1500
-  itemType: 1
+  itemType: 0
   effectType: 4
   effectValue: 50
   duration: 60
