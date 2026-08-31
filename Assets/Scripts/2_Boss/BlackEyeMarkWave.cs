@@ -71,4 +71,10 @@ public class BlackEyeMarkWave : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    void OnDestroy()
+    {
+        if (mark != null)
+            Destroy(mark);
+    }
 }

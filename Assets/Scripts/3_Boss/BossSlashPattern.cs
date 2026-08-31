@@ -31,7 +31,8 @@ public class BossSlashPattern : MonoBehaviour
         if (boss == null)
             boss = GetComponent<BossControl>();
 
-        boss.OnPatternSelected += PatternSelected;
+        if (boss != null)
+            boss.OnPatternSelected += PatternSelected;
     }
 
     void OnDisable()

@@ -30,7 +30,8 @@ public class BossJumpDashPattern : MonoBehaviour
         if (boss == null)
             boss = GetComponent<BossControl>();
 
-        boss.OnPatternSelected += Pattern;
+        if (boss != null)
+            boss.OnPatternSelected += Pattern;
     }
 
     void OnDisable()

@@ -47,6 +47,9 @@ public class BlackEyeSideAttack : MonoBehaviour
             Destroy(clone);
             clone = null;
         }
+
+        transform.localScale = originalScale;
+        isAttacking = false;
     }
 
     void Pattern(int patternID, float damage)
@@ -163,4 +166,4 @@ public class BlackEyeSideAttack : MonoBehaviour
         boss.SetCanMove(true);
         isAttacking = false;
     }
-}
+}   

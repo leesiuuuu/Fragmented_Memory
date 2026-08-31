@@ -5,7 +5,7 @@ public class TraumaBossFragment : MonoBehaviour
 {
     public GameObject fragmentPrefab;
 
-    public int fragmentCount = 2;
+    public int fragmentCount = 4;
     public float downSpeed = 8f;
     public float fragmentSpeed = 8f;
     public float rayDistance = 10f;
@@ -78,29 +78,34 @@ public class TraumaBossFragment : MonoBehaviour
         Vector3 shootPosition = transform.position;
         shootPosition.y += fragmentHeight;
 
-        CreateFragment(Vector2.left, shootPosition);
-        CreateFragment(Vector2.right, shootPosition);
+        for (int i = 0; i < fragmentCount; i++)
+        {
+            float angle;
 
-        Vector2 leftDirection = Quaternion.Euler(
-            0f,
-            0f,
-            -spreadAngle
-        ) * Vector2.left;
+            if (fragmentCount == 1)
+            {
+                angle = 0f;
+            }
+            else
+            {
+                float t = (float)i / (fragmentCount - 1);
+                angle = Mathf.Lerp(-spreadAngle, spreadAngle, t);
+            }
 
-        Vector2 rightDirection = Quaternion.Euler(
-            0f,
-            0f,
-            spreadAngle
-        ) * Vector2.right;
+            Vector2 direction =
+                Quaternion.Euler(0f, 0f, angle) * Vector2.right;
 
-        CreateFragment(leftDirection, shootPosition);
-        CreateFragment(rightDirection, shootPosition);
+            CreateFragment(direction, shootPosition);
+        }
 
         isAttacking = false;
     }
 
     void CreateFragment(Vector2 direction, Vector3 position)
     {
+        if (fragmentPrefab == null)
+            return;
+
         GameObject fragment = Instantiate(
             fragmentPrefab,
             position,

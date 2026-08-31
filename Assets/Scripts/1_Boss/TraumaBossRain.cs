@@ -15,6 +15,9 @@ public class TraumaBossRain : MonoBehaviour
     public int rainCount = 3;
     public float rainDelay = 0.5f;
 
+    public int positionCount = 22;
+    public int fragmentCount = 11;
+
     private BossControl boss;
     private bool isAttacking;
 
@@ -78,8 +81,9 @@ public class TraumaBossRain : MonoBehaviour
 
     void SpawnFragments()
     {
-        int positionCount = 22;
-        int fragmentCount = 11;
+        if (positionCount <= 0 ||
+            fragmentCount <= 0)
+            return;
 
         float totalWidth =
             (positionCount - 1) * fragmentSpacing;
@@ -92,7 +96,12 @@ public class TraumaBossRain : MonoBehaviour
         for (int i = 0; i < positionCount; i++)
             positions.Add(i);
 
-        for (int i = 0; i < fragmentCount; i++)
+        int count = Mathf.Min(
+            fragmentCount,
+            positions.Count
+        );
+
+        for (int i = 0; i < count; i++)
         {
             int randomIndex =
                 Random.Range(0, positions.Count);

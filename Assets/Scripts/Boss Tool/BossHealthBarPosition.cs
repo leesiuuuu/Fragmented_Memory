@@ -6,14 +6,10 @@ public class BossHealthBarPosition : MonoBehaviour
 
     void Start()
     {
-        Canvas canvas = GetComponentInParent<Canvas>();
-
-        if (canvas != null)
-        {
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        }
-
         RectTransform rect = GetComponent<RectTransform>();
+
+        if (rect == null)
+            return;
 
         rect.anchorMin = new Vector2(0.5f, 1f);
         rect.anchorMax = new Vector2(0.5f, 1f);

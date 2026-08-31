@@ -23,6 +23,8 @@ public class BossScreenSlashPattern : MonoBehaviour
 
     [Header("Damage")]
     public float damage = 10f;
+    public float hitRadius = 0.5f;
+    public LayerMask playerLayer;
 
     private BossControl boss;
     private Rigidbody2D rigid;
@@ -126,7 +128,7 @@ public class BossScreenSlashPattern : MonoBehaviour
 
         boss.PlayAttackMotion(5);
 
-        boss.DamagePlayer(damage);
+        DamagePlayerAtPosition(target);
 
         yield return new WaitForSeconds(slashTime);
 
@@ -135,6 +137,27 @@ public class BossScreenSlashPattern : MonoBehaviour
         boss.SetCanMove(true);
 
         isAttacking = false;
+    }
+
+    void DamagePlayerAtPosition(Vector3 position)
+    {
+        Collider2D hit = Physics2D.OverlapCircle(
+            position,
+            hitRadius,
+            playerLayer
+        );
+
+        if (hit == null)
+            return;
+
+        if (boss.Player == null)
+            return;
+
+        if (hit.transform == boss.Player ||
+            hit.transform.IsChildOf(boss.Player))
+        {
+            boss.DamagePlayer(damage);
+        }
     }
 
     void ShowScreenImage()

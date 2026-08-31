@@ -47,11 +47,16 @@ public class BlackEyeRush : MonoBehaviour
         if (boss != null)
             boss.OnPatternSelected -= Pattern;
 
+        if (bossRenderer != null)
+            bossRenderer.enabled = true;
+
         if (clone != null)
         {
             Destroy(clone);
             clone = null;
         }
+
+        isAttacking = false;
     }
 
     void Pattern(int patternID, float damage)

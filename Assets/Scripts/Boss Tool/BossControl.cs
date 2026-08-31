@@ -53,6 +53,8 @@ public class BossControl : MonoBehaviour
     private bool isDead;
     private bool canMove = true;
 
+    private PlayerHP playerHP;
+
     private List<BossPattern> remainingPatterns =
         new List<BossPattern>();
 
@@ -64,6 +66,9 @@ public class BossControl : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+
+        if (Player != null)
+            playerHP = Player.GetComponent<PlayerHP>();
 
         UpdateHealthBar();
 
@@ -82,13 +87,6 @@ public class BossControl : MonoBehaviour
 
     void Update()
     {
-        if (!isDead &&
-            Keyboard.current != null &&
-            Keyboard.current.gKey.wasPressedThisFrame)
-        {
-            TakeDamage(1000f);
-        }
-
         if (stateMachine != null)
             stateMachine.DoOperateUpdate();
     }
@@ -139,23 +137,15 @@ public class BossControl : MonoBehaviour
 
     public void DamagePlayer(float damage)
     {
-        if (Player == null)
+        if (playerHP == null && Player != null)
+            playerHP = Player.GetComponent<PlayerHP>();
+
+        if (playerHP == null)
             return;
 
-        MonoBehaviour[] scripts =
-            Player.GetComponents<MonoBehaviour>();
-
-        foreach (MonoBehaviour script in scripts)
-        {
-            IPlayerDamageable player =
-                script as IPlayerDamageable;
-
-            if (player != null)
-            {
-                player.TakeDamage(damage);
-                return;
-            }
-        }
+        playerHP.TakeDamage(
+            Mathf.RoundToInt(damage)
+        );
     }
 
     public void UseAttackPattern()
@@ -225,8 +215,6 @@ public class BossControl : MonoBehaviour
         newPattern.attackPower = attackPower;
 
         attackPatterns.Add(newPattern);
-
-        ResetPatterns();
     }
 
     public bool IsPlayerInAttackRange(
