@@ -269,7 +269,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1.5, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 63551072}
@@ -323,8 +323,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -5498657414824461359, guid: ebe94a09f0c4e994787c63f18e7a1005, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1271,8 +1271,8 @@ Transform:
   m_GameObject: {fileID: 1100915036}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 416442012}
@@ -1326,7 +1326,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1790938589716702066, guid: ba4cc141f9c722c41a01a07a26da7ea3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1609,11 +1609,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cebb11d4cf47742b0c190d31797e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillManager
-  slashKey: 113
-  strongStrikeKey: 114
-  pokeKey: 102
-  strikeKey: 116
-  ultimateKey: 103
+  slashKey: 49
+  strongStrikeKey: 50
+  pokeKey: 51
+  strikeKey: 52
+  ultimateKey: 53
   slashPrefab: {fileID: 8218432965011468082, guid: 807e39e1f61fd624eb78c05330dd4a89, type: 3}
   slashSpawnOffset: {x: 1, y: 0.7}
   slashSize: {x: 1.2, y: 1}
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   strongMeleeAttackBoxPrefab: {fileID: 100000, guid: e699eedcc5aa40cf9db5f2a01483e8a2, type: 3}
   strongMeleeOffset: {x: 1.2, y: 0}
   strongStrikeProjectilePrefab: {fileID: 7051176612737162477, guid: bc4a1969c4b052742b63260e467e9ee3, type: 3}
-  strongStrikeProjectileSpawnOffset: {x: 1, y: 0}
+  strongStrikeProjectileSpawnOffset: {x: 1, y: 0.7}
   strongStrikeProjectileSize: {x: 1.8, y: 0.8}
   strongStrikeProjectileSpeed: 8
   strongStrikeProjectileMaxDistance: 6
@@ -1751,10 +1751,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8873753d9e944b639c049dcb3641b919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInventoryUI
-  toggleKey: 105
   useKey: 101
   panelPrefab: {fileID: 2410459261318558053, guid: fdc68abb19408f74884f732a9bfeab25, type: 3}
   effectApplier: {fileID: 416442013}
+  targetCanvas: {fileID: 1549503834}
 --- !u!114 &1197494146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1934,7 +1934,7 @@ RectTransform:
   m_GameObject: {fileID: 1549503831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 711643500}

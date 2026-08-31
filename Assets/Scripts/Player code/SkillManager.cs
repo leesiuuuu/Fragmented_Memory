@@ -9,14 +9,14 @@ using UnityEngine.Serialization;
 // 대쉬는 왼쪽 Shift를 사용한다.
 // 일반 공격은 마우스 왼쪽 버튼을 사용한다.
 // 패링은 마우스 오른쪽 버튼을 사용한다.
-// 검기는 Q를 사용한다.
-// 강한 참격은 R을 사용한다.
-// 찌르기는 F를 사용한다. 패링 성공 후 다음 찌르기가 강화된다.
-// 내려찍기는 T를 사용한다.
-// 궁극기는 G를 사용한다.
+// 검기는 숫자키 1을 사용한다.
+// 강한 참격은 숫자키 2를 사용한다.
+// 찌르기는 숫자키 3을 사용한다. 패링 성공 후 다음 찌르기가 강화된다.
+// 내려찍기는 숫자키 4를 사용한다.
+// 궁극기는 숫자키 5를 사용한다.
 // 상호작용은 E를 사용한다.
 // 플레이어 상태 패널은 Tab으로 열고 닫는다.
-// 소모품 인벤토리는 I로 열고 닫는다.
+// 소모품 인벤토리는 항상 표시한다.
 // 선택한 소모품은 E로 사용한다.
 // 일시정지는 Esc를 사용한다.
 public class SkillManager : MonoBehaviour
@@ -44,12 +44,12 @@ public class SkillManager : MonoBehaviour
 
     [Header("입력")]
     [FormerlySerializedAs("waveKey")]
-    [SerializeField] private KeyCode slashKey = KeyCode.Q;
+    [SerializeField] private KeyCode slashKey = KeyCode.Alpha1;
     [FormerlySerializedAs("strongSlashKey")]
-    [SerializeField] private KeyCode strongStrikeKey = KeyCode.R;
-    [SerializeField] private KeyCode pokeKey = KeyCode.F;
-    [SerializeField] private KeyCode strikeKey = KeyCode.C;
-    [SerializeField] private KeyCode ultimateKey = KeyCode.V;
+    [SerializeField] private KeyCode strongStrikeKey = KeyCode.Alpha2;
+    [SerializeField] private KeyCode pokeKey = KeyCode.Alpha3;
+    [SerializeField] private KeyCode strikeKey = KeyCode.Alpha4;
+    [SerializeField] private KeyCode ultimateKey = KeyCode.Alpha5;
 
     [Header("검기")]
     [FormerlySerializedAs("wavePrefab")]
