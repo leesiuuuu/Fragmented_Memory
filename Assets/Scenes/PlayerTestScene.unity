@@ -504,6 +504,12 @@ MonoBehaviour:
   slotSpacing: 12
   anchoredPosition: {x: 0, y: 40}
   slotColor: {r: 0.12, g: 0.12, b: 0.18, a: 0.85}
+  skillIcons:
+  - {fileID: -7210805437647065697, guid: c379ee3328b374a45aa15e2bb7ddb23f, type: 3}
+  - {fileID: 3868025872666123374, guid: c379ee3328b374a45aa15e2bb7ddb23f, type: 3}
+  - {fileID: -8907949768636824137, guid: c379ee3328b374a45aa15e2bb7ddb23f, type: 3}
+  - {fileID: 6101855446927960766, guid: c379ee3328b374a45aa15e2bb7ddb23f, type: 3}
+  - {fileID: 5600749534990057037, guid: c379ee3328b374a45aa15e2bb7ddb23f, type: 3}
 --- !u!114 &834442242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,6 +723,11 @@ MonoBehaviour:
   parryLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  tintDuringWindow: 1
+  windowColor: {r: 1, g: 1, b: 1, a: 1}
+  successHitStop: 0.12
+  successShakeStrength: 0.22
+  successShakeDuration: 0.2
 --- !u!114 &834442255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,6 +745,16 @@ MonoBehaviour:
   attackBoxPrefab: {fileID: 100000, guid: 0b300185012248d5a2e52ccc6560b926, type: 3}
   attackBoxOffset: 1
   attackCoolTime: 0.5
+  comboSteps:
+  - speed: 2.5
+    duration: 0.1
+  - speed: 3
+    duration: 0.1
+  - speed: 5
+    duration: 0.16
+  hitStopDuration: 0.05
+  hitShakeStrength: 0.1
+  hitShakeDuration: 0.12
 --- !u!114 &834442256
 MonoBehaviour:
   m_ObjectHideFlags: 0
