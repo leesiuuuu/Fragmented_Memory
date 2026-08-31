@@ -19,6 +19,10 @@ public class EnemyHP : MonoBehaviour
     private bool isDead;
     private Coroutine burnRoutine;
 
+    // 보스는 SpawnManager를 타지 않아 EnemyDead()가 불리지 않는다.
+    // 방이 보스 사망을 직접 알 수 있도록 열어 둔다.
+    public event System.Action Died;
+
 
     private void Awake()
     {
@@ -108,6 +112,8 @@ public class EnemyHP : MonoBehaviour
             return;
 
         isDead = true;
+
+        Died?.Invoke();
 
         GetComponent<EnemyMemoryDrop>()?.TryDrop();
 

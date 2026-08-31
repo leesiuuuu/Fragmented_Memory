@@ -17,6 +17,10 @@ public class RoomManager : MonoBehaviour
     // 배열로 두면 문을 늘려도 구독·개폐 코드가 늘어나지 않는다.
     [SerializeField] private RoomDoorTrigger[] doors;
 
+    [Header("Boss")]
+    // 비워 두면 방 안에서 자동으로 찾는다. 보스방 프리팹에만 쓰인다.
+    [SerializeField] private EnemyHP boss;
+
     // 방 프리팹은 런타임에 Instantiate되므로 씬의 GameManager를 직렬화할 수 없다.
     // StartRoom에서 주입받는 이유가 이것이다.
     private GameManager gameManager;
@@ -45,6 +49,9 @@ public class RoomManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (boss != null)
+            boss.Died -= HandleBossDied;
+
         if (doors != null)
         {
             foreach (RoomDoorTrigger door in doors)
@@ -75,10 +82,13 @@ public class RoomManager : MonoBehaviour
         CloseDoors();
 
 
-        // 보스방은 트리 밖이라 RoomData가 없다. 보스는 프리팹이 직접 들고 있으므로
-        // 스폰도 자동 클리어도 하지 않고 문을 잠근 채로 둔다.
+        // 보스방은 트리 밖이라 RoomData가 없다. 스폰은 하지 않지만
+        // 보스 사망을 방 클리어로 이어 주지 않으면 문이 영영 열리지 않는다.
         if (mapNode.type == RoomType.Boss)
+        {
+            BindBoss();
             return;
+        }
 
 
         // 되돌아온 방 — 적을 다시 스폰하지도, 보상을 다시 주지도 않는다.
@@ -127,6 +137,32 @@ public class RoomManager : MonoBehaviour
         OpenDoors();
     }
 
+    // 보스는 SpawnManager를 타지 않으므로 EnemyDead()가 호출되지 않는다.
+    // 방 안의 EnemyHP를 직접 구독하는 것이 보스방을 끝내는 유일한 경로다.
+    private void BindBoss()
+    {
+        if (boss == null)
+            boss = GetComponentInChildren<EnemyHP>(true);
+
+        if (boss == null)
+        {
+            Debug.LogError($"[RoomManager] {name}: 보스방에 EnemyHP가 없습니다. 진행이 막히지 않도록 바로 클리어합니다.");
+            ClearWithoutReward();
+            return;
+        }
+
+        boss.Died -= HandleBossDied;
+        boss.Died += HandleBossDied;
+    }
+
+    private void HandleBossDied()
+    {
+        if (boss != null)
+            boss.Died -= HandleBossDied;
+
+        RoomClear();
+    }
+
     // 상인·휴식처럼 전투도 보상도 없는 방, 그리고 이미 클리어한 방 —
     // 별가루와 보상 패널을 건너뛰고 문만 연다.
     private void ClearWithoutReward()
@@ -167,7 +203,10 @@ public class RoomManager : MonoBehaviour
             return;
 
         // 루트 방은 부모가 없다 — 돌아갈 곳이 없으므로 뒤 문은 닫아둔다.
-        bool canGoBack = node != null && node.parent != null;
+        // 보스방도 마찬가지다. 되돌아가면 다시 전진할 때 보스가 처음부터 다시 스폰된다.
+        bool canGoBack = node != null
+            && node.parent != null
+            && node.type != RoomType.Boss;
 
         foreach (RoomDoorTrigger door in doors)
         {
