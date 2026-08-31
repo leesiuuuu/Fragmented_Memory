@@ -22,6 +22,14 @@ public class RewardManager : MonoBehaviour
     {
         currentRewards.Clear();
 
+        // 인벤토리가 가득 차면 어떤 조각도 담기지 않는다.
+        // 그대로 패널을 띄우면 선택이 계속 실패해 런이 끝나지 않으므로 아예 건너뛴다.
+        if (inventory == null || inventory.IsFull())
+        {
+            Debug.LogWarning("[RewardManager] 인벤토리가 가득 차 보상 선택을 건너뜁니다.");
+            return false;
+        }
+
         if (rewardUI == null)
             rewardUI = FindFirstObjectByType<RewardUI>(FindObjectsInactive.Include);
 
@@ -64,6 +72,15 @@ public class RewardManager : MonoBehaviour
     {
         return currentRewards;
     }
+
+    // 보상을 포기하고 런을 끝낸다.
+    // 이 경로가 없으면 선택이 실패할 때 패널이 닫히지 않아 입력이 잠긴 채로 멈춘다.
+    public void SkipReward()
+    {
+        currentRewards.Clear();
+        RewardSelected?.Invoke();
+    }
+
 
     public bool SelectReward(int index)
     {

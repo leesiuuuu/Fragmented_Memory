@@ -17,7 +17,7 @@ MonoBehaviour:
     수 없다."
   icon: {fileID: -1195683675641600831, guid: 508c1a7aa2f0cd549b87d3572e25a972, type: 3}
   type: 0
-  rarity: 1
+  rarity: 0
   synergy: 1
   health: 200
   attack: 100

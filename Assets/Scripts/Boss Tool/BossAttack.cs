@@ -27,7 +27,7 @@ public class BossAttack : IState<BossControl>
         {
             cooldownTime -= Time.deltaTime;
 
-            if (sender.CanMove())
+            if (sender.chasePlayer && sender.CanMove())
             {
                 Vector3 direction =
                     (sender.Player.position - sender.transform.position).normalized;

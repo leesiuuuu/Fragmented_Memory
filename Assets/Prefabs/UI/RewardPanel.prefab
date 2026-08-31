@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b9a42c06d54204850ab1495664e732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardUI
-  slotSpacing: 310
+  slotGap: 24
 --- !u!1 &8230801436797856109
 GameObject:
   m_ObjectHideFlags: 0

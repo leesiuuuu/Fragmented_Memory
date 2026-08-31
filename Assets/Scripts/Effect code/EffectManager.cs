@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,9 +26,29 @@ public class EffectManager : MonoBehaviour
         public Animator[] animators;
     }
 
-    public static EffectManager Instance { get; private set; }
+    // 씬에 EffectManager를 놓지 않아도 되도록, 처음 필요해질 때 이 프리팹으로 스스로 만들어진다.
+    // 경로는 Resources 폴더 기준이다.
+    private const string BootstrapPrefabPath = "EffectManager";
+
+    private static EffectManager instance;
+    private static bool bootstrapFailed;
+
+    // HitStop과 같은 이유로 자동 생성한다 — 보스 씬·테스트 씬까지 전부 배선하는 것은
+    // 잊기 쉽고, 잊으면 연출이 조용히 사라져 버그인지 연출이 없는 것인지 구분할 수 없다.
+    public static EffectManager Instance
+    {
+        get
+        {
+            if (instance != null)
+                return instance;
+
+            return Bootstrap();
+        }
+    }
 
     [SerializeField] private List<EffectPool> effectPools = new List<EffectPool>();
+
+    private bool initialized;
 
     private readonly Dictionary<EffectId, EffectPool> poolSettings =
         new Dictionary<EffectId, EffectPool>();
@@ -37,25 +57,90 @@ public class EffectManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Debug.LogError("EffectManager가 씬에 두 개 이상 있습니다.");
             enabled = false;
             return;
         }
 
-        Instance = this;
-        InitializePools();
+        instance = this;
+        EnsureInitialized();
     }
 
     private void OnDestroy()
     {
-        if (Instance == this)
-            Instance = null;
+        if (instance == this)
+            instance = null;
     }
+
+    // 도메인 리로드를 끈 환경에서 파괴된 인스턴스의 참조가 다음 판으로 넘어가지 않게 비운다.
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetState()
+    {
+        instance = null;
+        bootstrapFailed = false;
+    }
+
+    private static EffectManager Bootstrap()
+    {
+        // 프리팹이 없는 프로젝트에서 매 호출마다 씬을 뒤지고 경고를 찍지 않도록 먼저 걸러낸다.
+        // 씬에 놓인 쪽이 있었다면 그쪽 Awake가 이미 instance를 채웠을 것이다.
+        if (bootstrapFailed)
+            return null;
+
+        // Awake가 아직 돌지 않았을 뿐 씬에 놓인 쪽이 있을 수 있다.
+        // 그걸 못 보고 새로 만들면 둘이 되어 한쪽이 스스로를 꺼 버린다.
+        EffectManager placed =
+            FindFirstObjectByType<EffectManager>(FindObjectsInactive.Exclude);
+
+        if (placed != null)
+        {
+            instance = placed;
+            placed.EnsureInitialized();
+            return placed;
+        }
+
+        GameObject prefab = Resources.Load<GameObject>(BootstrapPrefabPath);
+
+        if (prefab == null)
+        {
+            bootstrapFailed = true;
+            Debug.LogWarning(
+                $"Resources/{BootstrapPrefabPath} 프리팹이 없어 EffectManager를 자동 생성하지 못했습니다.");
+            return null;
+        }
+
+        GameObject host = Instantiate(prefab);
+        host.name = prefab.name;
+
+        // Instantiate가 Awake를 즉시 돌리므로 여기서는 instance가 채워져 있다.
+        return instance;
+    }
+
+    private void EnsureInitialized()
+    {
+        if (initialized)
+            return;
+
+        initialized = true;
+        InitializePools();
+    }
+
+    // 아직 프리팹을 꽂지 않은 이펙트를 호출부가 조용히 건너뛸 수 있게 한다.
+    // Play는 미등록이면 매번 경고를 찍는데, 선택적인 연출까지 경고로 덮이면 로그를 못 읽는다.
+    public bool IsRegistered(EffectId id)
+    {
+        EnsureInitialized();
+
+        return poolSettings.ContainsKey(id);
+    }
+
 
     public void Play(EffectId id, Vector3 position, Quaternion rotation)
     {
+        EnsureInitialized();
+
         EffectInstance effect = GetEffect(id);
 
         if (effect == null)

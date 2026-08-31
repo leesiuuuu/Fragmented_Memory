@@ -34,10 +34,10 @@ public class TraumaBossFragment : MonoBehaviour
     void Pattern(int patternID, float damage)
     {
         if (patternID == 2 && !isAttacking)
-            StartCoroutine(Shoot());
+            StartCoroutine(Shoot(damage));
     }
 
-    IEnumerator Shoot()
+    IEnumerator Shoot(float damage)
     {
         isAttacking = true;
 
@@ -95,13 +95,16 @@ public class TraumaBossFragment : MonoBehaviour
             Vector2 direction =
                 Quaternion.Euler(0f, 0f, angle) * Vector2.right;
 
-            CreateFragment(direction, shootPosition);
+            CreateFragment(direction, shootPosition, damage);
         }
 
         isAttacking = false;
     }
 
-    void CreateFragment(Vector2 direction, Vector3 position)
+    void CreateFragment(
+        Vector2 direction,
+        Vector3 position,
+        float damage)
     {
         if (fragmentPrefab == null)
             return;
@@ -116,7 +119,7 @@ public class TraumaBossFragment : MonoBehaviour
             fragment.GetComponent<TraumaFragment>();
 
         if (traumaFragment != null)
-            traumaFragment.SetBoss(boss);
+            traumaFragment.SetBoss(boss, damage);
 
         Rigidbody2D rigid = fragment.GetComponent<Rigidbody2D>();
 

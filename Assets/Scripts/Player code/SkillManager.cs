@@ -4,23 +4,33 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 // 기본 입력 키는 담당 컴포넌트의 Inspector에서 변경할 수 있다.
-// 이동은 A와 D를 사용한다.
-// 점프는 Space를 사용한다.
-// 대쉬는 왼쪽 Shift를 사용한다.
-// 일반 공격은 마우스 왼쪽 버튼을 사용한다.
-// 패링은 마우스 오른쪽 버튼을 사용한다.
-// 검기는 숫자키 1을 사용한다.
-// 강한 참격은 숫자키 2를 사용한다.
-// 찌르기는 숫자키 3을 사용한다. 패링 성공 후 다음 찌르기가 강화된다.
-// 내려찍기는 숫자키 4를 사용한다.
-// 궁극기는 숫자키 5를 사용한다.
-// 상호작용은 E를 사용한다.
+// 이동은 왼쪽 방향키와 오른쪽 방향키를 사용한다.
+// 점프는 위쪽 방향키를 사용한다.
+// 대쉬는 오른쪽 Shift를 사용한다.
+// 일반 공격은 D를 사용한다.
+// 패링은 S를 사용한다.
+// 검기는 Q를 사용한다.
+// 강한 참격은 W를 사용한다.
+// 찌르기는 E를 사용한다. 패링 성공 후 다음 찌르기가 강화된다.
+// 내려찍기는 F를 사용한다.
+// 궁극기는 R을 사용한다.
+// 상호작용은 C를 사용한다.
 // 플레이어 상태 패널은 Tab으로 열고 닫는다.
 // 소모품 인벤토리는 항상 표시한다.
-// 선택한 소모품은 E로 사용한다.
+// 선택한 소모품은 V로 사용한다.
 // 일시정지는 Esc를 사용한다.
+public enum SkillSlot
+{
+    Slash,
+    StrongStrike,
+    Poke,
+    Strike,
+    Ultimate
+}
+
 public class SkillManager : MonoBehaviour
 {
+    private const int SkillSlotCount = 5;
     private const float StrikeRiseSpeed = 35f;
     private const float StrikeFallSpeed = 30f;
     private const float SlashDamageMultiplier = 0.75f;
@@ -44,12 +54,12 @@ public class SkillManager : MonoBehaviour
 
     [Header("입력")]
     [FormerlySerializedAs("waveKey")]
-    [SerializeField] private KeyCode slashKey = KeyCode.Alpha1;
+    [SerializeField] private KeyCode slashKey = KeyCode.Q;
     [FormerlySerializedAs("strongSlashKey")]
-    [SerializeField] private KeyCode strongStrikeKey = KeyCode.Alpha2;
-    [SerializeField] private KeyCode pokeKey = KeyCode.Alpha3;
-    [SerializeField] private KeyCode strikeKey = KeyCode.Alpha4;
-    [SerializeField] private KeyCode ultimateKey = KeyCode.Alpha5;
+    [SerializeField] private KeyCode strongStrikeKey = KeyCode.W;
+    [SerializeField] private KeyCode pokeKey = KeyCode.E;
+    [SerializeField] private KeyCode strikeKey = KeyCode.F;
+    [SerializeField] private KeyCode ultimateKey = KeyCode.R;
 
     [Header("검기")]
     [FormerlySerializedAs("wavePrefab")]
@@ -115,6 +125,8 @@ public class SkillManager : MonoBehaviour
     private PlayerSynergyManager synergyManager;
     private Coroutine skillCooldownRoutine;
     private float skillCooldownReduction;
+    private readonly float[] skillReadyTime = new float[SkillSlotCount];
+    private readonly float[] skillCooldownTotal = new float[SkillSlotCount];
 
     private void Awake()
     {
@@ -166,7 +178,7 @@ public class SkillManager : MonoBehaviour
         combat.StartAction();
         canSlash = false;
         animator.SetTrigger("Slash");
-        Invoke(nameof(ResetSlashCoolTime), GetSkillCooldown(SlashCoolTime));
+        Invoke(nameof(ResetSlashCoolTime), StartCooldown(SkillSlot.Slash, SlashCoolTime));
     }
 
     private void StrongStrike()
@@ -174,7 +186,7 @@ public class SkillManager : MonoBehaviour
         combat.StartAction();
         canStrongStrike = false;
         animator.SetTrigger("StrongStrike");
-        Invoke(nameof(ResetStrongStrikeCoolTime), GetSkillCooldown(StrongStrikeCoolTime));
+        Invoke(nameof(ResetStrongStrikeCoolTime), StartCooldown(SkillSlot.StrongStrike, StrongStrikeCoolTime));
     }
 
     public void SlashProjectile()
@@ -219,7 +231,7 @@ public class SkillManager : MonoBehaviour
             ? ParryPokeDamageMultiplier
             : PokeDamageMultiplier;
         animator.SetTrigger("Poke");
-        Invoke(nameof(ResetPokeCoolTime), GetSkillCooldown(PokeCoolTime));
+        Invoke(nameof(ResetPokeCoolTime), StartCooldown(SkillSlot.Poke, PokeCoolTime));
     }
 
     private void Strike()
@@ -227,7 +239,7 @@ public class SkillManager : MonoBehaviour
         combat.StartAction();
         canStrike = false;
         animator.SetTrigger("Strike");
-        Invoke(nameof(ResetStrikeCoolTime), GetSkillCooldown(StrikeCoolTime));
+        Invoke(nameof(ResetStrikeCoolTime), StartCooldown(SkillSlot.Strike, StrikeCoolTime));
     }
 
     private void Ultimate()
@@ -235,7 +247,7 @@ public class SkillManager : MonoBehaviour
         combat.StartAction();
         canUltimate = false;
         animator.SetTrigger("Ultimate");
-        Invoke(nameof(ResetUltimateCoolTime), GetSkillCooldown(UltimateCoolTime));
+        Invoke(nameof(ResetUltimateCoolTime), StartCooldown(SkillSlot.Ultimate, UltimateCoolTime));
     }
 
     public void UltimateDamage()
@@ -469,6 +481,48 @@ public class SkillManager : MonoBehaviour
         return Mathf.Max(0f, baseCooldown - skillCooldownReduction);
     }
 
+    // 쿨타임 UI가 자체 타이머를 돌리지 않고 실제 값을 읽을 수 있게 남겨 둔다.
+    private float StartCooldown(SkillSlot slot, float baseCooldown)
+    {
+        float cooldown = GetSkillCooldown(baseCooldown);
+        skillCooldownTotal[(int)slot] = cooldown;
+        skillReadyTime[(int)slot] = Time.time + cooldown;
+        return cooldown;
+    }
+
+    public KeyCode GetSkillKey(SkillSlot slot)
+    {
+        switch (slot)
+        {
+            case SkillSlot.Slash: return slashKey;
+            case SkillSlot.StrongStrike: return strongStrikeKey;
+            case SkillSlot.Poke: return pokeKey;
+            case SkillSlot.Strike: return strikeKey;
+            case SkillSlot.Ultimate: return ultimateKey;
+        }
+
+        return KeyCode.None;
+    }
+
+    public float GetCooldownTotal(SkillSlot slot) => skillCooldownTotal[(int)slot];
+
+    public float GetCooldownRemaining(SkillSlot slot)
+        => Mathf.Max(0f, skillReadyTime[(int)slot] - Time.time);
+
+    public bool IsSkillReady(SkillSlot slot)
+    {
+        switch (slot)
+        {
+            case SkillSlot.Slash: return canSlash;
+            case SkillSlot.StrongStrike: return canStrongStrike;
+            case SkillSlot.Poke: return canPoke;
+            case SkillSlot.Strike: return canStrike;
+            case SkillSlot.Ultimate: return canUltimate;
+        }
+
+        return true;
+    }
+
     private void ResetSlashCoolTime() => canSlash = true;
     private void ResetStrongStrikeCoolTime() => canStrongStrike = true;
     private void ResetPokeCoolTime() => canPoke = true;
@@ -492,6 +546,12 @@ public class SkillManager : MonoBehaviour
         canStrike = true;
         canUltimate = true;
         pendingPokeDamageMultiplier = PokeDamageMultiplier;
+
+        for (int i = 0; i < SkillSlotCount; i++)
+        {
+            skillReadyTime[i] = 0f;
+            skillCooldownTotal[i] = 0f;
+        }
     }
 
 }

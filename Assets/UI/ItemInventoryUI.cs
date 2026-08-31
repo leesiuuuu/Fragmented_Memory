@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // ItemInventory의 소모품 목록을 표시하고 선택한 아이템 사용을 ItemEffectApplier에 맡긴다.
-// 소모품 인벤토리는 항상 표시되며, 선택한 아이템은 E로 사용한다.
+// 소모품 인벤토리는 항상 표시되며, 선택한 아이템은 V로 사용한다.
 public class ItemInventoryUI : MonoBehaviour
 {
-    [SerializeField] private KeyCode useKey = KeyCode.E;
+    [SerializeField] private KeyCode useKey = KeyCode.V;
     [SerializeField] private ItemInventoryPanel panelPrefab;
     [SerializeField] private ItemEffectApplier effectApplier;
     [SerializeField] private Canvas targetCanvas;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Outlaw
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Enemy_Outlaw
-  prefab: {fileID: 5482695373007947413, guid: 6b943f1696ce34b43a80bb9636288ed5, type: 3}
+  prefab: {fileID: 5482695373007947413, guid: f61cb35e23cbfd845b83d84b9d6dff1b, type: 3}
   maxHP: 2200
   attack: 500
   defense: 0

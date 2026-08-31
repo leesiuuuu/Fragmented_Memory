@@ -104,6 +104,15 @@ public class PlayerHP : MonoBehaviour, IPlayerDamageable
     public void RestoreAfterRun()
     {
         isDead = false;
+
+        // Death 트리거로 넘어간 사망 상태가 그대로 남아 되살아나도 쓰러진 채로 있게 된다.
+        // Rebind로 애니메이터를 기본 상태로 되돌린다.
+        if (animator != null)
+        {
+            animator.Rebind();
+            animator.Update(0f);
+        }
+
         stats.currentHealth = stats.maxHealth;
         hpBar.SetHP(stats.currentHealth, stats.maxHealth);
         HealthChanged?.Invoke(stats.currentHealth, stats.maxHealth);

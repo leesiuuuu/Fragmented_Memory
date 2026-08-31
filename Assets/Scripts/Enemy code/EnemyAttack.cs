@@ -356,10 +356,12 @@ public class EnemyAttack : MonoBehaviour
             + Mathf.Sign(direction.x) * Mathf.Abs(throwPoint.localPosition.x);
         int damage = Mathf.RoundToInt(stats.attack * projectileDamageMultiplier);
 
+        // 방과 같은 부모에 매단다. 방을 나갈 때 남은 투사체가 따라오지 않게 한다.
         EnemyProjectile projectile = Instantiate(
             projectilePrefab,
             spawnPosition,
-            Quaternion.identity);
+            Quaternion.identity,
+            transform.parent);
 
         projectile.Initialize(
             damage,
@@ -383,7 +385,7 @@ public class EnemyAttack : MonoBehaviour
         spawnPosition.x = transform.position.x
             + direction * Mathf.Abs(areaPoint.localPosition.x);
 
-        EnemyGasArea area = Instantiate(areaPrefab, spawnPosition, Quaternion.identity);
+        EnemyGasArea area = Instantiate(areaPrefab, spawnPosition, Quaternion.identity, transform.parent);
         area.Initialize(
             stats.attack,
             areaDuration,

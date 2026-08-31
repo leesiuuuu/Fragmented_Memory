@@ -6,7 +6,7 @@ public class InteractUI : MonoBehaviour
     [SerializeField] private GameObject promptRoot;
     [SerializeField] private RectTransform promptRect;
     [SerializeField] private TMP_Text promptText;
-    [SerializeField] private string message = "[E] 상호작용";
+    [SerializeField] private string message = "[C] 상호작용";
     [SerializeField] private Vector3 worldOffset = new Vector3(0f, 1.5f, 0f);
 
     private PlayerInteract playerInteract;

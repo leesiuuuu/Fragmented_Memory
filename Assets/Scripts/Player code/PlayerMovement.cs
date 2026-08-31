@@ -27,6 +27,13 @@ public class PlayerMovement : MonoBehaviour
     public float dashFallSpeed = 3f;
 
 
+    [Header("입력")]
+    [SerializeField] private KeyCode moveLeftKey = KeyCode.LeftArrow;
+    [SerializeField] private KeyCode moveRightKey = KeyCode.RightArrow;
+    [SerializeField] private KeyCode jumpKey = KeyCode.UpArrow;
+    [SerializeField] private KeyCode dashKey = KeyCode.RightShift;
+
+
     private bool isDash = false;
 
     private bool isGround = false;
@@ -52,13 +59,29 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+    // 이동은 방향키만 받는다. 좌우를 같이 누르면 서로 상쇄된다.
+    private float GetHorizontalInput()
+    {
+        float h = 0f;
+
+        if (Input.GetKey(moveLeftKey))
+            h -= 1f;
+
+        if (Input.GetKey(moveRightKey))
+            h += 1f;
+
+        return h;
+    }
+
+
+
     private void Update()
     {
         if (playerHP.IsDead || GameplayInputLock.IsLocked)
             return;
 
 
-        float h = Input.GetAxisRaw("Horizontal");
+        float h = GetHorizontalInput();
 
 
         if (!combat.IsBusy && h < 0)
@@ -74,9 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
         // 점프
 
-        if ((Input.GetKeyDown(KeyCode.Space)
-            || Input.GetKeyDown(KeyCode.W)
-            || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(jumpKey)
             && !combat.IsBusy
             && !isDash
             && jumpCount < 2 + additionalJumpCount)
@@ -113,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
 
         // 대쉬
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCount > 0)
+        if (Input.GetKeyDown(dashKey) && dashCount > 0)
         {
             dashCount--;
             isDash = true;
@@ -159,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        float h = Input.GetAxisRaw("Horizontal");
+        float h = GetHorizontalInput();
 
 
         if (!isDash)

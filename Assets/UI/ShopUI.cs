@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 상점 목록을 표시한다. 선택한 상품의 정보와 구매 입력은 ShopManager에 넘긴다.
-// 상점이 열려 있는 동안에는 플레이 입력을 막고 E를 다시 누르면 닫는다.
+// 상점이 열려 있는 동안에는 플레이 입력을 막고 C를 다시 누르면 닫는다.
 public class ShopUI : MonoBehaviour
 {
     private const string InputLockId = "shop";
     [SerializeField] private ShopManager shopManager;
-    [SerializeField] private KeyCode closeKey = KeyCode.E;
+    [SerializeField] private KeyCode closeKey = KeyCode.C;
     [SerializeField] private TMP_Text starDustText;
     [SerializeField] private Button closeButton;
     [SerializeField] private Image detailIcon;
