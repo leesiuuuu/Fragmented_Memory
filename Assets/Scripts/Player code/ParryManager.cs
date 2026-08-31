@@ -5,7 +5,7 @@ using UnityEngine;
 // 성공 상태는 다음 찌르기가 소비한다. 성공 표시는 그때까지 유지된다.
 public class ParryManager : MonoBehaviour
 {
-    [SerializeField] private KeyCode parryKey = KeyCode.Mouse1;
+    [SerializeField] private KeyCode parryKey = KeyCode.S;
     [SerializeField] private float parryDuration = 0.2f;
     [SerializeField] private Vector2 parrySize = new Vector2(2f, 1.5f);
     [SerializeField] private Vector2 parryOffset = new Vector2(1f, 0f);

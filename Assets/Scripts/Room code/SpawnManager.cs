@@ -83,7 +83,13 @@ public class SpawnManager : MonoBehaviour
                 continue;
             }
 
-            GameObject enemy = Instantiate(data.prefab, points[i].position, Quaternion.identity);
+            // 방의 자식으로 띄운다. 방을 갈아끼울 때 사망 연출 중이던 시체와
+            // 남은 투사체까지 같이 사라져야 다음 방·현실로 따라오지 않는다.
+            GameObject enemy = Instantiate(
+                data.prefab,
+                points[i].position,
+                Quaternion.identity,
+                room.transform);
 
             // EnemyHP.Start()가 stats.currentHP를 읽으므로 Instantiate 직후에 주입해야 한다
             EnemyStats stats = enemy.GetComponent<EnemyStats>();

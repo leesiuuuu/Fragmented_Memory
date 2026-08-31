@@ -27,6 +27,10 @@ public class EnemyHP : MonoBehaviour
     // 방이 보스 사망을 직접 알 수 있도록 열어 둔다.
     public System.Action OnDeath;
 
+    // 보스는 BossControl이 자체 체력바와 상태머신을 갖고 있다.
+    // 체력의 주인은 EnemyHP 한쪽으로 두고, 같은 피해량만 그쪽으로 넘긴다.
+    public System.Action<int> Damaged;
+
     private void Awake()
     {
         stats = GetComponent<EnemyStats>();
@@ -100,6 +104,8 @@ public class EnemyHP : MonoBehaviour
 
         if (hpBar != null)
             hpBar.SetHP(stats.currentHP, stats.maxHP);
+
+        Damaged?.Invoke(effectiveDamage);
 
         if (stats.currentHP <= 0)
             Die();

@@ -2,9 +2,11 @@ using System;
 using UnityEngine;
 
 // 문과 거울과 상점과 기억 조각의 상호작용을 한 곳에서 처리한다.
-// 인벤토리가 열려 있을 때는 같은 E 입력을 소모품 사용에 사용한다.
+// 소모품 사용은 V로 따로 받아 상호작용 입력과 겹치지 않게 한다.
 public class PlayerInteract : MonoBehaviour
 {
+    [SerializeField] private KeyCode interactKey = KeyCode.C;
+
     private InteractRule currentTarget;
     private PlayerHP playerHP;
     private bool promptVisible;
@@ -43,7 +45,7 @@ public class PlayerInteract : MonoBehaviour
         if (!canInteract)
             return;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(interactKey))
         {
             currentTarget.Interact();
             ClearCurrentTarget();

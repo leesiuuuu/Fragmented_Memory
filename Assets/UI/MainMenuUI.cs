@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private Button startButton;
-    [SerializeField] private string gameSceneName = "SampleScene";
+    [SerializeField] private string gameSceneName = "GameScene";
 
     private void Awake()
     {

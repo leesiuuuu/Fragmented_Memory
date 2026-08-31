@@ -38,6 +38,10 @@ public class StageData : ScriptableObject
 
     [Header("보스")]
     // 보스방은 MapNode가 아니다 — 스테이지 카운트에 포함되지 않는 이유
+    // 방 껍데기(RoomManager·바닥·문)와 보스를 따로 둔다.
+    // 스테이지마다 방을 새로 만들지 않고 보스만 갈아 끼우기 위해서다.
+    public GameObject bossRoomPrefab;
+
     public GameObject bossPrefab;
 
 

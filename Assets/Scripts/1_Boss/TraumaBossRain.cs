@@ -38,10 +38,10 @@ public class TraumaBossRain : MonoBehaviour
     void Pattern(int patternID, float damage)
     {
         if (patternID == 3 && !isAttacking)
-            StartCoroutine(Rain());
+            StartCoroutine(Rain(damage));
     }
 
-    IEnumerator Rain()
+    IEnumerator Rain(float damage)
     {
         isAttacking = true;
 
@@ -70,7 +70,7 @@ public class TraumaBossRain : MonoBehaviour
 
         for (int i = 0; i < rainCount; i++)
         {
-            SpawnFragments();
+            SpawnFragments(damage);
 
             if (i < rainCount - 1)
                 yield return new WaitForSeconds(rainDelay);
@@ -79,7 +79,7 @@ public class TraumaBossRain : MonoBehaviour
         isAttacking = false;
     }
 
-    void SpawnFragments()
+    void SpawnFragments(float damage)
     {
         if (positionCount <= 0 ||
             fragmentCount <= 0)
@@ -135,7 +135,7 @@ public class TraumaBossRain : MonoBehaviour
                 fragment.GetComponent<TraumaFragment>();
 
             if (traumaFragment != null)
-                traumaFragment.SetBoss(boss);
+                traumaFragment.SetBoss(boss, damage);
 
             Rigidbody2D rigid =
                 fragment.GetComponent<Rigidbody2D>();

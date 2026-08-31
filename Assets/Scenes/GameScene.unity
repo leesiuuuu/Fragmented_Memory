@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -735,6 +736,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1197494127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1c7a9e5b2d4c1e8a6f0d3b7e5c9a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraAspectFitter
+  referenceResolution: {x: 1920, y: 1080}
+  referenceOrthographicSize: 7
+  pillarboxWideScreens: 0
 --- !u!1 &667470229
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,9 +781,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardManager
   memoryPool:
+  - {fileID: 11400000, guid: b27c6ffb5ae44175b9630b1397c6afbb, type: 2}
   - {fileID: 11400000, guid: 8bade53e39a5b8f4d9cb0cd64d899efe, type: 2}
+  - {fileID: 11400000, guid: a0fbf18082c94d89910cf258d20f9b25, type: 2}
+  - {fileID: 11400000, guid: 42db5d6786d8440d9695f8614bded322, type: 2}
   - {fileID: 11400000, guid: 88f87832514fb6548a905b7ce6b04d5a, type: 2}
-  - {fileID: 11400000, guid: c66c8c204c4091f4680646b65517972c, type: 2}
+  - {fileID: 11400000, guid: 26667e99ade542529217a86d34a1503b, type: 2}
   rewardUI: {fileID: 0}
 --- !u!4 &667470231
 Transform:
@@ -1366,6 +1385,7 @@ GameObject:
   - component: {fileID: 1197494144}
   - component: {fileID: 1197494147}
   - component: {fileID: 1197494148}
+  - component: {fileID: 1197494200}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1495,6 +1515,10 @@ MonoBehaviour:
   dashDuration: 0.16
   dashCooldown: 0.7
   dashFallSpeed: 3
+  moveLeftKey: 276
+  moveRightKey: 275
+  jumpKey: 273
+  dashKey: 304
 --- !u!114 &1197494131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,7 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becec142780ed7c4ebb65e5a4c7befec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  attackKey: 323
+  attackKey: 100
   attackBox: {fileID: 1038481815}
   attackBoxPrefab: {fileID: 100000, guid: 0b300185012248d5a2e52ccc6560b926, type: 3}
   attackBoxOffset: 1
@@ -1609,11 +1633,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cebb11d4cf47742b0c190d31797e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillManager
-  slashKey: 49
-  strongStrikeKey: 50
-  pokeKey: 51
-  strikeKey: 52
-  ultimateKey: 53
+  slashKey: 113
+  strongStrikeKey: 119
+  pokeKey: 101
+  strikeKey: 102
+  ultimateKey: 114
   slashPrefab: {fileID: 8218432965011468082, guid: 807e39e1f61fd624eb78c05330dd4a89, type: 3}
   slashSpawnOffset: {x: 1, y: 0.7}
   slashSize: {x: 1.2, y: 1}
@@ -1646,7 +1670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4778beb596440b24684b8e3a7484ae3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParryManager
-  parryKey: 324
+  parryKey: 115
   parryDuration: 0.2
   parrySize: {x: 2, y: 1.5}
   parryOffset: {x: 1, y: 0}
@@ -1711,6 +1735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846fb919468eef7488f2281e524714cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+  interactKey: 99
 --- !u!114 &1197494143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1751,7 +1776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8873753d9e944b639c049dcb3641b919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemInventoryUI
-  useKey: 101
+  useKey: 118
   panelPrefab: {fileID: 2410459261318558053, guid: fdc68abb19408f74884f732a9bfeab25, type: 3}
   effectApplier: {fileID: 416442013}
   targetCanvas: {fileID: 1549503834}
@@ -1794,6 +1819,24 @@ MonoBehaviour:
   pauseKey: 27
   panelPrefab: {fileID: 4123904338317501487, guid: 388da9cbebd05eb48a1f3c377ec3bc06, type: 3}
   mainMenuSceneName: MainMenuScene
+--- !u!114 &1197494200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197494125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e23dc07bf7949f2b1fc6314c19832ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillCooldownUI
+  targetCanvas: {fileID: 1549503834}
+  skillManager: {fileID: 0}
+  slotSize: {x: 72, y: 72}
+  slotSpacing: 12
+  anchoredPosition: {x: 0, y: 40}
+  slotColor: {r: 0.12, g: 0.12, b: 0.18, a: 0.85}
 --- !u!1 &1498046871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1939,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1911,8 +1954,8 @@ Canvas:
   m_GameObject: {fileID: 1549503831}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
-  m_Camera: {fileID: 519420031}
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1923,7 +1966,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!224 &1549503835
 RectTransform:
@@ -1934,7 +1977,7 @@ RectTransform:
   m_GameObject: {fileID: 1549503831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 711643500}
@@ -2099,6 +2142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   stageData: {fileID: 11400000, guid: 2127bf263bc94169a726ac9f4f392524, type: 2}
   mirror: {fileID: 1611047800}
+  mirrorDoor: {fileID: 0}
   player: {fileID: 1197494125}
   rewardManager: {fileID: 667470230}
   shopManager: {fileID: 416442011}

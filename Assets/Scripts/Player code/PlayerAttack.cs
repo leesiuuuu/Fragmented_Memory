@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerSynergyManager synergyManager;
 
     [Header("입력")]
-    [SerializeField] private KeyCode attackKey = KeyCode.Mouse0;
+    [SerializeField] private KeyCode attackKey = KeyCode.D;
 
     [Header("Attack Box")]
     [SerializeField] private Transform attackBox;

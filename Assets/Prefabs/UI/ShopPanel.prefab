@@ -3834,7 +3834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopUI
   shopManager: {fileID: 0}
-  closeKey: 101
+  closeKey: 99
   starDustText: {fileID: 1812408845013688815}
   closeButton: {fileID: 5798904744218219246}
   detailIcon: {fileID: 779095695125212535}

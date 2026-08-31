@@ -18,6 +18,13 @@ public class BossChase : IState<BossControl>
             return;
         }
 
+        // 제자리형 보스는 이동을 건너뛰고 곧장 패턴으로 넘어간다.
+        if (!sender.chasePlayer)
+        {
+            sender.ChangeState(BossControl.BossState.Attack);
+            return;
+        }
+
         if (!sender.CanMove())
             return;
 

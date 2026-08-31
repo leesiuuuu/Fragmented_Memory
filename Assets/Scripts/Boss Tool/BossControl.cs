@@ -32,6 +32,9 @@ public class BossControl : MonoBehaviour
     [Header("Boss")]
     public float moveSpeed;
     public float detectionRange;
+
+    // 끄면 플레이어를 쫓지 않고 제자리에서 패턴만 쓴다.
+    public bool chasePlayer = true;
     public float attackDurationMin;
     public float attackDurationMax;
     public float patternCooldownMin;

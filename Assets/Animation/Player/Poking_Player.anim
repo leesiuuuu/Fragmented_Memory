@@ -28,6 +28,8 @@ AnimationClip:
       value: {fileID: 1348602137, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
     - time: 0.25
       value: {fileID: -1178116870, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
+    - time: 0.41666666
+      value: {fileID: -1178116870, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,12 +56,13 @@ AnimationClip:
     - {fileID: -474352736, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
     - {fileID: 1348602137, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
     - {fileID: -1178116870, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
+    - {fileID: -1178116870, guid: 9610608bf55dfe540b7d92acbfbccaa0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -86,7 +89,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
+  - time: 0.41666666
     functionName: EndSkill
     data: 
     objectReferenceParameter: {fileID: 0}

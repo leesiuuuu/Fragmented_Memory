@@ -37,4 +37,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 083c84041b704008b1047057eb37c3df, type: 2}
   - {fileID: 11400000, guid: 007ab9933a474fd39e6643fff02632fe, type: 2}
   - {fileID: 11400000, guid: baf00df955e644d691c5a47dc2e238c9, type: 2}
-  bossPrefab: {fileID: 0}
+  bossRoomPrefab: {fileID: 5728052231096034427, guid: d6a3c73303af4f18b620508c6dff2ede, type: 3}
+  bossPrefab: {fileID: 1386019425698990940, guid: b9bec036a5b544077b477c9df033a288, type: 3}
