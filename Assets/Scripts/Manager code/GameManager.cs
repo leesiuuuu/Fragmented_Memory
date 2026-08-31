@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [Header("씬 참조")]
     [SerializeField] private Transform mirror;
 
+    // 비워 두면 씬에서 찾는다. 런이 끝날 때 다시 열어 줘야 한다.
+    [SerializeField] private MirrorDoorTrigger mirrorDoor;
+
     [SerializeField] private GameObject player;
 
     [SerializeField] private RewardManager rewardManager;
@@ -52,6 +55,8 @@ public class GameManager : MonoBehaviour
         if (realityShop == null)
             realityShop = FindFirstObjectByType<ShopInteract>(FindObjectsInactive.Include);
 
+        EnsureMirrorDoorReference();
+
         if (rewardManager != null && player != null)
             rewardManager.Initialize(player.GetComponent<Inventory>());
 
@@ -91,6 +96,10 @@ public class GameManager : MonoBehaviour
         EnsureRealityShopReference();
         realityShop?.SetAvailable(true);
         RefreshRealityShop();
+
+        // 거울 문을 되돌리지 않으면 런을 한 번밖에 돌 수 없다.
+        EnsureMirrorDoorReference();
+        mirrorDoor?.SetAvailable(true);
     }
 
 
@@ -108,16 +117,23 @@ public class GameManager : MonoBehaviour
         currentNode = null;
         map = null;
 
-        if (player != null && realitySpawnPoint != null)
+        if (player != null)
         {
-            player.transform.SetPositionAndRotation(
-                realitySpawnPoint.position,
-                realitySpawnPoint.rotation);
+            if (realitySpawnPoint != null)
+            {
+                player.transform.SetPositionAndRotation(
+                    realitySpawnPoint.position,
+                    realitySpawnPoint.rotation);
 
-            Rigidbody2D rigid = player.GetComponent<Rigidbody2D>();
+                Rigidbody2D rigid = player.GetComponent<Rigidbody2D>();
 
-            if (rigid != null)
-                rigid.linearVelocity = Vector2.zero;
+                if (rigid != null)
+                    rigid.linearVelocity = Vector2.zero;
+            }
+
+            // 런을 넘어 유지되는 것 — 기억 조각·아이템·별가루.
+            // 초기화되는 것 — 체력과 사망 상태. 없으면 쓰러진 채로 현실에 서 있게 된다.
+            player.GetComponent<PlayerHP>()?.RestoreAfterRun();
         }
 
         EnterReality();
@@ -134,6 +150,13 @@ public class GameManager : MonoBehaviour
     {
         if (realityShop == null)
             realityShop = FindFirstObjectByType<ShopInteract>(FindObjectsInactive.Include);
+    }
+
+
+    private void EnsureMirrorDoorReference()
+    {
+        if (mirrorDoor == null)
+            mirrorDoor = FindFirstObjectByType<MirrorDoorTrigger>(FindObjectsInactive.Include);
     }
 
 
@@ -244,9 +267,12 @@ public class GameManager : MonoBehaviour
 
     private void LoadBoss()
     {
+        // 보스가 없다고 그냥 return하면 방이 바뀌지 않는데 ExitSelected 구독은 이미 끊긴 뒤라
+        // 문 앞에서 영구히 멈춘다. 보스를 건너뛰고 스테이지를 마무리해 런이 끝나게 한다.
         if (stageData.bossPrefab == null)
         {
-            Debug.LogError($"[GameManager] {stageData.name}: bossPrefab이 비어 있습니다.");
+            Debug.LogError($"[GameManager] {stageData.name}: bossPrefab이 비어 있습니다. 보스를 건너뛰고 스테이지를 종료합니다.");
+            ShowStageReward();
             return;
         }
 
