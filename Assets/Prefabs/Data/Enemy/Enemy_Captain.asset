@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Captain
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Enemy_Captain
-  prefab: {fileID: 5482695373007947413, guid: a7f67411282e48b4ba410972cf6eba6a, type: 3}
+  prefab: {fileID: 5482695373007947413, guid: 5a708e9321559054790e168afe1dcb54, type: 3}
   maxHP: 2400
   attack: 700
   defense: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Gasmask
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Enemy_Gasmask
-  prefab: {fileID: 5482695373007947413, guid: 5fd4e809a2645954fa7681d0e3846ecf, type: 3}
+  prefab: {fileID: 5482695373007947413, guid: 89904344e9e50224fabbe2c17b72af28, type: 3}
   maxHP: 2000
   attack: 400
   defense: 0
