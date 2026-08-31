@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RewardUI : MonoBehaviour
 {
     private const string InputLockId = "reward";
     [SerializeField, Min(0f)] private float slotSpacing = 310f;
+
+    // 비워 둬도 동작한다. 배선하면 인벤토리가 가득 찬 상황에서 수동으로 빠져나올 수 있다.
+    [SerializeField] private Button skipButton;
 
     private readonly List<RewardSlotUI> slots = new List<RewardSlotUI>();
     private RewardSlotUI slotTemplate;
@@ -40,8 +44,27 @@ public class RewardUI : MonoBehaviour
 
     public void SelectReward(int index)
     {
-        if (rewardManager != null && rewardManager.SelectReward(index))
+        if (rewardManager == null)
+            return;
+
+        if (rewardManager.SelectReward(index))
+        {
             Close();
+            return;
+        }
+
+        Debug.LogWarning("[RewardUI] 조각을 담지 못했습니다. 인벤토리가 가득 찼는지 확인하세요.");
+    }
+
+
+    // 보상을 포기한다. Close가 rewardManager를 비우므로 먼저 들고 있어야 한다.
+    public void Skip()
+    {
+        RewardManager manager = rewardManager;
+
+        Close();
+
+        manager?.SkipReward();
     }
 
     public void Close()
@@ -49,6 +72,18 @@ public class RewardUI : MonoBehaviour
         GameplayInputLock.SetLocked(InputLockId, false);
         rewardManager = null;
         gameObject.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        if (skipButton != null)
+            skipButton.onClick.AddListener(Skip);
+    }
+
+    private void OnDestroy()
+    {
+        if (skipButton != null)
+            skipButton.onClick.RemoveListener(Skip);
     }
 
     private void OnDisable()
