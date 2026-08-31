@@ -20,3 +20,7 @@ Tools/**/bin/
 *.user
 *.userprefs
 .vs/
+
+# Unity Performance Testing 패키지가 실행할 때마다 새로 쓰는 산출물
+Assets/Resources/PerformanceTestRunInfo.json*
+Assets/Resources/PerformanceTestRunSettings.json*
